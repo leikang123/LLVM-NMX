@@ -26,3 +26,14 @@ tools.
 Developed by members of the EPICOpt[2] team, at the Vienna University of
 Technology.
 
+
+LLVM backend for NMX 
+
+Build:
+git clone git://github.com/llvm-nmx.git # Checkout LLVM
+cd llvm/tools
+git clone git://github.com/llvm-nmx/clang.git # Checkout Clang
+mkdir ../build
+cd ../build
+cmake ..
+make -j4
