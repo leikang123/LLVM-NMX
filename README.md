@@ -32,11 +32,16 @@ LLVM backend for NMX
 ###Prerequisites: install ninja, cmake
 
 Build && install && compiler 
-##git clone git://github.com/leikang123/llvm-nmx.git 
+#git clone git://github.com/leikang123/llvm-nmx.git 
+
 #cd llvm-nmx
+
 #mkdir build
+
 #cd build
+
 #cmake -G "Ninja" -DCMAKE_BUILD_TYPE=Release ../llvm
+
 #ninja -j4
 
 
