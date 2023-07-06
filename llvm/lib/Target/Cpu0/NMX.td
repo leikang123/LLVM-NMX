@@ -1,4 +1,4 @@
-//===-- Cpu0.td - Describe the Cpu0 Target Machine ----*- tablegen -*-===//
+//===-- NMX.td - Describe the NMX Target Machine ----*- tablegen -*-===//
 //
 //                  The LLVM Compiler Infrastructure
 //
@@ -7,10 +7,10 @@
 
 //
 //===----------------------------------------------------------------------===//
-// This is the top level entry point for the Cpu0 target.
+// This is the top level entry point for the NMX target.
 //===----------------------------------------------------------------------===//
 
-// NMX.td, Cpu0RegisterInfo.td are included in NMXAsm.td 
+// NMX.td, NMXRegisterInfo.td are included in NMXAsm.td 
 
 //===----------------------------------------------------------------------===//
 // Target-dependent interfaces
@@ -49,26 +49,22 @@ class Proc<string Name, list<SubtargetFeature> Features>
 def : Proc<"NMX32I", [FeatureNMX32I]>;
 def : Proc<"NMX32II", [FeatureNMX32II]>;
 
-def Cpu0InstrInfo : InstrInfo;
+def NMXInstrInfo : InstrInfo;
 
-def Cpu0AsmParser : AsmParser {
+def NMXAsmParser : AsmParser {
   let ShouldEmitMatchRegisterName = 0;
 }
 
-def Cpu0AsmParserVariant : AsmParserVariant {
+def NMXAsmParserVariant : AsmParserVariant {
   int Variant = 0;
 
   // Recognize hard coded registers.
   string RegisterPrefix = "$";
 }
 
-// Whill generate Cpu0GenAsmWrite.inc included by Cpu0InstPrinter.cpp, contents
-// as follows,
-// void Cpu0InstPrinter::printInstruction(const MCInst *MI, raw_ostream &O) {...}
-// const char* Cpu0InstPrinter::getRegisterName(unsigned RegNo) {...}
-def Cpu0 : Target {
-  // def Cpu0InstrInfo : InstrInfo as before.
-  let InstructionSet = Cpu0InstrInfo;
-  let AssemblyParsers = [Cpu0AsmParser];
-  let AssemblyParserVariants = [Cpu0AsmParserVariant];
+def NMX: Target {
+ 
+  let InstructionSet = NMXInstrInfo;
+  let AssemblyParsers = [NMXAsmParser];
+  let AssemblyParserVariants = [NMXAsmParserVariant];
 }
