@@ -29,11 +29,15 @@ Technology.
 
 LLVM backend for NMX 
 
-Build:
-git clone git://github.com/llvm-nmx.git # Checkout LLVM
-cd llvm/tools
-git clone git://github.com/llvm-nmx/clang.git # Checkout Clang
-mkdir ../build
-cd ../build
-cmake ..
-make -j4
+###Prerequisites: install ninja, cmake
+
+Build && install && compiler 
+##git clone git://github.com/leikang123/llvm-nmx.git 
+#cd llvm-nmx
+#mkdir build
+#cd build
+#cmake -G "Ninja" -DCMAKE_BUILD_TYPE=Release ../llvm
+#ninja -j4
+
+
+####If you have any questions, please mention ISS and pr####
