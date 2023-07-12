@@ -1,4 +1,4 @@
-//===-- Cpu0SERegisterInfo.h - Cpu032 Register Information ------*- C++ -*-===//
+//===-- NMXSERegisterInfo.h - NMX32 Register Information ------*- C++ -*-===//
 //
 //                     The LLVM Compiler Infrastructure
 //
