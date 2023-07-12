@@ -1,4 +1,4 @@
-//===-- Cpu0RegisterInfo.cpp - CPU0 Register Information -== --------------===//
+//===--NMXRegisterInfo.cpp - NMX Register Information -== --------------===//
 //
 //                     The LLVM Compiler Infrastructure
 //
@@ -7,15 +7,15 @@
 //
 //===----------------------------------------------------------------------===//
 //
-// This file contains the CPU0 implementation of the TargetRegisterInfo class.
+// This file contains NMX implementation of the TargetRegisterInfo class.
 //
 //===----------------------------------------------------------------------===//
 
 #include "Cpu0RegisterInfo.h"
 
-#include "Cpu0.h"
-#include "Cpu0Subtarget.h"
-#include "Cpu0MachineFunctionInfo.h"
+#include "NMX.h"
+#include "NMXSubtarget.h"
+#include "NMXMachineFunctionInfo.h"
 #include "llvm/IR/Function.h"
 #include "llvm/IR/Type.h"
 #include "llvm/Support/CommandLine.h"
@@ -24,35 +24,35 @@
 #include "llvm/Support/raw_ostream.h"
 
 #define GET_REGINFO_TARGET_DESC
-#include "Cpu0GenRegisterInfo.inc"
+#include "NMXGenRegisterInfo.inc"
 
 #define DEBUG_TYPE "cpu0-reg-info"
 
 using namespace llvm;
 
-Cpu0RegisterInfo::Cpu0RegisterInfo(const Cpu0Subtarget &ST)
-  : Cpu0GenRegisterInfo(Cpu0::LR), Subtarget(ST) {}
+NMXRegisterInfo::NMXRegisterInfo(const Cpu0Subtarget &ST)
+  : NMXGenRegisterInfo(Cpu0::LR), Subtarget(ST) {}
 
 //===----------------------------------------------------------------------===//
 // Callee Saved Registers methods
 //===----------------------------------------------------------------------===//
-/// Cpu0 Callee Saved Registers
-// In Cpu0CallConv.td, defined CalleeSavedRegs
+/// NMX Callee Saved Registers
+// In NMXCallConv.td, defined CalleeSavedRegs
 const MCPhysReg *
-Cpu0RegisterInfo::getCalleeSavedRegs(const MachineFunction *MF) const {
+NMXRegisterInfo::getCalleeSavedRegs(const MachineFunction *MF) const {
   return CSR_O32_SaveList;
 }
 
 const uint32_t *
-Cpu0RegisterInfo::getCallPreservedMask(const MachineFunction &MF,
+NMXRegisterInfo::getCallPreservedMask(const MachineFunction &MF,
                                        CallingConv::ID) const {
   return CSR_O32_RegMask;
 }
 
-BitVector Cpu0RegisterInfo::
+BitVector NMXRegisterInfo::
 getReservedRegs(const MachineFunction &MF) const {
   static const uint16_t ReservedCPURegs[] = {
-    Cpu0::ZERO, Cpu0::AT, Cpu0::SP, Cpu0::LR, Cpu0::PC
+    NMX::ZERO, NMX::AT, NMX::SP, NMX::LR, NMX::PC
   };
   BitVector Reserved(getNumRegs());
 
@@ -60,11 +60,11 @@ getReservedRegs(const MachineFunction &MF) const {
     Reserved.set(ReservedCPURegs[I]);
 
 #ifdef ENABLE_GPRESTORE
-  const Cpu0MachineFunctionInfo *Cpu0FI = MF.getInfo<Cpu0MachineFunctionInfo>();
+  const NMXMachineFunctionInfo *NMXFI = MF.getInfo<NMXMachineFunctionInfo>();
   // Reserve GP if globalBaseRegFixed()
-  if (Cpu0FI->globalBaseRegFixed())
+  if (NMXFI->globalBaseRegFixed())
 #endif
-    Reserved.set(Cpu0::GP);
+    Reserved.set(NMX::GP);
 
   return Reserved;
 }
@@ -73,13 +73,13 @@ getReservedRegs(const MachineFunction &MF) const {
 // FrameIndex represent objects inside a abstract stack.
 // We must replace FrameIndex with an stack/frame pointer
 // direct reference.
-void Cpu0RegisterInfo::
+void NMXRegisterInfo::
 eliminateFrameIndex(MachineBasicBlock::iterator II, int SPAdj,
                     unsigned FIOperandNum, RegScavenger *RS) const {
   MachineInstr &MI = *II;
   MachineFunction &MF = *MI.getParent()->getParent();
   MachineFrameInfo &MFI = MF.getFrameInfo();
-  //Cpu0MachineFunctionInfo *Cpu0FI = MF.getInfo<Cpu0MachineFunctionInfo>();
+  
 
   unsigned i = 0;
   while (!MI.getOperand(i).isFI()) {
@@ -116,7 +116,7 @@ eliminateFrameIndex(MachineBasicBlock::iterator II, int SPAdj,
   // getFrameRegister() returns.
   unsigned FrameReg;
 
-  FrameReg = Cpu0::SP;
+  FrameReg = NMX::SP;
 
   // Calculate final offset.
   // There is no need to change the offset if the frame object is one of the
@@ -144,18 +144,18 @@ eliminateFrameIndex(MachineBasicBlock::iterator II, int SPAdj,
 }
 
 bool
-Cpu0RegisterInfo::requiresRegisterScavenging(const MachineFunction &MF) const {
+NMXRegisterInfo::requiresRegisterScavenging(const MachineFunction &MF) const {
   return true;
 }
 
 bool
-Cpu0RegisterInfo::trackLivenessAfterRegAlloc(const MachineFunction &MF) const {
+NMXRegisterInfo::trackLivenessAfterRegAlloc(const MachineFunction &MF) const {
   return true;
 }
 
-unsigned Cpu0RegisterInfo::
+unsigned NMXRegisterInfo::
 getFrameRegister(const MachineFunction &MF) const {
   const TargetFrameLowering *TFI = MF.getSubtarget().getFrameLowering();
-  return TFI->hasFP(MF) ? (Cpu0::FP) :
-                          (Cpu0::SP);
+  return TFI->hasFP(MF) ? (NMX::FP) :
+                          (NMX::SP);
 }
