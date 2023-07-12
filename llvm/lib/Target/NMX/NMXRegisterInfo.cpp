@@ -1,4 +1,4 @@
-//===-- Cpu0RegisterInfo.cpp - CPU0 Register Information -== --------------===//
+//===-- NMXRegisterInfo.cpp - NMX Register Information -== --------------===//
 //
 //                     The LLVM Compiler Infrastructure
 //
@@ -7,15 +7,15 @@
 //
 //===----------------------------------------------------------------------===//
 //
-// This file contains the CPU0 implementation of the TargetRegisterInfo class.
+// This file contains the NMX implementation of the TargetRegisterInfo class.
 //
 //===----------------------------------------------------------------------===//
 
-#include "Cpu0RegisterInfo.h"
+#include "NMXRegisterInfo.h"
 
-#include "Cpu0.h"
-#include "Cpu0Subtarget.h"
-#include "Cpu0MachineFunctionInfo.h"
+#include "NMX.h"
+#include "NMXSubtarget.h"
+#include "NMXMachineFunctionInfo.h"
 #include "llvm/IR/Function.h"
 #include "llvm/IR/Type.h"
 #include "llvm/Support/CommandLine.h"
@@ -26,25 +26,25 @@
 #define GET_REGINFO_TARGET_DESC
 #include "Cpu0GenRegisterInfo.inc"
 
-#define DEBUG_TYPE "cpu0-reg-info"
+#define DEBUG_TYPE "NMX-reg-info"
 
 using namespace llvm;
 
-Cpu0RegisterInfo::Cpu0RegisterInfo(const Cpu0Subtarget &ST)
-  : Cpu0GenRegisterInfo(Cpu0::LR), Subtarget(ST) {}
+NMXRegisterInfo::NMXRegisterInfo(const NMXSubtarget &ST)
+  : NMXGenRegisterInfo(NMX::LR), Subtarget(ST) {}
 
 //===----------------------------------------------------------------------===//
 // Callee Saved Registers methods
 //===----------------------------------------------------------------------===//
-/// Cpu0 Callee Saved Registers
-// In Cpu0CallConv.td, defined CalleeSavedRegs
+
+// In NMXCallConv.td, defined CalleeSavedRegs
 const MCPhysReg *
-Cpu0RegisterInfo::getCalleeSavedRegs(const MachineFunction *MF) const {
+NMXRegisterInfo::getCalleeSavedRegs(const MachineFunction *MF) const {
   return CSR_O32_SaveList;
 }
 
 const uint32_t *
-Cpu0RegisterInfo::getCallPreservedMask(const MachineFunction &MF,
+NMXRegisterInfo::getCallPreservedMask(const MachineFunction &MF,
                                        CallingConv::ID) const {
   return CSR_O32_RegMask;
 }
