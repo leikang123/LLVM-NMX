@@ -28,32 +28,32 @@ def SDT_NMXCallSeqEnd : SDCallSeqEnd<[SDTCisVT<0, i32>, SDTCisVT<1, i32>]>;
 // Hi and Lo nodes are used to handle global addresses. Used on
 // NMXISelLowering to lower stuff like GlobalAddress, ExternalSymbol
 // static model. (nothing to do with SDT_NMXJmpLink Register Hi and Lo)
-def Cpu0Hi    : SDNode<"Cpu0ISD::Hi", SDTIntUnaryOp>;
-def Cpu0Lo    : SDNode<"Cpu0ISD::Lo", SDTIntUnaryOp>;
-def Cpu0GPRel : SDNode<"Cpu0ISD::GPRel", SDTIntUnaryOp>;
+def NMXHi    : SDNode<"NMXISD::Hi", SDTIntUnaryOp>;
+def NMXLo    : SDNode<"NMXISD::Lo", SDTIntUnaryOp>;
+def NMXGPRel : SDNode<"NMXISD::GPRel", SDTIntUnaryOp>;
 
 // Call
-def Cpu0JmpLink : SDNode<"Cpu0ISD::JmpLink", SDT_Cpu0JmpLink,
+def NMXJmpLink : SDNode<"NMXISD::JmpLink", SDT_NMXJmpLink,
                          [SDNPHasChain, SDNPOutGlue, SDNPOptInGlue,
                           SDNPVariadic]>;
-def callseq_start : SDNode<"ISD::CALLSEQ_START", SDT_Cpu0CallSeqStart,
+def callseq_start : SDNode<"ISD::CALLSEQ_START", SDT_NMXCallSeqStart,
                            [SDNPHasChain, SDNPSideEffect, SDNPOutGlue]>;
-def callseq_end : SDNode<"ISD::CALLSEQ_END", SDT_Cpu0CallSeqEnd,
+def callseq_end : SDNode<"ISD::CALLSEQ_END", SDT_NMXCallSeqEnd,
                          [SDNPHasChain, SDNPOptInGlue,
                           SDNPSideEffect, SDNPOutGlue]>;
-def Cpu0TailCall : SDNode<"Cpu0ISD::TailCall", SDT_Cpu0JmpLink,
+def NMXTailCall : SDNode<"NMXISD::TailCall", SDT_NMXJmpLink,
                           [SDNPHasChain, SDNPOptInGlue, SDNPVariadic]>;
 
 // Return
-def Cpu0Ret : SDNode<"Cpu0ISD::Ret", SDTNone,
+def NMXRet : SDNode<"NMXISD::Ret", SDTNone,
                      [SDNPHasChain, SDNPOptInGlue, SDNPVariadic]>;
 
-def Cpu0DivRem  : SDNode<"Cpu0ISD::DivRem", SDT_Cpu0DivRem, [SDNPOutGlue]>;
-def Cpu0DivRemU : SDNode<"Cpu0ISD::DivRemU", SDT_Cpu0DivRem, [SDNPOutGlue]>;
+def NMXDivRem  : SDNode<"NMXISD::DivRem", SDT_NMXDivRem, [SDNPOutGlue]>;
+def NMXDivRemU : SDNode<"NMXISD::DivRemU", SDT_NMXDivRem, [SDNPOutGlue]>;
 
-def Cpu0Wrapper : SDNode<"Cpu0ISD::Wrapper", SDTIntBinOp>;
+def NMXWrapper : SDNode<"NMXISD::Wrapper", SDTIntBinOp>;
 //===----------------------------------------------------------------------===//
-// Cpu0 Instruction Predicate Definitions.
+// NMX Instruction Predicate Definitions.
 //===----------------------------------------------------------------------===//
 def EnableOverflow  : Predicate<"Subtarget->enableOverflow()">;
 def DisableOverflow : Predicate<"Subtarget->disableOverflow()">;
@@ -66,10 +66,10 @@ def RelocPIC        : Predicate<"TM.getRelocationModel() == Reloc::PIC_">;
 // Instruction format superclass
 //===----------------------------------------------------------------------===//
 
-include "Cpu0InstrFormats.td"
+include "NMXInstrFormats.td"
 
 //===----------------------------------------------------------------------===//
-// Cpu0 Operand, Complex Patterns and Transformations Definitions
+// NMX Operand, Complex Patterns and Transformations Definitions
 //===----------------------------------------------------------------------===//
 
 // Instruction operand types
@@ -101,13 +101,13 @@ def calltarget : Operand<iPTR> {
 let isCall = 1, hasDelaySlot = 1 in {
   class JumpLink<bits<8> op, string instrAsm>
       : FJ<op, (outs), (ins calltarget:$target, variable_ops),
-         !strconcat(instrAsm, "\t$target"), [(Cpu0JmpLink imm:$target)],
+         !strconcat(instrAsm, "\t$target"), [(NMXJmpLink imm:$target)],
          IIBranch> {
     let DecoderMethod = "DecodeJumpTarget";
   }
   class JumpLinkReg<bits<8> op, string instrAsm, RegisterClass RC>
       : FA<op, (outs), (ins RC:$rb, variable_ops),
-           !strconcat(instrAsm, "\t$rb"), [(Cpu0JmpLink RC:$rb)],
+           !strconcat(instrAsm, "\t$rb"), [(NMXJmpLink RC:$rb)],
            IIBranch> {
     let rc = 0;
     let ra = 14;
@@ -123,7 +123,7 @@ let isCall = 1, isTerminator = 1, isReturn = 1, isBarrier = 1, hasDelaySlot = 1,
 
   class TailCallReg<RegisterClass RO, Instruction JRInst,
                     RegisterClass ResRO = RO> :
-    PseudoSE<(outs), (ins RO:$rs), [(Cpu0TailCall RO:$rs)], IIBranch>,
+    PseudoSE<(outs), (ins RO:$rs), [(NMXTailCall RO:$rs)], IIBranch>,
     PseudoInstExpansion<(JRInst ResRO:$rs)>;
 }
 
@@ -138,7 +138,7 @@ def uimm16 : Operand<i32> {
   let PrintMethod = "printUnsignedImm";
 }
 
-def Cpu0MemAsmOperand : AsmOperandClass {
+def NMXMemAsmOperand : AsmOperandClass {
   let Name = "Mem";
   let ParserMethod = "parseMemOperand";
 }
@@ -148,7 +148,7 @@ def mem : Operand<iPTR> {
   let PrintMethod = "printMemOperand";
   let MIOperandInfo = (ops CPURegs, simm16);
   let EncoderMethod = "getMemEncoding";
-  let ParserMatchClass = Cpu0MemAsmOperand;
+  let ParserMatchClass = NMXMemAsmOperand;
 }
 
 def mem_ea : Operand<iPTR> {
@@ -191,7 +191,7 @@ def immLow16Zero : PatLeaf<(imm), [{
 // shamt field must fit in 5 bits.
 def immZExt5 : ImmLeaf<i32, [{ return Imm == (Imm & 0x1f); }]>;
 
-// Cpu0 Address Mode! SDNode frameindex could posibily be a match since
+// NMX Address Mode! SDNode frameindex could posibily be a match since
 // load and store instructions from stack used it.
 def addr : ComplexPattern<iPTR, 2, "SelectAddr",
                           [frameindex], [SDNPWantParent]>;
@@ -513,22 +513,22 @@ class EffectiveAddress<string instrAsm, RegisterClass RC, Operand mem>
 //===----------------------------------------------------------------------===//
 
 class LoadImm32<string instrAsm, Operand Od, RegisterClass RC>
-    : Cpu0AsmPseudoInst<(outs RC:$ra), (ins Od:$imm32),
+    : NMXAsmPseudoInst<(outs RC:$ra), (ins Od:$imm32),
                         !strconcat(instrAsm, "\t$ra, $imm32")>;
 def LoadImm32Reg : LoadImm32<"li", shamt, GPROut>;
 
 class LoadAddress<string instrAsm, Operand MemOpnd, RegisterClass RC>
-    : Cpu0AsmPseudoInst<(outs RC:$ra), (ins MemOpnd:$addr),
+    : NMXAsmPseudoInst<(outs RC:$ra), (ins MemOpnd:$addr),
                         !strconcat(instrAsm, "\t$ra, $addr")>;
 def LoadAddr32Reg : LoadAddress<"la", mem, GPROut>;
 
 class LoadAddressImm<string instrAsm, Operand Od, RegisterClass RC>
-    : Cpu0AsmPseudoInst<(outs RC:$ra), (ins Od:$imm32),
+    : NMXAsmPseudoInst<(outs RC:$ra), (ins Od:$imm32),
                         !strconcat(instrAsm, "\t$ra, $imm32")>;
 def LoadAddr32Imm : LoadAddressImm<"la", shamt, GPROut>;
 
 //===----------------------------------------------------------------------===//
-// Cpu0 Instructions
+// NMX Instructions
 //===----------------------------------------------------------------------===//
 
 // Load and Store Instructions
@@ -560,8 +560,8 @@ let Predicates = [EnableOverflow] in {
 def MUL      : ArithLogicR<0x17, "mul", mul, IIImul, CPURegs, 1>;
 def MULT     : Mult32<0x41, "mult", IIImul>;
 def MULTu    : Mult32<0x42, "multu", IIImul>;
-def SDIV     : Div32<Cpu0DivRem, 0x43, "div", IIIdiv>;
-def UDIV     : Div32<Cpu0DivRem, 0x44, "divu", IIIdiv>;
+def SDIV     : Div32<NMXDivRem, 0x43, "div", IIIdiv>;
+def UDIV     : Div32<NMXDivRem, 0x44, "divu", IIIdiv>;
 
 // Shift Instructions
 // shift left
@@ -640,7 +640,7 @@ def LEA_ADDiu : EffectiveAddress<"addiu\t$ra, $addr", CPURegs, mem_ea> {
 }
 
 let isReturn=1, isTerminator=1, hasDelaySlot=1, isBarrier=1, hasCtrlDep=1 in
-  def RetLR  : Cpu0Pseudo<(outs), (ins), "", [(Cpu0Ret)]>;
+  def RetLR  : NMXPseudo<(outs), (ins), "", [(NMXRet)]>;
 
 let Predicates = [HasCmp] in {
   def JEQ     : CBranch24<0x30, "jeq", SR, [SW]>;
@@ -661,10 +661,10 @@ def JMP       : UncondBranch<0x36, "jmp">;
 
 let Defs = [SP], Uses = [SP], hasSideEffects = 1 in {
   // As stack alignment is always done with addiu, we need a 16-bit immediate
-  def ADJCALLSTACKDOWN : Cpu0Pseudo<(outs), (ins uimm16:$amt1, uimm16:$amt2),
+  def ADJCALLSTACKDOWN : NMXPseudo<(outs), (ins uimm16:$amt1, uimm16:$amt2),
                                     "!ADJCALLSTACKDOWN $amt1",
                                     [(callseq_start timm:$amt1, timm:$amt2)]>;
-  def ADJCALLSTACKUP : Cpu0Pseudo<(outs), (ins uimm16:$amt1, uimm16:$amt2),
+  def ADJCALLSTACKUP : NMXPseudo<(outs), (ins uimm16:$amt1, uimm16:$amt2),
                                   "!ADJCALLSTACKUP $amt1",
                                   [(callseq_end timm:$amt1, timm:$amt2)]>;
 }
@@ -674,7 +674,7 @@ let Defs = [SP], Uses = [SP], hasSideEffects = 1 in {
 // are used, we have the same behavior, but get also a bunch of warnings
 // from the assembler.
 let hasSideEffects = 0 in
-  def CPRESTORE : Cpu0Pseudo<(outs), (ins i32imm:$loc, CPURegs:$gp),
+  def CPRESTORE : NMXPseudo<(outs), (ins i32imm:$loc, CPURegs:$gp),
                              ".cprestore\t$loc", []>;
 
 def TAILCALL : TailCall<JMP>;
@@ -700,31 +700,31 @@ def : Pat<(i32 imm:$imm),
           (ORi (LUi (HI16 imm:$imm)), (LO16 imm:$imm))>;
 
 // hi/lo relocs
-def : Pat<(Cpu0Hi tglobaladdr:$in), (LUi tglobaladdr:$in)>;
+def : Pat<(NMXHi tglobaladdr:$in), (LUi tglobaladdr:$in)>;
 
-def : Pat<(Cpu0Hi tblockaddress:$in), (LUi tblockaddress:$in)>;
-def : Pat<(Cpu0Hi tjumptable:$in), (LUi tjumptable:$in)>;
+def : Pat<(NMXHi tblockaddress:$in), (LUi tblockaddress:$in)>;
+def : Pat<(NMXHi tjumptable:$in), (LUi tjumptable:$in)>;
 
-def : Pat<(Cpu0Lo tglobaladdr:$in), (ORi ZERO, tglobaladdr:$in)>;
+def : Pat<(NMXLo tglobaladdr:$in), (ORi ZERO, tglobaladdr:$in)>;
 
-def : Pat<(Cpu0Lo tblockaddress:$in), (ORi ZERO, tblockaddress:$in)>;
-def : Pat<(Cpu0Lo tjumptable:$in), (ORi ZERO, tjumptable:$in)>;
+def : Pat<(NMXLo tblockaddress:$in), (ORi ZERO, tblockaddress:$in)>;
+def : Pat<(NMXLo tjumptable:$in), (ORi ZERO, tjumptable:$in)>;
 
-def : Pat<(add CPURegs:$hi, (Cpu0Lo tglobaladdr:$lo)),
+def : Pat<(add CPURegs:$hi, (NMXLo tglobaladdr:$lo)),
           (ORi CPURegs:$hi, tglobaladdr:$lo)>;
 
-def : Pat<(add CPURegs:$hi, (Cpu0Lo tblockaddress:$lo)),
+def : Pat<(add CPURegs:$hi, (NMXLo tblockaddress:$lo)),
           (ORi CPURegs:$hi, tblockaddress:$lo)>;
-def : Pat<(add CPURegs:$hi, (Cpu0Lo tjumptable:$lo)),
+def : Pat<(add CPURegs:$hi, (NMXLo tjumptable:$lo)),
           (ORi CPURegs:$hi, tjumptable:$lo)>;
 
 // gp_rel relocs
-def : Pat<(add CPURegs:$gp, (Cpu0GPRel tglobaladdr:$in)),
+def : Pat<(add CPURegs:$gp, (NMXGPRel tglobaladdr:$in)),
           (ORi CPURegs:$gp, tglobaladdr:$in)>;
 
 // wrapper_pic
 class WrapperPat<SDNode node, Instruction ORiOp, RegisterClass RC>
-  : Pat<(Cpu0Wrapper RC:$gp, node:$in), (ORiOp RC:$gp, node:$in)>;
+  : Pat<(NMXWrapper RC:$gp, node:$in), (ORiOp RC:$gp, node:$in)>;
 def : WrapperPat<tglobaladdr, ORi, GPROut>;
 
 def : WrapperPat<tjumptable, ORi, GPROut>;
@@ -751,7 +751,7 @@ multiclass SeteqPatsCmp<RegisterClass RC> {
 multiclass SetltPatsCmp<RegisterClass RC> {
   def : Pat<(setlt RC:$lhs, RC:$rhs),
             (ANDi (CMP RC:$lhs, RC:$rhs), 1)>;
-  // if cpu0 `define N    `SW[31] instead of `SW[0]  // Negative flag, then need
+  // if NMX `define N    `SW[31] instead of `SW[0]  // Negative flag, then need
   // 2 more isntructions as follows,
   //        (XORi (ANDi (SHR (CMP RC:$lhs, RC:$rhs), (LUi 0x8000), 31, 1), 1)>;
   def : Pat<(setult RC:$lhs, RC:$rhs),
@@ -927,19 +927,19 @@ let Predicates = [HasCmp] in {
 defm : BrcondPatsCmp<CPURegs, JEQ, JNE, JLT, JGT, JLE, JGE, CMP, ZERO>;
 }
 
-def : Pat<(Cpu0JmpLink (i32 tglobaladdr:$dst)),
+def : Pat<(NMXJmpLink (i32 tglobaladdr:$dst)),
           (JSUB tglobaladdr:$dst)>;
-def : Pat<(Cpu0JmpLink (i32 texternalsym:$dst)),
+def : Pat<(NMXJmpLink (i32 texternalsym:$dst)),
           (JSUB texternalsym:$dst)>;
 
-def : Pat<(Cpu0TailCall (iPTR tglobaladdr:$dst)),
+def : Pat<(NMXTailCall (iPTR tglobaladdr:$dst)),
           (TAILCALL tglobaladdr:$dst)>;
-def : Pat<(Cpu0TailCall (iPTR texternalsym:$dst)),
+def : Pat<(NMXTailCall (iPTR texternalsym:$dst)),
           (TAILCALL texternalsym:$dst)>;
 
 // Conditional moves:
 // These instructions are expanded in
-// Cpu0ISelLowering::EmitInstrWithCustomInserter if target does not have
+// NMXISelLowering::EmitInstrWithCustomInserter if target does not have
 // conditional move instructions.
 // cond:int, data:int
 class CondMovIntInt<RegisterClass CRC, RegisterClass DRC, bits<8> op,
@@ -1005,9 +1005,9 @@ defm : MovnPats<CPURegs, CPURegs, MOVN_I_I, XOR>;
 //===----------------------------------------------------------------------===//
 // Instruction aliases
 //===----------------------------------------------------------------------===//
-class Cpu0InstAlias<string Asm, dag Result, bit Emit = 0b1> :
+class NMXInstAlias<string Asm, dag Result, bit Emit = 0b1> :
   InstAlias<Asm, Result, Emit>;
 
-def : Cpu0InstAlias<"move $dst, $src",
+def : NMXInstAlias<"move $dst, $src",
                     (ADDu GPROut:$dst, GPROut:$src, ZERO), 1>;
 
