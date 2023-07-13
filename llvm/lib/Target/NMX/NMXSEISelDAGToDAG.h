@@ -1,4 +1,4 @@
-//===-- Cpu0SEISelDAGToDAG.h - A DAG to DAG Inst Selector for Cpu0SE -*- C++ -*-===//
+//===-- NMXSEISelDAGToDAG.h - A DAG to DAG Inst Selector for NMXSE -*- C++ -*-===//
 //
 //                    The LLVM Compiler Infrastructure
 //
@@ -7,21 +7,21 @@
 //
 //===----------------------------------------------------------------------===//
 //
-// Subclass of Cpu0DAGToDAGISel specialized for cpu032.
+// Subclass of NMXDAGToDAGISel specialized for NMX32.
 //
 //===----------------------------------------------------------------------===//
 
-#ifndef LLVM_LIB_TARGET_CPU0_CPU0SEISELDAGTODAG_H
-#define LLVM_LIB_TARGET_CPU0_CPU0SEISELDAGTODAG_H
+#ifndef LLVM_LIB_TARGET_NMX_NMXSEISELDAGTODAG_H
+#define LLVM_LIB_TARGET_NMX_NMXSEISELDAGTODAG_H
 
-#include "Cpu0ISelDAGToDAG.h"
+#include "NMXISelDAGToDAG.h"
 
 namespace llvm {
 
-class Cpu0SEDAGToDAGISel : public Cpu0DAGToDAGISel {
+class NMXSEDAGToDAGISel : public NMXDAGToDAGISel {
 public:
-  explicit Cpu0SEDAGToDAGISel(Cpu0TargetMachine &TM, CodeGenOpt::Level OL)
-      : Cpu0DAGToDAGISel(TM, OL) { }
+  explicit NMXSEDAGToDAGISel(NMXTargetMachine &TM, CodeGenOpt::Level OL)
+      : NMXDAGToDAGISel(TM, OL) { }
 
 private:
 
@@ -40,7 +40,7 @@ private:
 };
 
 // Create new instr selector, called in Cpu0TargetMachine.cpp for registrary pass
-FunctionPass *createCpu0SEISelDAG(Cpu0TargetMachine &TM,
+FunctionPass *createNMXSEISelDAG(NMXTargetMachine &TM,
                                   CodeGenOpt::Level OptLevel);
 
 } // end of llvm namespace
