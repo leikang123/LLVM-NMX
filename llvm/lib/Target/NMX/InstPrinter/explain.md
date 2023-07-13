@@ -1,0 +1,2 @@
+
+我们新增了一个 InstPrinter 文件夹，存放一些 InstPrinter 相关的文件。 Cpu0InstPrinter 这两个文件主要是完成将 MCInst 输出到汇编文件的工作。定义了 Cpu0InstPrinter 这个类，继承自 MCInstPrinter。类中一个比较重要的成员函数，printInstruction\(\) 是由 tblgen 工具根据 Cpu0InstrInfo.td 生成的，另一个自动生成的成员函数是 getRegisterName\(\)，是根据 Cpu0RegisterInfo.td 文件生成的，两个函数都位于 Cpu0GenAsmWriter.inc 文件中。内部的函数 printRegName\(\) ，printInst\(\) ，printOperand\(\)，printUnsignedImm\(\)，printMemOperand\(\)， 均调用前两个函数完成指令的输出。
