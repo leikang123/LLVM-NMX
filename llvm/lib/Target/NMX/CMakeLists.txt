@@ -1,48 +1,48 @@
 
-set (LLVM_TARGET_DEFINITIONS Cpu0Asm.td)
-tablegen(LLVM Cpu0GenAsmMatcher.inc -gen-asm-matcher)
+set (LLVM_TARGET_DEFINITIONS NMXAsm.td)
+tablegen(LLVM NMXGenAsmMatcher.inc -gen-asm-matcher)
 
-set (LLVM_TARGET_DEFINITIONS Cpu0Other.td)
+set (LLVM_TARGET_DEFINITIONS NMXOther.td)
 
-# Generate Cpu0GenRegisterInfo.inc and Cpu0GenInstrInfo.inc which included by
+# Generate NMXGenRegisterInfo.inc and NMXGenInstrInfo.inc which included by
 #  your hand code C++ files.
-# Cpu0GenRegisterInfo.inc came from Cpu0RegisterInfo.td, Cpu0GenInstrInfo.inc
-#  came from Cpu0InstrInfo.td.
-tablegen(LLVM Cpu0GenRegisterInfo.inc -gen-register-info)
-tablegen(LLVM Cpu0GenInstrInfo.inc -gen-instr-info)
-tablegen(LLVM Cpu0GenSubtargetInfo.inc -gen-subtarget)
-tablegen(LLVM Cpu0GenMCPseudoLowering.inc -gen-pseudo-lowering)
-tablegen(LLVM Cpu0GenDAGISel.inc -gen-dag-isel)
-tablegen(LLVM Cpu0GenCallingConv.inc -gen-callingconv)
-tablegen(LLVM Cpu0GenCodeEmitter.inc -gen-emitter)
-tablegen(LLVM Cpu0GenMCCodeEmitter.inc -gen-emitter)
-tablegen(LLVM Cpu0GenAsmWriter.inc -gen-asm-writer)
-tablegen(LLVM Cpu0GenDisassemblerTables.inc -gen-disassembler)
+# NMXGenRegisterInfo.inc came from NMXRegisterInfo.td, NMXGenInstrInfo.inc
+#  came from NMXInstrInfo.td.
+tablegen(LLVM NMXGenRegisterInfo.inc -gen-register-info)
+tablegen(LLVM NMXGenInstrInfo.inc -gen-instr-info)
+tablegen(LLVM NMXGenSubtargetInfo.inc -gen-subtarget)
+tablegen(LLVM NMXGenMCPseudoLowering.inc -gen-pseudo-lowering)
+tablegen(LLVM NMXGenDAGISel.inc -gen-dag-isel)
+tablegen(LLVM NMXGenCallingConv.inc -gen-callingconv)
+tablegen(LLVM NMXGenCodeEmitter.inc -gen-emitter)
+tablegen(LLVM NMXGenMCCodeEmitter.inc -gen-emitter)
+tablegen(LLVM NMXGenAsmWriter.inc -gen-asm-writer)
+tablegen(LLVM NMXGenDisassemblerTables.inc -gen-disassembler)
 
-# Cpu0CommonTableGen must be defined
-add_public_tablegen_target(Cpu0CommonTableGen)
+# NMXCommonTableGen must be defined
+add_public_tablegen_target(NMXCommonTableGen)
 
-# Cpu0CodeGen should match with LLVMBuild.txt Cpu0CodeGen
-add_llvm_target(Cpu0CodeGen
-  Cpu0ISelDAGToDAG.cpp
-  Cpu0SEISelDAGToDAG.cpp
-  Cpu0TargetMachine.cpp
-  Cpu0InstrInfo.cpp
-  Cpu0ISelLowering.cpp
-  Cpu0MachineFunctionInfo.cpp
-  Cpu0RegisterInfo.cpp
-  Cpu0FrameLowering.cpp
-  Cpu0SEFrameLowering.cpp
-  Cpu0SEInstrInfo.cpp
-  Cpu0SEISelLowering.cpp
-  Cpu0SERegisterInfo.cpp
-  Cpu0Subtarget.cpp
-  Cpu0TargetObjectFile.cpp
-  Cpu0AsmPrinter.cpp
-  Cpu0MCInstLower.cpp
-  Cpu0AnalyzeImmediate.cpp
-  Cpu0DelUselessJMP.cpp
-  Cpu0DelaySlotFiller.cpp
+# NMXCodeGen should match with LLVMBuild.txt NMXCodeGen
+add_llvm_target(NMXCodeGen
+  NMXISelDAGToDAG.cpp
+  NMXSEISelDAGToDAG.cpp
+  NMXTargetMachine.cpp
+  NMXInstrInfo.cpp
+  NMXISelLowering.cpp
+  NMXMachineFunctionInfo.cpp
+  NMXRegisterInfo.cpp
+  NMXFrameLowering.cpp
+  NMXSEFrameLowering.cpp
+  NMXSEInstrInfo.cpp
+  NMXSEISelLowering.cpp
+  NMXSERegisterInfo.cpp
+  NMXSubtarget.cpp
+  NMXTargetObjectFile.cpp
+  NMXAsmPrinter.cpp
+  NMXMCInstLower.cpp
+  NMXAnalyzeImmediate.cpp
+  NMXDelUselessJMP.cpp
+  NMXDelaySlotFiller.cpp
   )
 
 add_subdirectory(TargetInfo)
