@@ -1,4 +1,4 @@
-//===-- Cpu0TargetObjectFile.h - Cpu0 Object Info ---------------*- C++ -*-===//
+//===-- NMXTargetObjectFile.h -NMX Object Info ---------------*- C++ -*-===//
 //
 //                    The LLVM Compiler Infrastructure
 //
@@ -6,18 +6,18 @@
 // License. See LICENSE.TXT for details.
 //
 //===----------------------------------------------------------------------===//
-#ifndef LLVM_LIB_TARGET_CPU0_CPU0TARGETOBJECTFILE_H
-#define LLVM_LIB_TARGET_CPU0_CPU0TARGETOBJECTFILE_H
+#ifndef LLVM_LIB_TARGET_NMX_NMXTARGETOBJECTFILE_H
+#define LLVM_LIB_TARGET_NMX_NMXTARGETOBJECTFILE_H
 
-#include "Cpu0TargetMachine.h"
+#include "NMXTargetMachine.h"
 #include "llvm/CodeGen/TargetLoweringObjectFileImpl.h"
 
 namespace llvm {
-class Cpu0TargetMachine;
-class Cpu0TargetObjectFile : public TargetLoweringObjectFileELF {
+class NMXTargetMachine;
+class NMXTargetObjectFile : public TargetLoweringObjectFileELF {
   MCSection *SmallDataSection;
   MCSection *SmallBSSSection;
-  const Cpu0TargetMachine *TM;
+  const NMXTargetMachine *TM;
 
   bool IsGlobalInSmallSection(const GlobalObject *GO,
                               const TargetMachine &TM, SectionKind Kind) const;
