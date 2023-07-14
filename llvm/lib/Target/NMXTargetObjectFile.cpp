@@ -1,4 +1,4 @@
-//===-- Cpu0TargetObjectFile.cpp - Cpu0 Object Files ----------------------===//
+//===-- NMXTargetObjectFile.cpp - NMX Object Files ----------------------===//
 //
 //                     The LLVM Compiler Infrastructure
 //
@@ -7,10 +7,10 @@
 //
 //===----------------------------------------------------------------------===//
 
-#include "Cpu0TargetObjectFile.h"
+#include "NMXTargetObjectFile.h"
 
-#include "Cpu0Subtarget.h"
-#include "Cpu0TargetMachine.h"
+#include "NMXSubtarget.h"
+#include "NMXTargetMachine.h"
 #include "llvm/IR/DataLayout.h"
 #include "llvm/IR/DerivedTypes.h"
 #include "llvm/IR/GlobalVariable.h"
@@ -26,7 +26,7 @@ SSThreshold("cpu0-ssection-threshold", cl::Hidden,
             cl::desc("Small data and bss section threshold size (default=8)"),
             cl::init(8));
 
-void Cpu0TargetObjectFile::Initialize(MCContext &Ctx, const TargetMachine &TM){
+void NMXTargetObjectFile::Initialize(MCContext &Ctx, const TargetMachine &TM){
   TargetLoweringObjectFileELF::Initialize(Ctx, TM);
   InitializeELF(TM.Options.UseInitArray);
 
@@ -35,7 +35,7 @@ void Cpu0TargetObjectFile::Initialize(MCContext &Ctx, const TargetMachine &TM){
 
   SmallBSSSection = getContext().getELFSection(".sbss", ELF::SHT_NOBITS,
                                                ELF::SHF_WRITE | ELF::SHF_ALLOC);
-  this->TM = &static_cast<const Cpu0TargetMachine &>(TM);
+  this->TM = &static_cast<const NMXTargetMachine &>(TM);
 }
 
 // A address must be loaded from a small section if its size is less then the
@@ -45,7 +45,7 @@ static bool IsInSmallSection(uint64_t Size) {
   return Size > 0 && Size <= SSThreshold;
 }
 
-bool Cpu0TargetObjectFile::
+bool NMXTargetObjectFile::
 IsGlobalInSmallSection(const GlobalObject *GO, const TargetMachine &TM) const {
   // We first check the case where global is a declaration, because finding
   // section kind using getKindForGlobal() is only allowed for global
@@ -57,7 +57,7 @@ IsGlobalInSmallSection(const GlobalObject *GO, const TargetMachine &TM) const {
 }
 
 // Return true if this global address should be placed into small data/bss section.
-bool Cpu0TargetObjectFile::
+bool NMXTargetObjectFile::
 IsGlobalInSmallSection(const GlobalObject *GO, const TargetMachine &TM,
                        SectionKind Kind) const {
   return (IsGlobalInSmallSectionImpl(GO, TM) &&
@@ -67,11 +67,11 @@ IsGlobalInSmallSection(const GlobalObject *GO, const TargetMachine &TM,
 
 // Return true if this global address should be placed into small data/bss section.
 // This method does all the work, except for checking the section kind.
-bool Cpu0TargetObjectFile::
+bool NMXTargetObjectFile::
 IsGlobalInSmallSectionImpl(const GlobalObject *GO,
                            const TargetMachine &TM) const {
-  const Cpu0Subtarget &Subtarget =
-      *static_cast<const Cpu0TargetMachine &>(TM).getSubtargetImpl();
+  const NMXSubtarget &Subtarget =
+      *static_cast<const NMXTargetMachine &>(TM).getSubtargetImpl();
 
   // Return if small section is not available.
   if (!Subtarget.useSmallSection())
