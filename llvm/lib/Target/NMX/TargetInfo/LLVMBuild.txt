@@ -17,7 +17,7 @@
 
 [component_0]
 type = Library
-name = Cpu0Info
-parent = Cpu0
+name = NMXInfo
+parent = NMX
 required_libraries = Support
-add_to_library_groups = Cpu0
+add_to_library_groups = NMX

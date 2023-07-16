@@ -1,4 +1,4 @@
-//===-- Cpu0ABIInfo.h - Information about Cpu0 ABI --------------*- C++ -*-===//
+//===-- NMXABIInfo.h - Information about NMX ABI --------------*- C++ -*-===//
 //
 //                    The LLVM Compiler Infrastructure
 //
@@ -7,8 +7,8 @@
 //
 //===----------------------------------------------------------------------===//
 
-#ifndef LLVM_LIB_TARGET_CPU0_MCTARGETDESC_CPU0ABIINFO_H
-#define LLVM_LIB_TARGET_CPU0_MCTARGETDESC_CPU0ABIINFO_H
+#ifndef LLVM_LIB_TARGET_NMX_MCTARGETDESC_NMXABIINFO_H
+#define LLVM_LIB_TARGET_NMX_MCTARGETDESC_NMXABIINFO_H
 
 #include "llvm/ADT/ArrayRef.h"
 #include "llvm/ADT/Triple.h"
@@ -21,7 +21,7 @@ class MCTargetOptions;
 class StringRef;
 class TargetRegisterClass;
 
-class Cpu0ABIInfo {
+class NMXABIInfo {
 public:
   enum class ABI { Unknown, O32, S32 };
 
@@ -29,12 +29,12 @@ protected:
   ABI ThisABI;
 
 public:
-  Cpu0ABIInfo(ABI ThisABI) : ThisABI(ThisABI) { }
+  NMXABIInfo(ABI ThisABI) : ThisABI(ThisABI) { }
 
-  static Cpu0ABIInfo Unknown() { return Cpu0ABIInfo(ABI::Unknown); }
-  static Cpu0ABIInfo O32() { return Cpu0ABIInfo(ABI::O32); }
-  static Cpu0ABIInfo S32() { return Cpu0ABIInfo(ABI::S32); }
-  static Cpu0ABIInfo computeTargetABI();
+  static NMXABIInfo Unknown() { return NMXABIInfo(ABI::Unknown); }
+  static NMXABIInfo O32() { return NMXABIInfo(ABI::O32); }
+  static NMXABIInfo S32() { return NMXABIInfo(ABI::S32); }
+  static NMXABIInfo computeTargetABI();
 
   bool IsKnown() const { return ThisABI != ABI::Unknown; }
   bool IsO32() const { return ThisABI == ABI::O32; }
@@ -51,9 +51,9 @@ public:
   // CallingConv::FastCall affects the value for O32
   unsigned GetCalleeAllocdArgSizeInBytes(CallingConv::ID CC) const;
 
-  // Cpu0GenSubtargetInfo.inc will use this to resolve conflicts when given
+  // NMXGenSubtargetInfo.inc will use this to resolve conflicts when given
   // multiple ABI options
-  bool operator<(const Cpu0ABIInfo Other) const {
+  bool operator<(const NMXABIInfo Other) const {
     return ThisABI < Other.GetEnumValue();
   }
 
