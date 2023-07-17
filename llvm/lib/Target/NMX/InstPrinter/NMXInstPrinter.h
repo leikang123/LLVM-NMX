@@ -1,4 +1,4 @@
-//===-- Cpu0InstPrinter.h - Convert MCInst to assembly syntax ---*- C++ -*-===//
+//===-- NMXInstPrinter.h - Convert MCInst to assembly syntax ---*- C++ -*-===//
 //
 //                    The LLVM Compiler Infrastructure
 //
@@ -7,20 +7,20 @@
 //
 //===----------------------------------------------------------------------===//
 //
-// This class prints a Cpu0 MCInst to an assembly file.
+// This class prints a NMX MCInst to an assembly file.
 //
 //===----------------------------------------------------------------------===//
-#ifndef LLVM_LIB_TARGET_CPU0_INSTPRINTER_CPU0INSTPRINTER_H
-#define LLVM_LIB_TARGET_CPU0_INSTPRINTER_CPU0INSTPRINTER_H
+#ifndef LLVM_LIB_TARGET_NMX_INSTPRINTER_NMXINSTPRINTER_H
+#define LLVM_LIB_TARGET_NMX_INSTPRINTER_NMXINSTPRINTER_H
 
 #include "llvm/MC/MCInstPrinter.h"
 
 namespace llvm {
 class TargetMachine;
 
-class Cpu0InstPrinter : public MCInstPrinter {
+class NMXInstPrinter : public MCInstPrinter {
 public:
-  Cpu0InstPrinter(const MCAsmInfo &MAI, const MCInstrInfo &MII,
+  NMXInstPrinter(const MCAsmInfo &MAI, const MCInstrInfo &MII,
                   const MCRegisterInfo &MRI)
     : MCInstPrinter(MAI, MII, MRI) { }
 
