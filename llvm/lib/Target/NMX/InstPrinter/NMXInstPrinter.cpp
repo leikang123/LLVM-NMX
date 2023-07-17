@@ -1,4 +1,4 @@
-//===-- Cpu0InstPrinter.cpp - Convert MCInst to assembly syntax -*- C++ -*-===//
+//===-- NMXInstPrinter.cpp - Convert MCInst to assembly syntax -*- C++ -*-===//
 //
 //                    The LLVM Compiler Infrastructure
 //
@@ -7,14 +7,14 @@
 //
 //===----------------------------------------------------------------------===//
 //
-// This class prints an Cpu0 MCInst to an assembly file.
+// This class prints an NMX MCInst to an assembly file.
 //
 //===----------------------------------------------------------------------===//
 
-#include "Cpu0InstPrinter.h"
+#include "NMXInstPrinter.h"
 
-#include "MCTargetDesc/Cpu0MCExpr.h"
-#include "Cpu0InstrInfo.h"
+#include "MCTargetDesc/NMXMCExpr.h"
+#include "NMXInstrInfo.h"
 #include "llvm/ADT/StringExtras.h"
 #include "llvm/MC/MCExpr.h"
 #include "llvm/MC/MCInst.h"
@@ -27,24 +27,24 @@ using namespace llvm;
 #define DEBUG_TYPE "asm-printer"
 
 #define PRINT_ALIAS_INSTR
-#include "Cpu0GenAsmWriter.inc"
+#include "NMXGenAsmWriter.inc"
 
-void Cpu0InstPrinter::printRegName(raw_ostream &OS, unsigned RegNo) const {
-  // getRegisterName(RegNo) defiend in Cpu0GenAsmWriter.inc which indicate in Cpu0.td
+void NMXInstPrinter::printRegName(raw_ostream &OS, unsigned RegNo) const {
+  // getRegisterName(RegNo) defiend in NMXGenAsmWriter.inc which indicate in NMX.td
   OS << '$' << StringRef(getRegisterName(RegNo)).lower();
 }
 
-void Cpu0InstPrinter::printInst(const MCInst *MI, raw_ostream &O,
+void NMXInstPrinter::printInst(const MCInst *MI, raw_ostream &O,
                                 StringRef Annot, const MCSubtargetInfo &STI) {
   // Try to print any aliases first
   if (!printAliasInstr(MI, O))
-    // printInstruction(MI, O) defined in Cpu0GenAsmWriter.inc which came from
-    // Cpu0.td indicate.
+    // printInstruction(MI, O) defined in NMXGenAsmWriter.inc which came from
+    // NMX.td indicate.
     printInstruction(MI, O);
   printAnnotation(O, Annot);
 }
 
-void Cpu0InstPrinter::printOperand(const MCInst *MI, unsigned OpNo,
+void NMXInstPrinter::printOperand(const MCInst *MI, unsigned OpNo,
                                    raw_ostream &O) {
   const MCOperand &Op = MI->getOperand(OpNo);
   if (Op.isReg()) {
@@ -61,7 +61,7 @@ void Cpu0InstPrinter::printOperand(const MCInst *MI, unsigned OpNo,
   Op.getExpr()->print(O, &MAI, true);
 }
 
-void Cpu0InstPrinter::printUnsignedImm(const MCInst *MI, int OpNum,
+void NMXInstPrinter::printUnsignedImm(const MCInst *MI, int OpNum,
                                        raw_ostream &O) {
   const MCOperand &MO = MI->getOperand(OpNum);
   if (MO.isImm())
@@ -70,7 +70,7 @@ void Cpu0InstPrinter::printUnsignedImm(const MCInst *MI, int OpNum,
     printOperand(MI, OpNum, O);
 }
 
-void Cpu0InstPrinter::printMemOperand(const MCInst *MI, int OpNum,
+void NMXInstPrinter::printMemOperand(const MCInst *MI, int OpNum,
                                       raw_ostream &O) {
   // Load/Store memory operands => imm($reg)
   // If PIC target, the target is loaded as the
@@ -81,7 +81,7 @@ void Cpu0InstPrinter::printMemOperand(const MCInst *MI, int OpNum,
   O << ")";
 }
 
-void Cpu0InstPrinter::printMemOperandEA(const MCInst *MI, int opNum,
+void NMXInstPrinter::printMemOperandEA(const MCInst *MI, int opNum,
                                         raw_ostream &O) {
   // when using stack locations for not load/store instructions
   // print the same way as all normal 3 operand instructions.
