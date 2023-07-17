@@ -1,4 +1,4 @@
-//===- Cpu0Disassembler.cpp - Disassembler for Cpu0 -------------*- C++ -*-===//
+//===- NMXDisassembler.cpp - Disassembler for NMX -------------*- C++ -*-===//
 //
 //                    The LLVM Compiler Infrastructure
 //
@@ -7,14 +7,14 @@
 //
 //===----------------------------------------------------------------------===//
 //
-// This file is part of the Cpu0 Disassembler.
+// This file is part of the NMX Disassembler.
 //
 //===----------------------------------------------------------------------===//
 
-#include "Cpu0.h"
+#include "NMX.h"
 
-#include "Cpu0RegisterInfo.h"
-#include "Cpu0Subtarget.h"
+#include "NMXRegisterInfo.h"
+#include "NMXSubtarget.h"
 #include "llvm/MC/MCDisassembler/MCDisassembler.h"
 #include "llvm/MC/MCFixedLenDisassembler.h"
 #include "llvm/MC/MCInst.h"
@@ -24,31 +24,31 @@
 
 using namespace llvm;
 
-#define DEBUG_TYPE "cpu0-disassembler"
+#define DEBUG_TYPE "NMX-disassembler"
 
 typedef MCDisassembler::DecodeStatus DecodeStatus;
 
 namespace {
 
-/// Cpu0disassemblerBase - a disassembler class for Cpu0.
-class Cpu0DisassemblerBase : public MCDisassembler {
+/// NMXdisassemblerBase - a disassembler class for NMX.
+class NMXDisassemblerBase : public MCDisassembler {
 public:
-  Cpu0DisassemblerBase(const MCSubtargetInfo &STI, MCContext &Ctx,
+  NMXDisassemblerBase(const MCSubtargetInfo &STI, MCContext &Ctx,
                        bool bigEndian) :
     MCDisassembler(STI, Ctx),
     IsBigEndian(bigEndian) {}
 
-  virtual ~Cpu0DisassemblerBase() {}
+  virtual ~NMXDisassemblerBase() {}
 
 protected:
   bool IsBigEndian;
 };
 
-/// Cpu0Disassembler - a disassembler class for Cpu032.
-class Cpu0Disassembler : public Cpu0DisassemblerBase {
+/// NMXDisassembler - a disassembler class for NMX32.
+class NMXDisassembler : public NMXDisassemblerBase {
 public:
-  Cpu0Disassembler(const MCSubtargetInfo &STI, MCContext &Ctx, bool bigEndian)
-    : Cpu0DisassemblerBase(STI, Ctx, bigEndian) {}
+  NMXDisassembler(const MCSubtargetInfo &STI, MCContext &Ctx, bool bigEndian)
+    : NMXDisassemblerBase(STI, Ctx, bigEndian) {}
 
   DecodeStatus getInstruction(MCInst &Inst, uint64_t &Size,
                               ArrayRef<uint8_t> Bytes, uint64_t Address,
@@ -60,15 +60,15 @@ public:
 
 // Decoder tables for GPR register
 static const unsigned CPURegsTable[] = {
-  Cpu0::ZERO, Cpu0::AT, Cpu0::V0, Cpu0::V1,
-  Cpu0::A0, Cpu0::A1, Cpu0::T9, Cpu0::T0,
-  Cpu0::T1, Cpu0::S0, Cpu0::S1, Cpu0::GP,
-  Cpu0::FP, Cpu0::SP, Cpu0::LR, Cpu0::SW
+  NMX::ZERO, NMX::AT, NMX::V0, NMX::V1,
+  NMX::A0, NMX::A1, NMX::T9, NMX::T0,
+  NMX::T1, NMX::S0, NMX::S1, NMX::GP,
+  NMX::FP, NMX::SP, NMX::LR, NMX::SW
 };
 
 // Decoder tables for co-processor 0 register
 static const unsigned C0RegsTable[] = {
-  Cpu0::PC, Cpu0::EPC
+  NMX::PC, NMX::EPC
 };
 
 static DecodeStatus DecodeCPURegsRegisterClass(MCInst &Inst,
@@ -113,33 +113,33 @@ static DecodeStatus DecodeSimm16(MCInst &Inst,
                                  const void *Decoder);
 
 namespace llvm {
-extern Target TheCpu0elTarget, TheCpu0Target, TheCpu064Target,
-              TheCpu064elTarget;
+extern Target TheNMXelTarget, TheNMXTarget, TheNMX64Target,
+              TheNMX64elTarget;
 }
 
-static MCDisassembler *createCpu0Disassembler(
+static MCDisassembler *createNMXDisassembler(
     const Target &T,
     const MCSubtargetInfo &STI,
     MCContext &Ctx) {
-  return new Cpu0Disassembler(STI, Ctx, true);
+  return new NMXDisassembler(STI, Ctx, true);
 }
 
-static MCDisassembler *createCpu0elDisassembler(
+static MCDisassembler *createNMXelDisassembler(
     const Target &T,
     const MCSubtargetInfo &STI,
     MCContext &Ctx) {
-  return new Cpu0Disassembler(STI, Ctx, false);
+  return new NMXDisassembler(STI, Ctx, false);
 }
 
-extern "C" void LLVMInitializeCpu0Disassembler() {
+extern "C" void LLVMInitializeNMXDisassembler() {
   // Register the disassembler.
-  TargetRegistry::RegisterMCDisassembler(getTheCpu0Target(),
-                                         createCpu0Disassembler);
-  TargetRegistry::RegisterMCDisassembler(getTheCpu0elTarget(),
-                                         createCpu0elDisassembler);
+  TargetRegistry::RegisterMCDisassembler(getTheNMXTarget(),
+                                         createNMXDisassembler);
+  TargetRegistry::RegisterMCDisassembler(getTheNMXelTarget(),
+                                         createNMXelDisassembler);
 }
 
-#include "Cpu0GenDisassemblerTables.inc"
+#include "NMXGenDisassemblerTables.inc"
 
 /// Read four bytes from the ArrayRef and return 32 bit word sorted
 /// according to the given endianess
@@ -169,7 +169,7 @@ static DecodeStatus readInstruction32(ArrayRef<uint8_t> Bytes, uint64_t Address,
   return MCDisassembler::Success;
 }
 
-DecodeStatus Cpu0Disassembler::getInstruction(MCInst &Instr, uint64_t &Size,
+DecodeStatus NMXDisassembler::getInstruction(MCInst &Instr, uint64_t &Size,
                                               ArrayRef<uint8_t> Bytes,
                                               uint64_t Address,
                                               raw_ostream &VStream,
@@ -182,7 +182,7 @@ DecodeStatus Cpu0Disassembler::getInstruction(MCInst &Instr, uint64_t &Size,
     return Result;
 
   // Calling the auto-generated decoder function
-  Result = decodeInstruction(DecoderTableCpu032, Instr, Insn, Address, this, STI);
+  Result = decodeInstruction(DecoderTableNMX32, Instr, Insn, Address, this, STI);
 
   if (Result != MCDisassembler::Fail) {
     Size = 4;
@@ -247,7 +247,7 @@ static DecodeStatus DecodeBranch24Target(MCInst &Inst,
   if (BranchOffset > 0x8ffff)
     BranchOffset = -1 * (0x10000000 - BranchOffset);
 
-  Inst.addOperand(MCOperand::createReg(Cpu0::SW));
+  Inst.addOperand(MCOperand::createReg(NMX::SW));
   Inst.addOperand(MCOperand::createImm(BranchOffset));
   return MCDisassembler::Success;
 }
@@ -266,10 +266,10 @@ static DecodeStatus DecodeJumpFR(MCInst &Inst,
                                  const void *Decoder) {
   int Reg = (int)fieldFromInstruction(Insn, 20, 4);
   Inst.addOperand(MCOperand::createReg(CPURegsTable[Reg]));
-  if (CPURegsTable[Reg] == Cpu0::LR)
-    Inst.setOpcode(Cpu0::RET);
+  if (CPURegsTable[Reg] == NMX::LR)
+    Inst.setOpcode(NMX::RET);
   else
-    Inst.setOpcode(Cpu0::JR);
+    Inst.setOpcode(NMX::JR);
   return MCDisassembler::Success;
 }
 
