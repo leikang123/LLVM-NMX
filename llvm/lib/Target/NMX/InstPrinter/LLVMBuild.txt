@@ -1,4 +1,4 @@
-;===- ./lib/Target/Cpu0/InstPrinter/LLVMBuild.txt --------------*- Conf -*--===;
+;===- ./lib/Target/NMX/InstPrinter/LLVMBuild.txt --------------*- Conf -*--===;
 ;
 ;                     The LLVM Compiler Infrastructure
 ;
@@ -17,7 +17,7 @@
 
 [component_0]
 type = Library
-name = Cpu0AsmPrinter
-parent = Cpu0
+name = NMXAsmPrinter
+parent = NMX
 required_libraries = MC Support
-add_to_library_groups = Cpu0
+add_to_library_groups = NMX
