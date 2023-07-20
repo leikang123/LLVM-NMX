@@ -77,6 +77,9 @@ public:
     thumbeb,        // Thumb (big endian): thumbeb
     x86,            // X86: i[3-9]86
     x86_64,         // X86-64: amd64, x86_64
+    ////
+    NMX,            // nmx 64 bit
+    NMXel,
     xcore,          // XCore: xcore
     nvptx,          // NVPTX: 32-bit
     nvptx64,        // NVPTX: 64-bit
@@ -393,6 +396,7 @@ public:
   /// is not summed up in the triple, and so only a coarse grained predicate
   /// system is provided.
   bool isArch64Bit() const;
+   ////
 
   /// Test whether the architecture is 32-bit
   ///

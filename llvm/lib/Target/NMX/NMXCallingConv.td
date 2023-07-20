@@ -13,7 +13,7 @@
 
 // Match if the current subtarget has a feature F.
 class CCIfSubtarget<string F, CCAction A>
-  : CCIf<!strconcat("State.getTarget().getSubtarget<Cpu0Subtarget>().", F), A>;
+  : CCIf<!strconcat("State.getTarget().getSubtarget<NMXSubtarget>().", F), A>;
 
 def CSR_O32 : CalleeSavedRegs<(add LR, FP, (sequence "S%u", 1, 0))>;
 

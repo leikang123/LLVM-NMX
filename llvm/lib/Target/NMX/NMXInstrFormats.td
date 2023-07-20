@@ -128,7 +128,7 @@ class FJ<bits<8> op, dag outs, dag ins, string asmStr,
 //===----------------------------------------------------------------------===//
 
 // NMX Pseudo Instructions Format
-class Cpu0Pseudo<dag outs, dag ins, string asmstr, list<dag> pattern,
+class NMXPseudo<dag outs, dag ins, string asmstr, list<dag> pattern,
                  InstrItinClass itin = IIPseudo>
     : NMXInst<outs, ins, asmstr, pattern, itin, Pseudo> {
   let isCodeGenOnly = 1;

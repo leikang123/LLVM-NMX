@@ -17,10 +17,10 @@
 
 [component_0]
 type = Library
-name = Cpu0Desc
-parent = Cpu0
+name = NMXDesc
+parent = NMX
 required_libraries = MC
-                     Cpu0Info
+                     NMXInfo
                      Support
-                     Cpu0AsmPrinter
-add_to_library_groups = Cpu0
+                     NMXAsmPrinter
+add_to_library_groups = NMX

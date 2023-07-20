@@ -33,10 +33,10 @@ def FeatureCmp            : SubtargetFeature<"cmp", "HasCmp", "true",
                                              "Enable 'cmp' instructions.">;
 def FeatureSlt            : SubtargetFeature<"slt", "HasSlt", "true",
                                              "Enable 'slt' instructions.">;
-def FeatureCpu032I        : SubtargetFeature<"NMX32I", "NMXArchVersion",
+def FeatureNMX32I        : SubtargetFeature<"NMX32I", "NMXArchVersion",
                                              "NMX32I", "NMX032I ISA Support",
                                              [FeatureCmp]>;
-def FeatureCpu032II       : SubtargetFeature<"NMX32II", "NMXArchVersion",
+def FeatureNMX32II       : SubtargetFeature<"NMX32II", "NMXArchVersion",
                                              "NMX32II", "NMX32II ISA Support",
                                              [FeatureCmp, FeatureSlt]>;
 

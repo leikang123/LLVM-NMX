@@ -312,7 +312,7 @@ enum {
   EM_RISCV = 243,         // RISC-V
   EM_LANAI = 244,         // Lanai 32-bit processor
   EM_BPF = 247,           // Linux kernel bpf virtual machine
-  EM_CPU0 = 999,          // Tutorial Backend Cpu0
+  EM_NMX = 999,          // Tutorial Backend NMX
 };
 
 // Object file classes.
@@ -764,17 +764,17 @@ enum {
 #include "ELFRelocs/MSP430.def"
 };
 
-// Cpu0 Specific e_flags
+// NMX Specific e_flags
 enum : unsigned {
-  EF_CPU0_NOREORDER = 0x00000001,  // Don't reorder instructions
-  EF_CPU0_PIC       = 0x00000002,  // Position independent code
-  EF_CPU0_ARCH_32   = 0x50000000,  // CPU032 instruction set per linux not elf.h
-  EF_CPU0_ARCH      = 0xf0000000,  // Mask for applying EF_CPU0_ARCH_ variant
+  EF_NMX_NOREORDER = 0x00000001,  // Don't reorder instructions
+  EF_NMX_PIC       = 0x00000002,  // Position independent code
+  EF_NMX_ARCH_32   = 0x50000000,  // NMX32 instruction set per linux not elf.h
+  EF_NMX_ARCH      = 0xf0000000,  // Mask for applying EF_NMX_ARCH_ variant
 };
 
-// ELF Relocation types for Cpu0
+// ELF Relocation types for NMX
 enum {
-#include "ELFRelocs/Cpu0.def"
+#include "ELFRelocs/NMX.def"
 };
 
 #undef ELF_RELOC

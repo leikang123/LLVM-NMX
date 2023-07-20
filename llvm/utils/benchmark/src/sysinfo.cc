@@ -243,7 +243,7 @@ int CountSetBitsInCPUMap(std::string Val) {
 BENCHMARK_MAYBE_UNUSED
 std::vector<CPUInfo::CacheInfo> GetCacheSizesFromKVFS() {
   std::vector<CPUInfo::CacheInfo> res;
-  std::string dir = "/sys/devices/system/cpu/cpu0/cache/";
+  std::string dir = "/sys/devices/system/cpu/NMX/cache/";
   int Idx = 0;
   while (true) {
     CPUInfo::CacheInfo info;
@@ -441,10 +441,10 @@ double GetCPUCyclesPerSecond() {
   // processor in a new mode (turbo mode). Essentially, those frequencies
   // cannot always be relied upon. The same reasons apply to /proc/cpuinfo as
   // well.
-  if (ReadFromFile("/sys/devices/system/cpu/cpu0/tsc_freq_khz", &freq)
+  if (ReadFromFile("/sys/devices/system/cpu/NMX/tsc_freq_khz", &freq)
       // If CPU scaling is in effect, we want to use the *maximum* frequency,
       // not whatever CPU speed some random processor happens to be using now.
-      || ReadFromFile("/sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq",
+      || ReadFromFile("/sys/devices/system/cpu/NMX/cpufreq/cpuinfo_max_freq",
                       &freq)) {
     // The value is in kHz (as the file name suggests).  For example, on a
     // 2GHz warpstation, the file contains the value "2000000".
