@@ -77,7 +77,12 @@
 #include <queue>
 #include <tuple>
 #include <utility>
-
+/**
+ * @brief 
+ * 贪厌寄存器是一个队列优先级的方式进行分配寄存器，长生存期的优先分配物理寄存器，
+ * 短生存期的则放回队列等待分配，但是不会溢出。
+ * 
+ */
 using namespace llvm;
 
 #define DEBUG_TYPE "regalloc"
