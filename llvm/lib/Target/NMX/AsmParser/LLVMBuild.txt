@@ -1,4 +1,4 @@
-;===- ./lib/Target/Cpu0/AsmParser/LLVMBuild.txt ---------------- * - Conf - * --===;
+;===- ./lib/Target/NMX/AsmParser/LLVMBuild.txt ---------------- * - Conf - * --===;
 ;
 ;                       The LLVM Compiler Infrastructure
 ;
@@ -17,7 +17,7 @@
 
 [component_0]
 type = Library
-name = Cpu0AsmParser
-parent = Cpu0
-required_libraries = Cpu0Desc Cpu0Info MC MCParser Support
-add_to_library_groups = Cpu0
+name = NMXAsmParser
+parent = NMX
+required_libraries = NMXDesc NMXInfo MC MCParser Support
+add_to_library_groups = NMX

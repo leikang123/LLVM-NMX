@@ -62,34 +62,40 @@ class RegAllocBase {
   virtual void anchor();
 
 protected:
+   // 目标机器的寄存器信息  
   const TargetRegisterInfo *TRI = nullptr;
+  // 机器级别的寄存器信息
   MachineRegisterInfo *MRI = nullptr;
+  // 虚拟寄存器映射
   VirtRegMap *VRM = nullptr;
+  // 活跃区间信息
   LiveIntervals *LIS = nullptr;
+  // 寄存器矩阵
   LiveRegMatrix *Matrix = nullptr;
+  // 寄存器类信息
   RegisterClassInfo RegClassInfo;
 
-  /// Inst which is a def of an original reg and whose defs are already all
-  /// dead after remat is saved in DeadRemats. The deletion of such inst is
-  /// postponed till all the allocations are done, so its remat expr is
-  /// always available for the remat of all the siblings of the original reg.
+  //对象指针的集合，大小为32，用于跟踪和管理可以安全的从程序中删除少量的机器级指令
   SmallPtrSet<MachineInstr *, 32> DeadRemats;
 
   RegAllocBase() = default;
+  // 虚函数默认
   virtual ~RegAllocBase() = default;
 
   // A RegAlloc pass should call this before allocatePhysRegs.
+  // 将分配结果更新到虚拟寄存器映射中
   void init(VirtRegMap &vrm, LiveIntervals &lis, LiveRegMatrix &mat);
 
-  // The top-level driver. The output is a VirtRegMap that us updated with
-  // physical register assignments.
+   // 顶级驱动程序。 输出是我们更新的 VirtRegMap
+   // 物理寄存器分配。
   void allocatePhysRegs();
 
-  // Include spiller post optimization and removing dead defs left because of
-  // rematerialization.
+    // 包括溢出后优化并删除由于以下原因而留下的无效定义
+   // 重新物化。
   virtual void postOptimization();
 
   // Get a temporary reference to a Spiller instance.
+  // 虚拟寄存器的溢出
   virtual Spiller &spiller() = 0;
 
   /// enqueue - Add VirtReg to the priority queue of unassigned registers.
@@ -98,25 +104,24 @@ protected:
   /// dequeue - Return the next unassigned register, or NULL.
   virtual LiveInterval *dequeue() = 0;
 
-  // A RegAlloc pass should override this to provide the allocation heuristics.
-  // Each call must guarantee forward progess by returning an available PhysReg
-  // or new set of split live virtual registers. It is up to the splitter to
-  // converge quickly toward fully spilled live ranges.
+  
+  //实现虚拟寄存器分配，根据当前物理寄存器情况，返回可用的物理寄存器。
   virtual unsigned selectOrSplit(LiveInterval &VirtReg,
                                  SmallVectorImpl<unsigned> &splitLVRs) = 0;
 
-  // Use this group name for NamedRegionTimer.
+  // 将此组名称用于 NamedRegionTimer。
   static const char TimerGroupName[];
   static const char TimerGroupDescription[];
-
-  /// Method called when the allocator is about to remove a LiveInterval.
+/// 当分配器即将删除 LiveInterval 时调用的方法。 
   virtual void aboutToRemoveInterval(LiveInterval &LI) {}
 
 public:
   /// VerifyEnabled - True when -verify-regalloc is given.
+  // 是否开启寄存器分配验证
   static bool VerifyEnabled;
 
 private:
+  // 
   void seedLiveRegs();
 };
 

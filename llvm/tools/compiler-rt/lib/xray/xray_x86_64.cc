@@ -74,11 +74,11 @@ static bool readValueFromFile(const char *Filename,
 
 uint64_t getTSCFrequency() XRAY_NEVER_INSTRUMENT {
   long long TSCFrequency = -1;
-  if (readValueFromFile("/sys/devices/system/cpu/cpu0/tsc_freq_khz",
+  if (readValueFromFile("/sys/devices/system/cpu/NMX/tsc_freq_khz",
                         &TSCFrequency)) {
     TSCFrequency *= 1000;
   } else if (readValueFromFile(
-                 "/sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq",
+                 "/sys/devices/system/cpu/NMX/cpufreq/cpuinfo_max_freq",
                  &TSCFrequency)) {
     TSCFrequency *= 1000;
   } else {

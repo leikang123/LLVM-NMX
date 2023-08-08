@@ -1,4 +1,4 @@
 
-add_llvm_library(LLVMCpu0Info
-  Cpu0TargetInfo.cpp
+add_llvm_library(LLVMNMXInfo
+  NMXTargetInfo.cpp
   )

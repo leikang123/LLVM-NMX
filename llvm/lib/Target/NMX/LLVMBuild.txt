@@ -1,4 +1,4 @@
-;===- ./lib/Target/Cpu0/LLVMBuild.txt --------------------------*- Conf -*--===;
+;===- ./lib/Target/NMX/LLVMBuild.txt --------------------------*- Conf -*--===;
 ;
 ;                     The LLVM Compiler Infrastructure
 ;
@@ -30,9 +30,9 @@ subdirectories =
 #  defining LLVM targets (which are handled specially in a few places).
 type = TargetGroup
 # The name of the component should always be the name of the target. (should
-#  match "def Cpu0 : Target" in Cpu0.td)
-name = Cpu0
-# Cpu0 component is located in directory Target/
+#  match "def NMX : Target" in NMX.td)
+name = NMX
+# NMX component is located in directory Target/
 parent = Target
 # Whether this target defines an assembly parser, assembly printer, disassembler
 #  , and supports JIT compilation. They are optional.
@@ -42,12 +42,12 @@ has_disassembler = 1
 has_asmparser = 1
 
 [component_1]
-# component_1 is a Library type and name is Cpu0CodeGen. After build it will
-#  in lib/libLLVMCpu0CodeGen.a of your build command directory.
+# component_1 is a Library type and name is NMXCodeGen. After build it will
+#  in lib/libLLVMNMXCodeGen.a of your build command directory.
 type = Library
-name = Cpu0CodeGen
-# Cpu0CodeGen component(Library) is located in directory Cpu0/
-parent = Cpu0
+name = NMXCodeGen
+# NMXCodeGen component(Library) is located in directory NMX/
+parent = NMX
 # If given, a list of the names of Library or LibraryGroup components which
 #  must also be linked in whenever this library is used. That is, the link time
 #  dependencies for this component. When tools are built, the build system will
@@ -55,15 +55,15 @@ parent = Cpu0
 #  the tool needs.
 required_libraries =
                      CodeGen Core MC
-                     Cpu0Desc
-                     Cpu0Info
+                     NMXDesc
+                     NMXInfo
                      SelectionDAG
                      Support
                      Target
                      AsmPrinter
-                     Cpu0AsmPrinter
+                     NMXAsmPrinter
 # end of required_libraries
 
-# All LLVMBuild.txt in Target/Cpu0 and subdirectory use 'add_to_library_groups
-#  = Cpu0'
-add_to_library_groups = Cpu0
+# All LLVMBuild.txt in Target/NMX and subdirectory use 'add_to_library_groups
+#  = NMX'
+add_to_library_groups = NMX

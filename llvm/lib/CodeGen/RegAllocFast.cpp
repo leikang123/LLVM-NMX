@@ -58,7 +58,12 @@ STATISTIC(NumCoalesced, "Number of copies coalesced");
 
 static RegisterRegAlloc
   fastRegAlloc("fast", "fast register allocator", createFastRegisterAllocator);
-
+/**
+ * @brief 
+ * 对每个基本快从上到下进行扫描，遇到虚拟寄存器时，分配物理寄存器，所有分配物理寄存器都在基本快完成，
+ * 长时间保存在物理寄存器中，方便需要物理寄存器，基本快之间没有活跃寄存器，基本快结束的位置，所有没有分配物理
+ * 寄存器的虚拟寄存器溢出到内存中，适用于活跃较短的代码。
+ */
 namespace {
 
   class RegAllocFast : public MachineFunctionPass {

@@ -88,6 +88,13 @@
 #include <utility>
 #include <vector>
 
+/**
+ * @brief 
+ * 工作原理是将PBQP图视为干扰图的扩展，将不规则体系结构的寄存器分配问题映射为PBQP问题，然后使用该PBQP求解器
+ * 求解问题。
+ * 
+ * 
+ */
 using namespace llvm;
 
 #define DEBUG_TYPE "regalloc"

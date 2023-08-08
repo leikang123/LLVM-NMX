@@ -193,10 +193,10 @@ define i32 @test_target_cpu_callee0(i32 %i) "target-cpu"="corei7" {
   ret i32 %i
 }
 
-define i32 @test_target_cpu0(i32 %i) "target-cpu"="corei7" {
+define i32 @test_target_NMX(i32 %i) "target-cpu"="corei7" {
   %1 = call i32 @test_target_cpu_callee0(i32 %i)
   ret i32 %1
-; CHECK-LABEL: @test_target_cpu0(
+; CHECK-LABEL: @test_target_NMX(
 ; CHECK-NOT: @test_target_cpu_callee0
 }
 

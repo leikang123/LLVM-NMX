@@ -1,4 +1,4 @@
-//===-- Cpu0InstrInfo.h - Cpu0 Instruction Information ----------*- C++ -*-===//
+//===-- NMXInstrInfo.h - NMX Instruction Information ----------*- C++ -*-===//
 //
 //                    The LLVM Compiler Infrastructure
 //
@@ -7,37 +7,37 @@
 //
 //===----------------------------------------------------------------------===//
 //
-// This file contains the Cpu0 implementation of the TargetInstrInfo class.
+// This file contains the NMX implementation of the TargetInstrInfo class.
 //
 //===----------------------------------------------------------------------===//
 
-#ifndef LLVM_LIB_TARGET_CPU0_CPU0INSTRINFO_H
-#define LLVM_LIB_TARGET_CPU0_CPU0INSTRINFO_H
+#ifndef LLVM_LIB_TARGET_NMX_NMXINSTRINFO_H
+#define LLVM_LIB_TARGET_NMX_NMXINSTRINFO_H
 
-#include "Cpu0.h"
-#include "Cpu0RegisterInfo.h"
-#include "Cpu0AnalyzeImmediate.h"
+#include "NMX.h"
+#include "NMXRegisterInfo.h"
+#include "NMXAnalyzeImmediate.h"
 #include "llvm/CodeGen/MachineInstrBuilder.h"
 #include "llvm/CodeGen/TargetInstrInfo.h"
 
 #define GET_INSTRINFO_HEADER
-#include "Cpu0GenInstrInfo.inc"
+#include "NMXGenInstrInfo.inc"
 
 namespace llvm {
 
-class Cpu0InstrInfo : public Cpu0GenInstrInfo {
+class NMXInstrInfo : public NMXGenInstrInfo {
   virtual void anchor();
 protected:
-  const Cpu0Subtarget &Subtarget;
+  const NMXSubtarget &Subtarget;
 public:
-  explicit Cpu0InstrInfo(const Cpu0Subtarget &STI);
+  explicit NMXInstrInfo(const NMXSubtarget &STI);
 
-  static const Cpu0InstrInfo *create(Cpu0Subtarget &STI);
+  static const NMXInstrInfo *create(NMXSubtarget &STI);
 
   // TargetInstrInfo is a superset of MRegister info. As such, whenever a client
   // has an instance of instruction info, it should always be able to get
   // register info as well (through this method).
-  virtual const Cpu0RegisterInfo &getRegisterInfo() const = 0;
+  virtual const NMXRegisterInfo &getRegisterInfo() const = 0;
 
   // Return the number of bytes of code the specified instruction maybe.
   unsigned GetInstSizeInBytes(const MachineInstr &MI) const;
@@ -81,7 +81,7 @@ protected:
                                    MachineMemOperand::Flags Flags) const;
 };
 
-const Cpu0InstrInfo *createCpu0SEInstrInfo(const Cpu0Subtarget &STI);
+const NMXInstrInfo *createNMXSEInstrInfo(const NMXSubtarget &STI);
 }
 
 #endif
