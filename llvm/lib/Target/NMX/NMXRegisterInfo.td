@@ -33,6 +33,7 @@ class NMXC0Reg<bits<16> Enc, string n> : NMXReg<Enc, n>;
 let Namespace = "NMX" in {
   //@ General Purpose Registers
   def A0  : NMXGPRReg<0,"A0">, DwarfRegNum<[0]>;
+  
 def A1  : NMXGPRReg<1,"A1">, DwarfRegNum<[1]>;
 def A2  : NMXGPRReg<2,"A2">, DwarfRegNum<[2]>;
 def A3  : NMXGPRReg<3, "A3">, DwarfRegNum<[3]>;
