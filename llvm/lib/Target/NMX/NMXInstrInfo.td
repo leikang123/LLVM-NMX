@@ -62,9 +62,9 @@ def SDT_Wrapper : SDTypeProfile<1, 1, [SDTCisSameAs<0, 1>, SDTCisPtrTy<0>]>;
 
 def SDT_TSC : SDTypeProfile<1, 0, [SDTCisVT<0, i32>]>;
 
-////////////////////////
-/// Node definitions ///
-////////////////////////
+///====----------------------------------------------------------------===///
+/// Node definitions 
+///===-----------------------------------------------------------------===///
 
 def brcond_node : SDNode<"TMSISD::BRCOND", SDT_brcond, [SDNPHasChain]>;
 
@@ -184,7 +184,7 @@ def call_end_r : inst<(outs), (ins GPRegs:$val, i32imm:$val2),
   let Defs = [B15];
 }
 
-def TMS320C64Xcall : SDNode<"TMSISD::CALL", SDT_call,
+def TMS320NMXXcall : SDNode<"TMSISD::CALL", SDT_call,
                             [SDNPHasChain, SDNPOutGlue, SDNPOptInGlue,
                              SDNPVariadic]>;
 
@@ -264,9 +264,9 @@ def epilog : inst<(outs), (ins), "", [], 0, unit_s> {
 }
 }
 
-///////////////////////////////////////////////////////////////////////////////
-// MOVE instructions                                                         //
-///////////////////////////////////////////////////////////////////////////////
+///===----------------------------------------------------------------------===///
+// MOVE instructions                                                         
+///===----------------------------------------------------------------------===///
 
 // mv instruction is not flexible, unit selection is left to the assembler
 def mv : moveInstr<(outs GPRegs:$dst), (ins GPRegs:$src),
@@ -284,7 +284,7 @@ let Itinerary = Multiply,
                       "mvd\t.M1\t$src,\t$dst", 0, unit_m>;
 }
 
-// MVK FLEXIBLE ENCODING (using c64inst and c64mvk)
+// MVK FLEXIBLE ENCODING (using NMXinst and NMXmvk)
 // FIXME, 5-bit immediates can be issued on an of the S, D, L units. 16-bit
 // immediates only on S. For the time being we assign them to the S unit only.
 
@@ -292,7 +292,7 @@ let InOperandList = (ins i32imm:$src2, pred:$s, s_form:$fu),
     AsmString = "mvk\t.$fu\t$src2,\t$dst",
     isMoveImm = 1,
     Supported = units_s in {
-  defm mvk : c64inst<(ins), "mvk">;
+  defm mvk : NMXinst<(ins), "mvk">;
 }
 
 // These always match the _1 variant of the flexible pair of mvks.
@@ -300,15 +300,15 @@ def : Pat<(i32 isSigned16imm:$val), (mvk_1 imm:$val)>;
 
 let Supported = units_s,
     isMoveImm = 1 in {
-  defm mvkl : c64mvk<(ins i32imm:$imm), "mvkl">;
-  defm mvkl_label : c64mvk<(ins LabelOperand:$imm), "mvkl">;
+  defm mvkl : NMXmvk<(ins i32imm:$imm), "mvkl">;
+  defm mvkl_label : NMXmvk<(ins LabelOperand:$imm), "mvkl">;
 }
 
 let Supported = units_s,
     Constraints = "$src1 = $dst",
     isMoveImm = 1 in {
-  defm mvkh : c64mvk<(ins i32imm:$imm, GPRegs:$src1), "mvkh">;
-  defm mvkh_label : c64mvk<(ins LabelOperand:$imm, GPRegs:$src1), "mvkh">;
+  defm mvkh : NMXmvk<(ins i32imm:$imm, GPRegs:$src1), "mvkh">;
+  defm mvkh_label : NMXmvk<(ins LabelOperand:$imm, GPRegs:$src1), "mvkh">;
 }
 
 def : Pat<(i32 mvk_all_pred:$val),
@@ -395,9 +395,10 @@ def : Pat<
   (tmsselect GPRegs:$false, GPRegs:$true, timm:$trueimm, predwrapper1:$truereg),
   (mvselect GPRegs:$true, GPRegs:$false, imm:$trueimm, predwrapper1:$truereg)>;
 
-///////////////////////////////////////////////////////////////////////////////
-// ADD/SUB using addressing modes                                            //
-///////////////////////////////////////////////////////////////////////////////
+///===---------------------------------------------------------------------===///
+// ADD/SUB using addressing modes                                            
+///===---------------------------------------------------------------------===///
+
 
 // NKim, includes doubleword, word and halfword variants for both sides (A/B),
 // this helps folding add/shift chains (as commonly produced by address scaling)
@@ -412,9 +413,9 @@ defm add_am : add_addrmode<add, shl, d_form>;
 defm sub_am : sub_addrmode<sub, shl, d_form>;
 }
 
-///////////////////////////////////////////////////////////////////////////////
-// SPECIAL instructions                                                      //
-///////////////////////////////////////////////////////////////////////////////
+///====----------------------------------------------------------------------===///
+// SPECIAL instructions                                                      
+///===-----------------------------------------------------------------------===///
 
 // extract and sign-extend a bit field, this is quite useful for eliminating
 // shift-left/arithmetic shift-right chains in order to sign-extend a field
@@ -422,24 +423,24 @@ defm sub_am : sub_addrmode<sub, shl, d_form>;
 
 let Supported = units_s in {
   let AsmString = "ext\t.$fu\t$src1,\t$csta,\t$csta,\t$dst" in {
-    defm ext : c64_special<(ins i32imm:$csta), s_form, "">;
+    defm ext : NMX_special<(ins i32imm:$csta), s_form, "">;
   }
 
   let AsmString = "extu\t.$fu\t$src1,\t$csta,\t$csta,\t$dst" in {
-    defm extu : c64_special<(ins i32imm:$csta), s_form, "">;
+    defm extu : NMX_special<(ins i32imm:$csta), s_form, "">;
   }
 
   // variable variants, with csta and cstb being potentially different
   let AsmString = "ext\t.$fu\t$src1,\t$csta,\t$cstb,\t$dst" in {
-    defm ext_v : c64_special<(ins i32imm:$csta, i32imm:$cstb), s_form, "">;
+    defm ext_v : NMX_special<(ins i32imm:$csta, i32imm:$cstb), s_form, "">;
   }
 
   let AsmString = "extu\t.$fu\t$src1,\t$csta,\t$cstb,\t$dst" in {
-    defm extu_v : c64_special<(ins i32imm:$csta, i32imm:$cstb), s_form, "">;
+    defm extu_v : NMX_special<(ins i32imm:$csta, i32imm:$cstb), s_form, "">;
   }
 }
 
-// NKim, inreg-sign-extension is legal on C64 targets. Note, ext can be exp-
+// NKim, inreg-sign-extension is legal on NMX targets. Note, ext can be exp-
 // loited for other stuff as well, i.e. csta/cstb do not need to be equal in
 // general, therefore two immediates are provided for eventual extensions.
 // For pure sign extension of native int types, both constants are the same
@@ -481,7 +482,7 @@ def : Pat<(i32
 // also patched in during if-conversion when folding predicates
 
 let Supported = units_notm in {
-  defm andn_rr : c64_special<(ins GPRegs:$src2), l_form, "andn">;
+  defm andn_rr : NMX_special<(ins GPRegs:$src2), l_form, "andn">;
 }
 
 def : Pat<(i32 (and ARegs:$src1, (not ARegs:$src2))),
@@ -499,7 +500,7 @@ def : Pat<(i32 (and BRegs:$src1, (not BRegs:$src2))),
 
 let Supported = units_s in {
   let AsmString = "neg\t.$fu\t$src1,\t$dst" in {
-    defm neg : c64_special<(ins), l_form, "neg">;
+    defm neg : NMX_special<(ins), l_form, "neg">;
   }
 }
 
@@ -537,8 +538,8 @@ def : Pat<(i32 (bswap GPRegs:$src)), (bitr GPRegs:$src)>;
 
 let Supported = units_l in {
   // i am not yet sure whether the reg/reg variant makes any sense
-  defm lmbd_rr : c64_special<(ins GPRegs:$src2), l_form, "lmbd">;
-  defm lmbd_ri : c64_special<(ins i32imm:$src2), l_form, "lmbd">;
+  defm lmbd_rr : NMX_special<(ins GPRegs:$src2), l_form, "lmbd">;
+  defm lmbd_ri : NMX_special<(ins i32imm:$src2), l_form, "lmbd">;
 }
 
 def : Pat<(i32 (ctlz ARegs:$src1)), (lmbd_ri_1 ARegs:$src1, (i32 1))>;
@@ -558,9 +559,9 @@ def spkernelr : pseudoinst<(outs), (ins), "spkernelr", []>;
 def spkernel  : pseudoinst<(outs), (ins i32imm:$fstg, i32imm:$fcyc),
                   "spkernel", []>;
 
-///////////////////////////////////////////////////////////////////////////////
-// BRANCH instructions                                                       //
-///////////////////////////////////////////////////////////////////////////////
+///===-------------------------------------------------------------------===///
+// BRANCH instructions                                                       
+///===-------------------------------------------------------------------===///
 
 // the following unconditional branches are barriers (ie. execution stops with
 // the branch; as in other cases, this property does not (need to) hold after
@@ -668,9 +669,9 @@ def call_return_label : pseudoinst<(outs), (ins LabelOperand:$label),
 }
 
 // defining matching patterns explicitly removes nasty tblgen warnings...
-def : Pat<(TMS320C64Xcall tglobaladdr:$dst), (callp_global tglobaladdr:$dst)>;
-def : Pat<(TMS320C64Xcall texternalsym:$dst), (callp_global texternalsym:$dst)>;
-def : Pat<(TMS320C64Xcall GPRegs:$reg), (call_reg GPRegs:$reg)>;
+def : Pat<(TMS320NMXXcall tglobaladdr:$dst), (callp_global tglobaladdr:$dst)>;
+def : Pat<(TMS320NMXXcall texternalsym:$dst), (callp_global texternalsym:$dst)>;
+def : Pat<(TMS320NMXXcall GPRegs:$reg), (call_reg GPRegs:$reg)>;
 def : Pat<(retflag), (ret)>;
 
 def : Pat<(call_label_operand_node texternalsym:$label),
@@ -680,48 +681,48 @@ def : Pat<(call_label_operand_node texternalsym:$label),
 def : Pat<(call_return_label_node texternalsym:$label),
           (call_return_label texternalsym:$label)>;
 
-///////////////////////////////////////////////////////////////////////////////
-// side-specific instructions                                                //
-///////////////////////////////////////////////////////////////////////////////
+///===--------------------------------------------------------------------===///
+// side-specific instructions                                                
+///===--------------------------------------------------------------------====///
 
 let Supported = units_notm in {
-  defm add_rr : c64rr<(i32 GPRegs:$src2), (ins GPRegs:$src2), add, l_form, "add">;
-  defm add_ri : c64ri<(i32 sconst5:$src2), (ins i32imm:$src2), add, l_form, "add">;
+  defm add_rr : NMXrr<(i32 GPRegs:$src2), (ins GPRegs:$src2), add, l_form, "add">;
+  defm add_ri : NMXri<(i32 sconst5:$src2), (ins i32imm:$src2), add, l_form, "add">;
 
   // the same stuff applies to the sub instruction as well
-  defm sub_rr : c64rr<(i32 GPRegs:$src2), (ins GPRegs:$src2), sub, l_form, "sub">;
-  defm sub_ri : c64ri<(i32 sconst5:$src2), (ins i32imm:$src2), sub, l_form, "sub">;
+  defm sub_rr : NMXrr<(i32 GPRegs:$src2), (ins GPRegs:$src2), sub, l_form, "sub">;
+  defm sub_ri : NMXri<(i32 sconst5:$src2), (ins i32imm:$src2), sub, l_form, "sub">;
 }
 
 let Supported = units_s in {
-  defm srl_rr : c64swp<(i32 GPRegs:$src1), (ins GPRegs:$src1), srl, s_form, "shru">;
-  defm srl_ri : c64ri<(i32 uconst5:$src2), (ins i32imm:$src2), srl, s_form, "shru">;
+  defm srl_rr : NMXswp<(i32 GPRegs:$src1), (ins GPRegs:$src1), srl, s_form, "shru">;
+  defm srl_ri : NMXri<(i32 uconst5:$src2), (ins i32imm:$src2), srl, s_form, "shru">;
 }
 
 let DelaySlots = 3,
     hasDelaySlot = 1,
     Itinerary = Multiply,
     Supported = units_m in {
-  defm mpy32 : c64rr<(i32 GPRegs:$src2), (ins GPRegs:$src2), mul, m_form, "mpy32">;
+  defm mpy32 : NMXrr<(i32 GPRegs:$src2), (ins GPRegs:$src2), mul, m_form, "mpy32">;
 }
 
-///////////////////////////////////////////////////////////////////////////////
+///===---------------------------------------------------------------------===///
 // side-specific loads/stores
-
+///===---------------------------------------------------------------------===///
 let MemShift = 0 in {
-  defm byte  : c64strictload<"b", sextloadi8>;
-  defm byte  : c64store<"b", truncstorei8>;
-  defm ubyte : c64strictload<"bu", zextloadi8>;
+  defm byte  : NMXstrictload<"b", sextloadi8>;
+  defm byte  : NMXstore<"b", truncstorei8>;
+  defm ubyte : NMXstrictload<"bu", zextloadi8>;
 }
 
 let MemShift = 1 in {
-  defm hword  : c64strictload<"h", sextloadi16>;
-  defm hword  : c64store<"h", truncstorei16>;
-  defm uhword : c64strictload<"hu", zextloadi16>;
+  defm hword  : NMXstrictload<"h", sextloadi16>;
+  defm hword  : NMXstore<"h", truncstorei16>;
+  defm uhword : NMXstrictload<"hu", zextloadi16>;
 }
 
 let MemShift = 2 in {
-  defm word : c64load<"w">;
-  defm word : c64strictload<"w", load>;
-  defm word : c64store<"w", store>;
+  defm word : NMXload<"w">;
+  defm word : NMXstrictload<"w", load>;
+  defm word : NMXstore<"w", store>;
 }
