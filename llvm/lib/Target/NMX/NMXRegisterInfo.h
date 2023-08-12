@@ -11,50 +11,61 @@
 //
 //===----------------------------------------------------------------------===//
 
-#ifndef LLVM_LIB_TARGET_NMX_NMXREGISTERINFO_H
-#define LLVM_LIB_TARGET_NMX_NMXREGISTERINFO_H
+#ifndef LLVM_TARGET_NMXX_REGISTERINFO_H
+#define LLVM_TARGET_NMXX_REGISTERINFO_H
 
-#include "NMX.h"
-#include "llvm/CodeGen/TargetRegisterInfo.h"
-
-#define GET_REGINFO_HEADER
-#include "NMXGenRegisterInfo.inc"
+#include "llvm/Target/TargetRegisterInfo.h"
+#include "NMXXGenRegisterInfo.h.inc"
 
 namespace llvm {
-class NMXSubtarget;
+
+// forwards
 class TargetInstrInfo;
-class Type;
 
-class NMXRegisterInfo : public NMXGenRegisterInfo {
-protected:
-  const NMXSubtarget &Subtarget;
+struct NMXXRegisterInfo : NMXXGenRegisterInfo {
 
-public:
-  NMXRegisterInfo(const NMXSubtarget &Subtarget);
+  const TargetInstrInfo &TII;
 
-  const MCPhysReg *getCalleeSavedRegs(const MachineFunction *MF) const override;
+  NMXXRegisterInfo(const TargetInstrInfo &tii);
 
-  const uint32_t *getCallPreservedMask(const MachineFunction &MF,
-                                       CallingConv::ID) const override;
+  // default class dtor
+  ~NMXXRegisterInfo();
 
-  BitVector getReservedRegs(const MachineFunction &MF) const override;
+  const unsigned int *getCalleeSavedRegs(const MachineFunction *) const;
 
-  bool requiresRegisterScavenging(const MachineFunction &MF) const override;
+  const TargetRegisterClass* const *getCalleeSavedRegClasses(
+    const MachineFunction *) const;
 
-  bool trackLivenessAfterRegAlloc(const MachineFunction &MF) const override;
+  BitVector getReservedRegs(const MachineFunction &MF) const;
 
-  /// Stack Frame Processing Methods
-  void eliminateFrameIndex(MachineBasicBlock::iterator II,
-                           int SPAdj, unsigned FIOperandNum,
-                           RegScavenger *RS = nullptr) const override;
+  unsigned int getSubReg(unsigned int, unsigned int) const;
 
-  /// Debug information queries.
-  unsigned getFrameRegister(const MachineFunction &MF) const override;
+  bool requiresRegisterScavenging(const MachineFunction &MF) const;
 
-  /// \brief Return GPR register class.
-  virtual const TargetRegisterClass *intRegClass(unsigned Size) const = 0;
+  // NKIM, has changed for the llvm-versions higher than 2.7
+  virtual void eliminateFrameIndex(MachineBasicBlock::iterator I,
+                                   int SPAdj, RegScavenger *r = 0) const;
+
+
+  //  NKIM, moved to FrameLowering class
+  //    bool hasFP(const MachineFunction &MF) const;
+  //    void emitPrologue(MachineFunction &MF) const;
+  //    void emitEpilogue(MachineFunction &MF, MachineBasicBlock &MBB) const;
+
+  /* Debug stuff, apparently */
+  unsigned int getRARegister() const;
+  unsigned int getFrameRegister(const MachineFunction &MF) const;
+  int getDwarfRegNum(unsigned RegNum, bool isEH) const;
 };
 
-} // end namespace llvm
+namespace NMXX {
 
-#endif
+  /// helper that returns the canonical RC for the side of the given RC.
+  /// GPRegs cannot be resolved and will return GPRegs
+  const TargetRegisterClass *resolveSide(const TargetRegisterClass *RC);
+
+} // NMXX namespace
+
+} // llvm namespace
+
+#endif // LLVM_TARGET_NMXX_REGISTERINFO_H
