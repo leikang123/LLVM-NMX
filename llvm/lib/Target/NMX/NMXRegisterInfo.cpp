@@ -11,151 +11,240 @@
 //
 //===----------------------------------------------------------------------===//
 
-#include "NMXRegisterInfo.h"
-
 #include "NMX.h"
+#include "NMXRegisterInfo.h"
 #include "NMXSubtarget.h"
-#include "NMXMachineFunctionInfo.h"
-#include "llvm/IR/Function.h"
-#include "llvm/IR/Type.h"
-#include "llvm/Support/CommandLine.h"
-#include "llvm/Support/Debug.h"
-#include "llvm/Support/ErrorHandling.h"
-#include "llvm/Support/raw_ostream.h"
+#include "llvm/CodeGen/MachineFunction.h"
 
-#define GET_REGINFO_TARGET_DESC
+// include generated register description
 #include "NMXGenRegisterInfo.inc"
 
-#define DEBUG_TYPE "NMX-reg-info"
+// NKIM, bad, circular, but ok for now
+#include "NMXInstrInfo.h"
+
+// Actual register information
+#include "llvm/CodeGen/MachineFrameInfo.h"
+#include "llvm/CodeGen/MachineFunction.h"
+#include "llvm/CodeGen/MachineInstrBuilder.h"
+#include "llvm/CodeGen/RegisterScavenging.h"
+#include "llvm/Target/TargetMachine.h"
+#include "llvm/Target/TargetOptions.h"
+#include "llvm/Support/ErrorHandling.h"
 
 using namespace llvm;
 
-NMXRegisterInfo::NMXRegisterInfo(const NMXSubtarget &ST)
-  : NMXGenRegisterInfo(NMX::LR), Subtarget(ST) {}
+//-----------------------------------------------------------------------------
 
-//===----------------------------------------------------------------------===//
-// Callee Saved Registers methods
-//===----------------------------------------------------------------------===//
-/// NMX Callee Saved Registers
-// In NMXCallConv.td, defined CalleeSavedRegs
-const MCPhysReg *
-NMXRegisterInfo::getCalleeSavedRegs(const MachineFunction *MF) const {
-  return CSR_O32_SaveList;
-}
+NMXRegisterInfo::NMXRegisterInfo(const TargetInstrInfo &tii)
+: NMXGenRegisterInfo(),
+  TII(tii)
+{}
 
-const uint32_t *
-NMXRegisterInfo::getCallPreservedMask(const MachineFunction &MF,
-                                       CallingConv::ID) const {
-  return CSR_O32_RegMask;
-}
+//-----------------------------------------------------------------------------
 
-BitVector NMXRegisterInfo::
-getReservedRegs(const MachineFunction &MF) const {
-  static const uint16_t ReservedCPURegs[] = {
-    NMX::ZERO, NMX::AT, NMX::SP, NMX::LR, NMX::PC
-  };
+NMXRegisterInfo::~NMXRegisterInfo() {}
+
+//-----------------------------------------------------------------------------
+
+BitVector
+NMXRegisterInfo::getReservedRegs(const MachineFunction &MF) const {
+
   BitVector Reserved(getNumRegs());
-
-  for (unsigned I = 0; I < array_lengthof(ReservedCPURegs); ++I)
-    Reserved.set(ReservedCPURegs[I]);
-
-#ifdef ENABLE_GPRESTORE
-  const NMXMachineFunctionInfo *NMXFI = MF.getInfo<NMXMachineFunctionInfo>();
-  // Reserve GP if globalBaseRegFixed()
-  if (NMXFI->globalBaseRegFixed())
-#endif
-    Reserved.set(NMX::GP);
-
+  Reserved.set(NMX::B15);
+  Reserved.set(NMX::A15);
+  Reserved.set(NMX::A14);
   return Reserved;
 }
 
-//- If no eliminateFrameIndex(), it will hang on run.
-// FrameIndex represent objects inside a abstract stack.
-// We must replace FrameIndex with an stack/frame pointer
-// direct reference.
-void NMXRegisterInfo::
-eliminateFrameIndex(MachineBasicBlock::iterator II, int SPAdj,
-                    unsigned FIOperandNum, RegScavenger *RS) const {
-  MachineInstr &MI = *II;
+//-----------------------------------------------------------------------------
+
+const unsigned *
+NMXRegisterInfo::getCalleeSavedRegs(const MachineFunction *MF) const {
+
+  static const unsigned nonvolatileRegs[] = {
+    NMX::A10,
+    NMX::A11,
+    NMX::A12,
+    NMX::A13,
+    NMX::B10,
+    NMX::B11,
+    NMX::B12,
+    NMX::B13,
+    0
+  };
+
+  return nonvolatileRegs;
+}
+
+//-----------------------------------------------------------------------------
+
+const TargetRegisterClass* const*
+NMXRegisterInfo::getCalleeSavedRegClasses(MachineFunction const*) const {
+  // XXX not sure about the reg classes here...
+  static const TargetRegisterClass *const calleeNonvolatileRegClasses[] ={
+    &NMX::GPRegsRegClass, &NMX::GPRegsRegClass,
+    &NMX::GPRegsRegClass, &NMX::GPRegsRegClass,
+    &NMX::BRegsRegClass, &NMX::BRegsRegClass,
+    &NMX::BRegsRegClass, &NMX::BRegsRegClass
+  };
+
+  return calleeNonvolatileRegClasses;
+}
+
+//-----------------------------------------------------------------------------
+
+unsigned int
+NMXRegisterInfo::getSubReg(unsigned int, unsigned int) const {
+  llvm_unreachable("Unimplemented function getSubReg\n");
+}
+
+//-----------------------------------------------------------------------------
+
+bool
+NMXRegisterInfo::requiresRegisterScavenging(const MachineFunction&) const {
+  return true;
+}
+
+//-----------------------------------------------------------------------------
+
+void
+NMXRegisterInfo::eliminateFrameIndex(MachineBasicBlock::iterator MBBI,
+                                            int SPAdj, RegScavenger *r) const
+{
+  using namespace NMX;
+
+  unsigned i, frame_index, reg, access_alignment;
+  int offs;
+
+  /* XXX - Value turned up in 2.7, I don't know what it does. */
+
+  MachineInstr &MI = *MBBI;
   MachineFunction &MF = *MI.getParent()->getParent();
-  MachineFrameInfo &MFI = MF.getFrameInfo();
-  //NMXMachineFunctionInfo *NMXFI = MF.getInfo<NMXMachineFunctionInfo>();
+  MachineBasicBlock &MBB = *MI.getParent();
 
-  unsigned i = 0;
-  while (!MI.getOperand(i).isFI()) {
-    ++i;
-    assert(i < MI.getNumOperands() &&
-           "Instr doesn't have FrameIndex operand!");
+//  DebugLoc dl = DebugLoc::getUnknownLoc();
+
+  DebugLoc dl;
+  if (MBBI != MBB.end()) dl = MI.getDebugLoc();
+
+  i = 0;
+
+  // TODO, a weak break-condition !
+  while (!MI.getOperand(i).isFI()) ++i;
+
+  assert(i < MI.getNumOperands() && "No FrameIndex in eliminateFrameIdx");
+
+  frame_index = MI.getOperand(i).getIndex();
+  offs = MF.getFrameInfo()->getObjectOffset(frame_index);
+
+  const TargetInstrDesc tid = MI.getDesc();
+  access_alignment = (tid.TSFlags & NMXII::mem_align_amt_mask)
+		      >> NMXII::mem_align_amt_shift;
+
+  // Firstly, is this actually memory access? Might be lea (vomit)
+  if (!(MI.getDesc().TSFlags & NMXII::is_memaccess)) {
+    // If so, the candidates are sub and add - each of which
+    // have an sconst5 range. If the offset doesn't fit in there,
+    // need to scavenge a register
+    if (NMXInstrInfo::check_sconst_fits(offs, 5)) {
+      MI.getOperand(i).ChangeToImmediate(offs);
+      return;
+    }
+
+    access_alignment = 0;
+
+    // So for memory, will this frame index actually fit inside the
+    // instruction field?
+  }
+  else if (NMXInstrInfo::check_uconst_fits(abs(offs),
+                                      5 + access_alignment))
+  {
+    // Constant fits into instruction but needs to be scaled.
+
+    MI.getOperand(i).ChangeToImmediate(offs >> access_alignment);
+    return;
   }
 
-  LLVM_DEBUG(errs() << "\nFunction : " << MF.getFunction().getName() << "\n";
-             errs() << "<---------->\n" << MI);
+  // Otherwise, we need to do some juggling to load that constant into
+  // a register correctly. First of all, because of the highly-unpleasent
+  // scaling feature of using indexing instructions we need to shift
+  // the stack offset :|
+  if (offs & ((1 << access_alignment) -1 ))
+    llvm_unreachable("Unaligned stack access - should never occur");
 
-  int FrameIndex = MI.getOperand(i).getIndex();
-  uint64_t stackSize = MF.getFrameInfo().getStackSize();
-  int64_t spOffset = MF.getFrameInfo().getObjectOffset(FrameIndex);
+  offs >>= access_alignment;
 
-  LLVM_DEBUG(errs() << "FrameIndex : " << FrameIndex << "\n"
-                    << "spOffset   : " << spOffset   << "\n"
-                    << "stackSize  : " << stackSize  << "\n");
+  const TargetRegisterClass *c;
 
-  const std::vector<CalleeSavedInfo> &CSI = MFI.getCalleeSavedInfo();
-  int MinCSFI = 0;
-  int MaxCSFI = -1;
+  if (tid.TSFlags & NMXII::is_bside)
+    c = NMX::BRegsRegisterClass;
+  else c = NMX::ARegsRegisterClass;
 
-  if (CSI.size()) {
-    MinCSFI = CSI[0].getFrameIdx();
-    MaxCSFI = CSI[CSI.size() - 1].getFrameIdx();
+  reg = r->FindUnusedReg(c);
+
+  if (reg == 0) {
+    // XXX - this kicks a register out and lets us use it but...
+    // that'll lead to a store, to a stack slot, which will mean
+    // this method is called again. Explosions?
+    reg = r->scavengeRegister(c, MBBI, 0);
   }
 
-  // The following stack frame objects are always referenced relative to $sp:
-  //  1. Outgoing arguments.
-  //  2. Pointer to dynamically allocated stack space.
-  //  3. Locations for callee-saved registers.
-  // Everything else is referenced relative to whatever register
-  // getFrameRegister() returns.
-  unsigned FrameReg;
+  unsigned side_a = (c == NMX::ARegsRegisterClass);
 
-  FrameReg = NMX::SP;
-
-  // Calculate final offset.
-  // There is no need to change the offset if the frame object is one of the
-  // following: an outgoing argument, pointer to a dynamically allocated
-  // stack space or a $gp restore location,
-  // If the frame object is any of the following, its offset must be adjust
-  // by adding the size of the stack: incomming argument, callee-saved register
-  // location or local variable.
-  int64_t Offset;
-  Offset = spOffset + (int64_t)stackSize;
-
-  Offset += MI.getOperand(i+1).getImm();
-
-  LLVM_DEBUG(errs() << "Offset : " << Offset << "\n"
-                    << "<---------->\n");
-
-  // If MI is not a debug value, make sure Offset fits in the 16-bit immediate
-  // field.
-  if (!MI.isDebugValue() && !isInt<16>(Offset)) {
-    assert(false && "(!MI.isDebugValue() && !isInt<16>(Offset))");
+  if (NMXInstrInfo::check_sconst_fits(offs, 16)) {
+    // fits into one mvk
+    NMXInstrInfo::addFormOp(
+      NMXInstrInfo::addDefaultPred(
+        BuildMI(MBB, MBBI, dl, TII.get(side_a ? mvk_1 : mvk_2))
+          .addReg(reg, RegState::Define).addImm(offs)),
+            NMXII::unit_s, false);
+  } else {
+    // needs a mvkh/mvkl pair
+    NMXInstrInfo::addFormOp(
+      NMXInstrInfo::addDefaultPred(
+        BuildMI(MBB, MBBI, dl, TII.get(side_a ? mvkl_1 : mvkl_2))
+          .addReg(reg, RegState::Define).addImm(offs)),
+            NMXII::unit_s, false);
+    NMXInstrInfo::addFormOp(
+      NMXInstrInfo::addDefaultPred(
+        BuildMI(MBB, MBBI, dl, TII.get(side_a ? mvkh_1 : mvkh_2))
+          .addReg(reg, RegState::Define).addImm(offs)
+            .addReg(reg)),
+              NMXII::unit_s, false);
   }
 
-  MI.getOperand(i).ChangeToRegister(FrameReg, false);
-  MI.getOperand(i+1).ChangeToImmediate(Offset);
+  MI.getOperand(i).ChangeToRegister(reg, false, false, true);
 }
 
-bool
-NMXRegisterInfo::requiresRegisterScavenging(const MachineFunction &MF) const {
-  return true;
+const TargetRegisterClass*
+llvm::NMX::resolveSide(const TargetRegisterClass *RC) {
+  using namespace NMX;
+  if (RC == ARegsRegisterClass || RC->hasSuperClass(ARegsRegisterClass))
+    return ARegsRegisterClass;
+  else if (RC == BRegsRegisterClass || RC->hasSuperClass(BRegsRegisterClass))
+    return BRegsRegisterClass;
+  assert(RC == GPRegsRegisterClass);
+  return RC;
 }
 
-bool
-NMXRegisterInfo::trackLivenessAfterRegAlloc(const MachineFunction &MF) const {
-  return true;
+
+//-----------------------------------------------------------------------------
+
+int
+NMXRegisterInfo::getDwarfRegNum(unsigned reg_num, bool isEH) const {
+  llvm_unreachable("Unimplemented function getDwarfRegNum\n");
 }
 
-unsigned NMXRegisterInfo::
-getFrameRegister(const MachineFunction &MF) const {
-  const TargetFrameLowering *TFI = MF.getSubtarget().getFrameLowering();
-  return TFI->hasFP(MF) ? (NMX::FP) :
-                          (NMX::SP);
+//-----------------------------------------------------------------------------
+
+unsigned int
+NMXRegisterInfo::getRARegister() const {
+  llvm_unreachable("Unimplemented function getRARegister\n");
+}
+
+//-----------------------------------------------------------------------------
+
+unsigned int
+NMXRegisterInfo::getFrameRegister(const MachineFunction &MF) const {
+  llvm_unreachable("Unimplemented function getFrameRegister\n");
 }
