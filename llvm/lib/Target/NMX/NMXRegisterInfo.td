@@ -104,24 +104,176 @@ def B31 : NMXGPRReg<63,  "B31">, DwarfRegNum<[63]>;
 // @Register Classes
 //===----------------------------------------------------------------------===//
 
-def CPURegs : RegisterClass<"NMX", [i32], 32, (add
-  // Reserved
-  ZERO, AT,
-  // Return Values and Arguments
-  V0, V1, A0, A1,
-  // Not preserved across procedure calls
-  T9, T0, T1,
-  // Callee save
-  S0, S1,
-  // Reserved
-  GP, FP,
-  SP, LR, SW)>;
+// Predicate registers: things that can be used for conditional execution
+// in instructions: A0-2, B0-2.
 
-// @Status Registers class
-def SR : RegisterClass<"NMX", [i32], 32, (add SW)>;
+def PredRegs : RegisterClass<"TMS320NMXX", [i32], 32,
+  [ A0, A1, A2, B0, B1, B2 ]>
+{
+let MethodProtos = [{
+  iterator allocation_order_begin(const MachineFunction &MF) const;
+  iterator allocation_order_end(const MachineFunction &MF) const;
+}];
+let MethodBodies = [{
+  PredRegsClass::iterator
+  PredRegsClass::allocation_order_begin(const MachineFunction &MF) const {
+     return begin();
+  }
+  PredRegsClass::iterator
+  PredRegsClass::allocation_order_end(const MachineFunction &MF) const {
+    const TargetMachine &TM = MF.getTarget();
+    const TMS320NMXXSubtarget &ST = TM.getSubtarget<TMS320NMXXSubtarget>();
+    if (!ST.assignBSideRegisters())
+      return end() - 3; // Don't allocate B predicate registers
+    else
+      return end();
+  }
+}];
+}
 
-// @Co-processor 0 Registers class
-def C0Regs : RegisterClass<"NMX", [i32], 32, (add PC, EPC)>;
+def APredRegs : RegisterClass<"TMS320NMXX", [i32], 32,
+  [ A0, A1, A2 ]>;
 
-def HILO   : RegisterClass<"NMX", [i32], 32, (add HI, LO)>;
+def BPredRegs : RegisterClass<"TMS320NMXX", [i32], 32,
+  [ B0, B1, B2 ]>;
 
+// Normal, general purpose 32 bit registers
+def GPRegs : RegisterClass<"TMS320NMXX", [i32], 32,
+  [
+    // A10-A15, B10-B15 are nonvolatile, B15 SP, A15 FP.
+    // B14 is a data page pointer used by TIs C compiler for
+    // the near memory model; we'll treat as reserved
+    A3, A4, A5, A6, A7, A8, A9,
+    A16, A17, A18, A19, A20, A21, A22, A23,
+    A24, A25, A26, A27, A28, A29, A30, A31,
+    /* Sparc and others put volatile / reserved registers at the
+     * end to decrease likelyhood of being allocated */
+    A0, A1, A2, //Predicate regs
+    A10, A11, A12, A13, A14,
+
+    // Until a reasonable instruction + register scheduler gets
+    // generated that can cope with xpath requirements in insn
+    // packets, limit register allocations to side A of the proc
+    B0, B1, B2,                              // 3 conditional
+    B3, B4, B5, B6, B7, B8, B9,              // 7
+    B10, B11, B12, B13,                      // 4 callee saved
+    B16, B17, B18, B19, B20, B21, B22, B23,  // 8
+    B24, B25, B26, B27, B28, B29, B30, B31,  // 8
+    A15, B14, B15                            // 3: SP, FP, DP
+  ] >
+{
+let MethodProtos = [{
+  iterator allocation_order_begin(const MachineFunction &MF) const;
+  iterator allocation_order_end(const MachineFunction &MF) const;
+}];
+let MethodBodies = [{
+  GPRegsClass::iterator
+  GPRegsClass::allocation_order_begin(const MachineFunction &MF) const {
+     return begin();
+  }
+  GPRegsClass::iterator
+  GPRegsClass::allocation_order_end(const MachineFunction &MF) const {
+
+    // Don't allocate SP/FP/DP
+    GPRegsClass::iterator allocEnd = end() - 3;
+
+    const TargetMachine &TM = MF.getTarget();
+    const TMS320NMXXSubtarget &ST = TM.getSubtarget<TMS320NMXXSubtarget>();
+    if (!ST.assignBSideRegisters())
+      return allocEnd - 30; // Don't allocate any BRegs at all
+    else
+      return allocEnd;
+  }
+}];
+}
+
+// Same regiseters, but seperate into different sides
+def ARegs : RegisterClass<"TMS320NMXX", [i32], 32,
+  [
+    A3, A4, A5, A6, A7, A8, A9,
+    A16, A17, A18, A19, A20, A21, A22, A23,
+    A24, A25, A26, A27, A28, A29, A30, A31,
+    A0, A1, A2,     // Predicate regs
+    A10, A11, A12, A13, A14,  // Nonvolatile
+    A15       // Reserved
+  ] >
+{
+let MethodProtos = [{
+  iterator allocation_order_begin(const MachineFunction &MF) const;
+  iterator allocation_order_end(const MachineFunction &MF) const;
+}];
+let MethodBodies = [{
+  ARegsClass::iterator
+  ARegsClass::allocation_order_begin(const MachineFunction &MF)
+                  const {
+     return begin();
+  }
+  ARegsClass::iterator
+  ARegsClass::allocation_order_end(const MachineFunction &MF)
+                  const {
+    return end()-1;
+  }
+}];
+}
+
+def BRegs : RegisterClass<"TMS320NMXX", [i32], 32,
+  [
+    B3, B4, B5, B6, B7, B8,
+    B16, B17, B18, B19, B20, B21, B22, B23,
+    B24, B25, B26, B27, B28, B29, B30, B31,
+    B0, B1, B2,     // Predicate regs
+    B10, B11, B12, B13,   // Nonvolatilie regs
+    B14, B15
+  ] >
+{
+let MethodProtos = [{
+  iterator allocation_order_begin(const MachineFunction &MF) const;
+  iterator allocation_order_end(const MachineFunction &MF) const;
+}];
+let MethodBodies = [{
+  BRegsClass::iterator
+  BRegsClass::allocation_order_begin(const MachineFunction &MF)
+                  const {
+     return begin();
+  }
+  BRegsClass::iterator
+  BRegsClass::allocation_order_end(const MachineFunction &MF)
+                  const {
+    return end()-2;
+  }
+}];
+}
+
+// Our general purpose registers, but in vector form
+def VectorRegs : RegisterClass<"TMS320NMXX", [v4i8,v2i16], 32,
+  [
+    /* See comments above */
+    A3, A4, A5, A6, A7, A8, A9, B3, B4, B5, B6, B7, B8,
+    A16, A17, A18, A19, A20, A21, A22, A23,
+    A24, A25, A26, A27, A28, A29, A30, A31,
+    B16, B17, B18, B19, B20, B21, B22, B23,
+    B24, B25, B26, B27, B28, B29, B30, B31,
+    A0, A1, A2, B0, B1, B2,
+    A10, A11, A12, A13, A14,
+    B10, B11, B12, B13,
+    A15, B14, B15
+  ] >
+{
+let MethodProtos = [{
+  iterator allocation_order_begin(const MachineFunction &MF) const;
+  iterator allocation_order_end(const MachineFunction &MF) const;
+}];
+let MethodBodies = [{
+  VectorRegsClass::iterator
+  VectorRegsClass::allocation_order_begin(const MachineFunction &MF)
+                  const {
+     return begin();
+  }
+  VectorRegsClass::iterator
+  VectorRegsClass::allocation_order_end(const MachineFunction &MF)
+                  const {
+    /* See comment above */
+    return end()-3;
+  }
+}];
+}
