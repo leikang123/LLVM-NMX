@@ -201,7 +201,7 @@ class inst<dag outops,
   let isPredicable = 1;
   let CodeSize = 4;
 
-  let Namespace = "TMS320NMXX";
+  let Namespace = "NMX";
   let OutOperandList = outops;
 
 // NKIM, that causes tblgen crash for llvm higher than 2.7
@@ -248,7 +248,7 @@ class NMXsideinst<dag outops, dag inops, string mnemonic, InstSide side>
   let isPredicable = 1;
   let CodeSize = 4;
 
-  let Namespace = "TMS320NMXX";
+  let Namespace = "NMX";
 
   let OutOperandList = outops;
   let InOperandList = !con(inops, (ins pred:$s, default_form:$fu));
