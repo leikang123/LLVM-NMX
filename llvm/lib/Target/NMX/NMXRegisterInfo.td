@@ -107,7 +107,7 @@ def B31 : NMXGPRReg<63,  "B31">, DwarfRegNum<[63]>;
 // Predicate registers: things that can be used for conditional execution
 // in instructions: A0-2, B0-2.
 
-def PredRegs : RegisterClass<"TMS320NMXX", [i32], 32,
+def PredRegs : RegisterClass<"NMXNMXX", [i32], 32,
   [ A0, A1, A2, B0, B1, B2 ]>
 {
 let MethodProtos = [{
@@ -122,7 +122,7 @@ let MethodBodies = [{
   PredRegsClass::iterator
   PredRegsClass::allocation_order_end(const MachineFunction &MF) const {
     const TargetMachine &TM = MF.getTarget();
-    const TMS320NMXXSubtarget &ST = TM.getSubtarget<TMS320NMXXSubtarget>();
+    const NMXNMXXSubtarget &ST = TM.getSubtarget<NMXNMXXSubtarget>();
     if (!ST.assignBSideRegisters())
       return end() - 3; // Don't allocate B predicate registers
     else
@@ -131,14 +131,14 @@ let MethodBodies = [{
 }];
 }
 
-def APredRegs : RegisterClass<"TMS320NMXX", [i32], 32,
+def APredRegs : RegisterClass<"NMXNMXX", [i32], 32,
   [ A0, A1, A2 ]>;
 
-def BPredRegs : RegisterClass<"TMS320NMXX", [i32], 32,
+def BPredRegs : RegisterClass<"NMXNMXX", [i32], 32,
   [ B0, B1, B2 ]>;
 
 // Normal, general purpose 32 bit registers
-def GPRegs : RegisterClass<"TMS320NMXX", [i32], 32,
+def GPRegs : RegisterClass<"NMXNMXX", [i32], 32,
   [
     // A10-A15, B10-B15 are nonvolatile, B15 SP, A15 FP.
     // B14 is a data page pointer used by TIs C compiler for
@@ -178,7 +178,7 @@ let MethodBodies = [{
     GPRegsClass::iterator allocEnd = end() - 3;
 
     const TargetMachine &TM = MF.getTarget();
-    const TMS320NMXXSubtarget &ST = TM.getSubtarget<TMS320NMXXSubtarget>();
+    const NMXNMXXSubtarget &ST = TM.getSubtarget<NMXNMXXSubtarget>();
     if (!ST.assignBSideRegisters())
       return allocEnd - 30; // Don't allocate any BRegs at all
     else
@@ -188,7 +188,7 @@ let MethodBodies = [{
 }
 
 // Same regiseters, but seperate into different sides
-def ARegs : RegisterClass<"TMS320NMXX", [i32], 32,
+def ARegs : RegisterClass<"NMXNMXX", [i32], 32,
   [
     A3, A4, A5, A6, A7, A8, A9,
     A16, A17, A18, A19, A20, A21, A22, A23,
@@ -216,7 +216,7 @@ let MethodBodies = [{
 }];
 }
 
-def BRegs : RegisterClass<"TMS320NMXX", [i32], 32,
+def BRegs : RegisterClass<"NMXNMXX", [i32], 32,
   [
     B3, B4, B5, B6, B7, B8,
     B16, B17, B18, B19, B20, B21, B22, B23,
@@ -245,7 +245,7 @@ let MethodBodies = [{
 }
 
 // Our general purpose registers, but in vector form
-def VectorRegs : RegisterClass<"TMS320NMXX", [v4i8,v2i16], 32,
+def VectorRegs : RegisterClass<"NMXNMXX", [v4i8,v2i16], 32,
   [
     /* See comments above */
     A3, A4, A5, A6, A7, A8, A9, B3, B4, B5, B6, B7, B8,
