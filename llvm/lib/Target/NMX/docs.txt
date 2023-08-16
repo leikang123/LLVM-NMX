@@ -1,0 +1,6 @@
+###学习文档
+目标体系结构是指芯片的型号，比如，86，arm，mips等等。
+在nmx中一般架构分为.td文件和.h/.cpp文件组成的一种目标体系结构。其中.td文件是用于在build编译时，tablegen工具会翻译c++源代码
+会在目标结构下生成.inc文件，这些文件都在include里，生成的规范都写在cmakelists里面定义好的。
+.td文件的分类，xxx.td,xxxstrinfo.td,xxxstrformatinfo.td,xxxregisterinfo.td,xxxschuled.td等等。也就是
+指令集信息，寄存器信息，调度信息等。
