@@ -25,6 +25,7 @@
 
 namespace llvm {
 
+/// 指令相关的代码，描述指令完成和指令相关的动作
 class NMXInstrInfo : public NMXGenInstrInfo {
   virtual void anchor();
 protected:

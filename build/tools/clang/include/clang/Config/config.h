@@ -64,7 +64,7 @@
 #define BACKEND_PACKAGE_STRING "LLVM 8.0.0"
 
 /* Linker version detected at compile time. */
-#define HOST_LINK_VERSION "650.9"
+#define HOST_LINK_VERSION "711"
 
 /* pass --build-id to ld */
 /* #undef ENABLE_LINKER_BUILD_ID */

@@ -16,15 +16,15 @@
 //
 //===----------------------------------------------------------------------===//
 
-#define LLVM_SRC_ROOT "/volumes/hello2/nmx/llvm"
-#define LLVM_OBJ_ROOT "/volumes/hello2/nmx/build"
-#define LLVM_CPPFLAGS "-D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS"
-#define LLVM_CFLAGS " -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS"
+#define LLVM_SRC_ROOT "/volumes/hello2/LLVM-NMX/llvm"
+#define LLVM_OBJ_ROOT "/volumes/hello2/LLVM-NMX/build"
+#define LLVM_CPPFLAGS "-D_DEBUG -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS"
+#define LLVM_CFLAGS " -D_DEBUG -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS"
 #define LLVM_LDFLAGS "-Wl,-search_paths_first -Wl,-headerpad_max_install_names"
-#define LLVM_CXXFLAGS "-std=c++11  -fno-exceptions -fno-rtti -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS"
-#define LLVM_BUILDMODE "Release"
+#define LLVM_CXXFLAGS "-std=c++11  -fno-exceptions -fno-rtti -D_DEBUG -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS"
+#define LLVM_BUILDMODE "Debug"
 #define LLVM_LIBDIR_SUFFIX ""
-#define LLVM_TARGETS_BUILT "AArch64 AMDGPU ARM BPF Hexagon Lanai Mips MSP430 NVPTX PowerPC Sparc SystemZ WebAssembly X86 XCore NMX"
+#define LLVM_TARGETS_BUILT "NMX"
 #define LLVM_SYSTEM_LIBS "-lz -lcurses -lm -lxml2"
 #define LLVM_BUILD_SYSTEM "cmake"
 #define LLVM_HAS_RTTI 0

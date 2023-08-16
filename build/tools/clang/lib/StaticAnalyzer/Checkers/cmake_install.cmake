@@ -1,4 +1,4 @@
-# Install script for directory: /volumes/hello2/nmx/llvm/tools/clang/lib/StaticAnalyzer/Checkers
+# Install script for directory: /volumes/hello2/LLVM-NMX/llvm/tools/clang/lib/StaticAnalyzer/Checkers
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -12,7 +12,7 @@ if(NOT DEFINED CMAKE_INSTALL_CONFIG_NAME)
     string(REGEX REPLACE "^[^A-Za-z0-9_]+" ""
            CMAKE_INSTALL_CONFIG_NAME "${BUILD_TYPE}")
   else()
-    set(CMAKE_INSTALL_CONFIG_NAME "Release")
+    set(CMAKE_INSTALL_CONFIG_NAME "Debug")
   endif()
   message(STATUS "Install configuration: \"${CMAKE_INSTALL_CONFIG_NAME}\"")
 endif()
@@ -34,14 +34,14 @@ endif()
 
 # Set default install directory permissions.
 if(NOT DEFINED CMAKE_OBJDUMP)
-  set(CMAKE_OBJDUMP "/Library/Developer/CommandLineTools/usr/bin/objdump")
+  set(CMAKE_OBJDUMP "/usr/local/opt/llvm/bin/llvm-objdump")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "clangStaticAnalyzerCheckers" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "/volumes/hello2/nmx/build/lib/libclangStaticAnalyzerCheckers.a")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "/volumes/hello2/LLVM-NMX/build/lib/libclangStaticAnalyzerCheckers.a")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libclangStaticAnalyzerCheckers.a" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libclangStaticAnalyzerCheckers.a")
-    execute_process(COMMAND "/Library/Developer/CommandLineTools/usr/bin/ranlib" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libclangStaticAnalyzerCheckers.a")
+    execute_process(COMMAND "/usr/local/opt/llvm/bin/llvm-ranlib" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libclangStaticAnalyzerCheckers.a")
   endif()
 endif()
 

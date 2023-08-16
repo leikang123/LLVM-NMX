@@ -10,7 +10,7 @@
 // This describes the calling conventions for nmx architecture.
 //
 //===----------------------------------------------------------------------===//
-
+/// 调用规则说明
 // Match if the current subtarget has a feature F.
 class CCIfSubtarget<string F, CCAction A>
   : CCIf<!strconcat("State.getTarget().getSubtarget<NMXSubtarget>().", F), A>;

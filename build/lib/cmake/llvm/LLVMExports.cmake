@@ -19,7 +19,7 @@ set(CMAKE_IMPORT_FILE_VERSION 1)
 set(_cmake_targets_defined "")
 set(_cmake_targets_not_defined "")
 set(_cmake_expected_targets "")
-foreach(_cmake_expected_target IN ITEMS LLVMDemangle LLVMSupport LLVMTableGen llvm-tblgen LLVMCore LLVMFuzzMutate LLVMIRReader LLVMCodeGen LLVMSelectionDAG LLVMAsmPrinter LLVMMIRParser LLVMGlobalISel LLVMBinaryFormat LLVMBitReader LLVMBitWriter LLVMTransformUtils LLVMInstrumentation LLVMAggressiveInstCombine LLVMInstCombine LLVMScalarOpts LLVMipo LLVMVectorize LLVMObjCARCOpts LLVMCoroutines CountIR LLVMLinker LLVMAnalysis LLVMLTO LLVMMC LLVMMCParser LLVMMCDisassembler LLVMMCA LLVMObject LLVMObjectYAML LLVMOption LLVMOptRemarks LLVMDebugInfoDWARF LLVMDebugInfoMSF LLVMDebugInfoCodeView LLVMDebugInfoPDB LLVMSymbolize LLVMExecutionEngine LLVMInterpreter LLVMMCJIT LLVMOrcJIT LLVMRuntimeDyld LLVMTarget LLVMAArch64CodeGen LLVMAArch64AsmParser LLVMAArch64Disassembler LLVMAArch64AsmPrinter LLVMAArch64Desc LLVMAArch64Info LLVMAArch64Utils LLVMAMDGPUCodeGen LLVMAMDGPUAsmParser LLVMAMDGPUDisassembler LLVMAMDGPUAsmPrinter LLVMAMDGPUDesc LLVMAMDGPUInfo LLVMAMDGPUUtils LLVMARMCodeGen LLVMARMAsmParser LLVMARMDisassembler LLVMARMAsmPrinter LLVMARMDesc LLVMARMInfo LLVMARMUtils LLVMBPFCodeGen LLVMBPFAsmParser LLVMBPFDisassembler LLVMBPFAsmPrinter LLVMBPFDesc LLVMBPFInfo LLVMHexagonCodeGen LLVMHexagonAsmParser LLVMHexagonDisassembler LLVMHexagonDesc LLVMHexagonInfo LLVMLanaiCodeGen LLVMLanaiAsmParser LLVMLanaiDisassembler LLVMLanaiAsmPrinter LLVMLanaiDesc LLVMLanaiInfo LLVMMipsCodeGen LLVMMipsAsmParser LLVMMipsDisassembler LLVMMipsAsmPrinter LLVMMipsDesc LLVMMipsInfo LLVMMSP430CodeGen LLVMMSP430AsmPrinter LLVMMSP430Desc LLVMMSP430Info LLVMMSP430AsmParser LLVMMSP430Disassembler LLVMNVPTXCodeGen LLVMNVPTXAsmPrinter LLVMNVPTXDesc LLVMNVPTXInfo LLVMPowerPCCodeGen LLVMPowerPCAsmParser LLVMPowerPCDisassembler LLVMPowerPCAsmPrinter LLVMPowerPCDesc LLVMPowerPCInfo LLVMSparcCodeGen LLVMSparcAsmParser LLVMSparcDisassembler LLVMSparcAsmPrinter LLVMSparcDesc LLVMSparcInfo LLVMSystemZCodeGen LLVMSystemZAsmParser LLVMSystemZDisassembler LLVMSystemZAsmPrinter LLVMSystemZDesc LLVMSystemZInfo LLVMWebAssemblyCodeGen LLVMWebAssemblyAsmParser LLVMWebAssemblyDisassembler LLVMWebAssemblyAsmPrinter LLVMWebAssemblyDesc LLVMWebAssemblyInfo LLVMX86CodeGen LLVMX86AsmParser LLVMX86Disassembler LLVMX86AsmPrinter LLVMX86Desc LLVMX86Info LLVMX86Utils LLVMXCoreCodeGen LLVMXCoreDisassembler LLVMXCoreAsmPrinter LLVMXCoreDesc LLVMXCoreInfo LLVMNMXCodeGen LLVMNMXInfo LLVMNMXDesc LLVMNMXAsmPrinter LLVMNMXDisassembler LLVMNMXAsmParser LLVMAsmParser LLVMLineEditor LLVMProfileData LLVMCoverage LLVMPasses LLVMTextAPI LLVMDlltoolDriver LLVMLibDriver LLVMXRay LLVMWindowsManifest LTO llvm-ar llvm-config llvm-lto llvm-profdata clang-tblgen bugpoint dsymutil llc lli llvm-as llvm-bcanalyzer llvm-c-test llvm-cat llvm-cfi-verify llvm-cov llvm-cvtres llvm-cxxdump llvm-cxxfilt llvm-cxxmap llvm-diff llvm-dis llvm-dwarfdump llvm-dwp llvm-elfabi llvm-exegesis llvm-extract llvm-link llvm-lto2 llvm-mc llvm-mca llvm-modextract llvm-mt llvm-nm llvm-objcopy llvm-objdump llvm-opt-report llvm-pdbutil llvm-rc llvm-readobj llvm-rtdyld llvm-size llvm-split llvm-stress llvm-strings llvm-symbolizer llvm-undname llvm-xray obj2yaml opt OptRemarks sancov sanstats verify-uselistorder yaml2obj)
+foreach(_cmake_expected_target IN ITEMS LLVMDemangle LLVMSupport LLVMTableGen llvm-tblgen LLVMCore LLVMFuzzMutate LLVMIRReader LLVMCodeGen LLVMSelectionDAG LLVMAsmPrinter LLVMMIRParser LLVMGlobalISel LLVMBinaryFormat LLVMBitReader LLVMBitWriter LLVMTransformUtils LLVMInstrumentation LLVMAggressiveInstCombine LLVMInstCombine LLVMScalarOpts LLVMipo LLVMVectorize LLVMObjCARCOpts LLVMCoroutines CountIR LLVMLinker LLVMAnalysis LLVMLTO LLVMMC LLVMMCParser LLVMMCDisassembler LLVMMCA LLVMObject LLVMObjectYAML LLVMOption LLVMOptRemarks LLVMDebugInfoDWARF LLVMDebugInfoMSF LLVMDebugInfoCodeView LLVMDebugInfoPDB LLVMSymbolize LLVMExecutionEngine LLVMInterpreter LLVMMCJIT LLVMOrcJIT LLVMRuntimeDyld LLVMTarget LLVMNMXCodeGen LLVMNMXInfo LLVMNMXDesc LLVMNMXAsmPrinter LLVMNMXDisassembler LLVMNMXAsmParser LLVMAsmParser LLVMLineEditor LLVMProfileData LLVMCoverage LLVMPasses LLVMTextAPI LLVMDlltoolDriver LLVMLibDriver LLVMXRay LLVMWindowsManifest LTO llvm-ar llvm-config llvm-lto llvm-profdata clang-tblgen bugpoint dsymutil llc lli llvm-as llvm-bcanalyzer llvm-c-test llvm-cat llvm-cfi-verify llvm-cov llvm-cvtres llvm-cxxdump llvm-cxxfilt llvm-cxxmap llvm-diff llvm-dis llvm-dwarfdump llvm-dwp llvm-elfabi llvm-exegesis llvm-extract llvm-link llvm-lto2 llvm-mc llvm-mca llvm-modextract llvm-mt llvm-nm llvm-objcopy llvm-objdump llvm-opt-report llvm-pdbutil llvm-rc llvm-readobj llvm-rtdyld llvm-size llvm-split llvm-stress llvm-strings llvm-symbolizer llvm-undname llvm-xray obj2yaml opt OptRemarks sancov sanstats verify-uselistorder yaml2obj)
   list(APPEND _cmake_expected_targets "${_cmake_expected_target}")
   if(TARGET "${_cmake_expected_target}")
     list(APPEND _cmake_targets_defined "${_cmake_expected_target}")
@@ -363,636 +363,6 @@ set_target_properties(LLVMTarget PROPERTIES
   INTERFACE_LINK_LIBRARIES "LLVMAnalysis;LLVMCore;LLVMMC;LLVMSupport"
 )
 
-# Create imported target LLVMAArch64CodeGen
-add_library(LLVMAArch64CodeGen STATIC IMPORTED)
-
-set_target_properties(LLVMAArch64CodeGen PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMAArch64AsmPrinter;LLVMAArch64Desc;LLVMAArch64Info;LLVMAArch64Utils;LLVMAnalysis;LLVMAsmPrinter;LLVMCodeGen;LLVMCore;LLVMGlobalISel;LLVMMC;LLVMScalarOpts;LLVMSelectionDAG;LLVMSupport;LLVMTarget"
-)
-
-# Create imported target LLVMAArch64AsmParser
-add_library(LLVMAArch64AsmParser STATIC IMPORTED)
-
-set_target_properties(LLVMAArch64AsmParser PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMAArch64Desc;LLVMAArch64Info;LLVMAArch64Utils;LLVMMC;LLVMMCParser;LLVMSupport"
-)
-
-# Create imported target LLVMAArch64Disassembler
-add_library(LLVMAArch64Disassembler STATIC IMPORTED)
-
-set_target_properties(LLVMAArch64Disassembler PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMAArch64Desc;LLVMAArch64Info;LLVMAArch64Utils;LLVMMC;LLVMMCDisassembler;LLVMSupport"
-)
-
-# Create imported target LLVMAArch64AsmPrinter
-add_library(LLVMAArch64AsmPrinter STATIC IMPORTED)
-
-set_target_properties(LLVMAArch64AsmPrinter PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMAArch64Utils;LLVMMC;LLVMSupport"
-)
-
-# Create imported target LLVMAArch64Desc
-add_library(LLVMAArch64Desc STATIC IMPORTED)
-
-set_target_properties(LLVMAArch64Desc PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMAArch64AsmPrinter;LLVMAArch64Info;LLVMMC;LLVMSupport"
-)
-
-# Create imported target LLVMAArch64Info
-add_library(LLVMAArch64Info STATIC IMPORTED)
-
-set_target_properties(LLVMAArch64Info PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMSupport"
-)
-
-# Create imported target LLVMAArch64Utils
-add_library(LLVMAArch64Utils STATIC IMPORTED)
-
-set_target_properties(LLVMAArch64Utils PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMSupport"
-)
-
-# Create imported target LLVMAMDGPUCodeGen
-add_library(LLVMAMDGPUCodeGen STATIC IMPORTED)
-
-set_target_properties(LLVMAMDGPUCodeGen PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMAMDGPUAsmPrinter;LLVMAMDGPUDesc;LLVMAMDGPUInfo;LLVMAMDGPUUtils;LLVMAnalysis;LLVMAsmPrinter;LLVMBinaryFormat;LLVMCodeGen;LLVMCore;LLVMGlobalISel;LLVMMC;LLVMScalarOpts;LLVMSelectionDAG;LLVMSupport;LLVMTarget;LLVMTransformUtils;LLVMVectorize;LLVMipo"
-)
-
-# Create imported target LLVMAMDGPUAsmParser
-add_library(LLVMAMDGPUAsmParser STATIC IMPORTED)
-
-set_target_properties(LLVMAMDGPUAsmParser PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMAMDGPUDesc;LLVMAMDGPUInfo;LLVMAMDGPUUtils;LLVMMC;LLVMMCParser;LLVMSupport"
-)
-
-# Create imported target LLVMAMDGPUDisassembler
-add_library(LLVMAMDGPUDisassembler STATIC IMPORTED)
-
-set_target_properties(LLVMAMDGPUDisassembler PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMAMDGPUDesc;LLVMAMDGPUInfo;LLVMAMDGPUUtils;LLVMMC;LLVMMCDisassembler;LLVMSupport"
-)
-
-# Create imported target LLVMAMDGPUAsmPrinter
-add_library(LLVMAMDGPUAsmPrinter STATIC IMPORTED)
-
-set_target_properties(LLVMAMDGPUAsmPrinter PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMAMDGPUUtils;LLVMMC;LLVMSupport"
-)
-
-# Create imported target LLVMAMDGPUDesc
-add_library(LLVMAMDGPUDesc STATIC IMPORTED)
-
-set_target_properties(LLVMAMDGPUDesc PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMAMDGPUAsmPrinter;LLVMAMDGPUInfo;LLVMAMDGPUUtils;LLVMBinaryFormat;LLVMCore;LLVMMC;LLVMSupport"
-)
-
-# Create imported target LLVMAMDGPUInfo
-add_library(LLVMAMDGPUInfo STATIC IMPORTED)
-
-set_target_properties(LLVMAMDGPUInfo PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMSupport"
-)
-
-# Create imported target LLVMAMDGPUUtils
-add_library(LLVMAMDGPUUtils STATIC IMPORTED)
-
-set_target_properties(LLVMAMDGPUUtils PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMCore;LLVMMC;LLVMSupport"
-)
-
-# Create imported target LLVMARMCodeGen
-add_library(LLVMARMCodeGen STATIC IMPORTED)
-
-set_target_properties(LLVMARMCodeGen PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMARMAsmPrinter;LLVMARMDesc;LLVMARMInfo;LLVMARMUtils;LLVMAnalysis;LLVMAsmPrinter;LLVMCodeGen;LLVMCore;LLVMGlobalISel;LLVMMC;LLVMScalarOpts;LLVMSelectionDAG;LLVMSupport;LLVMTarget;LLVMTransformUtils"
-)
-
-# Create imported target LLVMARMAsmParser
-add_library(LLVMARMAsmParser STATIC IMPORTED)
-
-set_target_properties(LLVMARMAsmParser PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMARMAsmPrinter;LLVMARMDesc;LLVMARMInfo;LLVMARMUtils;LLVMMC;LLVMMCParser;LLVMSupport"
-)
-
-# Create imported target LLVMARMDisassembler
-add_library(LLVMARMDisassembler STATIC IMPORTED)
-
-set_target_properties(LLVMARMDisassembler PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMARMDesc;LLVMARMInfo;LLVMARMUtils;LLVMMCDisassembler;LLVMSupport"
-)
-
-# Create imported target LLVMARMAsmPrinter
-add_library(LLVMARMAsmPrinter STATIC IMPORTED)
-
-set_target_properties(LLVMARMAsmPrinter PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMARMUtils;LLVMMC;LLVMSupport"
-)
-
-# Create imported target LLVMARMDesc
-add_library(LLVMARMDesc STATIC IMPORTED)
-
-set_target_properties(LLVMARMDesc PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMARMAsmPrinter;LLVMARMInfo;LLVMMC;LLVMMCDisassembler;LLVMSupport"
-)
-
-# Create imported target LLVMARMInfo
-add_library(LLVMARMInfo STATIC IMPORTED)
-
-set_target_properties(LLVMARMInfo PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMSupport"
-)
-
-# Create imported target LLVMARMUtils
-add_library(LLVMARMUtils STATIC IMPORTED)
-
-set_target_properties(LLVMARMUtils PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMSupport"
-)
-
-# Create imported target LLVMBPFCodeGen
-add_library(LLVMBPFCodeGen STATIC IMPORTED)
-
-set_target_properties(LLVMBPFCodeGen PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMAsmPrinter;LLVMBPFAsmPrinter;LLVMBPFDesc;LLVMBPFInfo;LLVMCodeGen;LLVMCore;LLVMMC;LLVMSelectionDAG;LLVMSupport;LLVMTarget"
-)
-
-# Create imported target LLVMBPFAsmParser
-add_library(LLVMBPFAsmParser STATIC IMPORTED)
-
-set_target_properties(LLVMBPFAsmParser PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMBPFDesc;LLVMBPFInfo;LLVMMC;LLVMMCParser;LLVMSupport"
-)
-
-# Create imported target LLVMBPFDisassembler
-add_library(LLVMBPFDisassembler STATIC IMPORTED)
-
-set_target_properties(LLVMBPFDisassembler PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMBPFInfo;LLVMMCDisassembler;LLVMSupport"
-)
-
-# Create imported target LLVMBPFAsmPrinter
-add_library(LLVMBPFAsmPrinter STATIC IMPORTED)
-
-set_target_properties(LLVMBPFAsmPrinter PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMMC;LLVMSupport"
-)
-
-# Create imported target LLVMBPFDesc
-add_library(LLVMBPFDesc STATIC IMPORTED)
-
-set_target_properties(LLVMBPFDesc PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMBPFAsmPrinter;LLVMBPFInfo;LLVMMC;LLVMSupport"
-)
-
-# Create imported target LLVMBPFInfo
-add_library(LLVMBPFInfo STATIC IMPORTED)
-
-set_target_properties(LLVMBPFInfo PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMSupport"
-)
-
-# Create imported target LLVMHexagonCodeGen
-add_library(LLVMHexagonCodeGen STATIC IMPORTED)
-
-set_target_properties(LLVMHexagonCodeGen PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMAnalysis;LLVMAsmPrinter;LLVMCodeGen;LLVMCore;LLVMHexagonAsmParser;LLVMHexagonDesc;LLVMHexagonInfo;LLVMMC;LLVMScalarOpts;LLVMSelectionDAG;LLVMSupport;LLVMTarget;LLVMTransformUtils;LLVMipo"
-)
-
-# Create imported target LLVMHexagonAsmParser
-add_library(LLVMHexagonAsmParser STATIC IMPORTED)
-
-set_target_properties(LLVMHexagonAsmParser PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMHexagonDesc;LLVMHexagonInfo;LLVMMC;LLVMMCParser;LLVMSupport"
-)
-
-# Create imported target LLVMHexagonDisassembler
-add_library(LLVMHexagonDisassembler STATIC IMPORTED)
-
-set_target_properties(LLVMHexagonDisassembler PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMHexagonDesc;LLVMHexagonInfo;LLVMMC;LLVMMCDisassembler;LLVMSupport"
-)
-
-# Create imported target LLVMHexagonDesc
-add_library(LLVMHexagonDesc STATIC IMPORTED)
-
-set_target_properties(LLVMHexagonDesc PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMHexagonInfo;LLVMMC;LLVMSupport"
-)
-
-# Create imported target LLVMHexagonInfo
-add_library(LLVMHexagonInfo STATIC IMPORTED)
-
-set_target_properties(LLVMHexagonInfo PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMSupport"
-)
-
-# Create imported target LLVMLanaiCodeGen
-add_library(LLVMLanaiCodeGen STATIC IMPORTED)
-
-set_target_properties(LLVMLanaiCodeGen PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMAnalysis;LLVMAsmPrinter;LLVMCodeGen;LLVMCore;LLVMLanaiAsmParser;LLVMLanaiAsmPrinter;LLVMLanaiDesc;LLVMLanaiInfo;LLVMMC;LLVMSelectionDAG;LLVMSupport;LLVMTarget;LLVMTransformUtils"
-)
-
-# Create imported target LLVMLanaiAsmParser
-add_library(LLVMLanaiAsmParser STATIC IMPORTED)
-
-set_target_properties(LLVMLanaiAsmParser PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMLanaiDesc;LLVMLanaiInfo;LLVMMC;LLVMMCParser;LLVMSupport"
-)
-
-# Create imported target LLVMLanaiDisassembler
-add_library(LLVMLanaiDisassembler STATIC IMPORTED)
-
-set_target_properties(LLVMLanaiDisassembler PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMLanaiDesc;LLVMLanaiInfo;LLVMMC;LLVMMCDisassembler;LLVMSupport"
-)
-
-# Create imported target LLVMLanaiAsmPrinter
-add_library(LLVMLanaiAsmPrinter STATIC IMPORTED)
-
-set_target_properties(LLVMLanaiAsmPrinter PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMMC;LLVMSupport"
-)
-
-# Create imported target LLVMLanaiDesc
-add_library(LLVMLanaiDesc STATIC IMPORTED)
-
-set_target_properties(LLVMLanaiDesc PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMLanaiAsmPrinter;LLVMLanaiInfo;LLVMMC;LLVMMCDisassembler;LLVMSupport"
-)
-
-# Create imported target LLVMLanaiInfo
-add_library(LLVMLanaiInfo STATIC IMPORTED)
-
-set_target_properties(LLVMLanaiInfo PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMSupport"
-)
-
-# Create imported target LLVMMipsCodeGen
-add_library(LLVMMipsCodeGen STATIC IMPORTED)
-
-set_target_properties(LLVMMipsCodeGen PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMAnalysis;LLVMAsmPrinter;LLVMCodeGen;LLVMCore;LLVMGlobalISel;LLVMMC;LLVMMipsAsmPrinter;LLVMMipsDesc;LLVMMipsInfo;LLVMSelectionDAG;LLVMSupport;LLVMTarget"
-)
-
-# Create imported target LLVMMipsAsmParser
-add_library(LLVMMipsAsmParser STATIC IMPORTED)
-
-set_target_properties(LLVMMipsAsmParser PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMMC;LLVMMCParser;LLVMMipsDesc;LLVMMipsInfo;LLVMSupport"
-)
-
-# Create imported target LLVMMipsDisassembler
-add_library(LLVMMipsDisassembler STATIC IMPORTED)
-
-set_target_properties(LLVMMipsDisassembler PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMMCDisassembler;LLVMMipsInfo;LLVMSupport"
-)
-
-# Create imported target LLVMMipsAsmPrinter
-add_library(LLVMMipsAsmPrinter STATIC IMPORTED)
-
-set_target_properties(LLVMMipsAsmPrinter PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMMC;LLVMSupport"
-)
-
-# Create imported target LLVMMipsDesc
-add_library(LLVMMipsDesc STATIC IMPORTED)
-
-set_target_properties(LLVMMipsDesc PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMMC;LLVMMipsAsmPrinter;LLVMMipsInfo;LLVMSupport"
-)
-
-# Create imported target LLVMMipsInfo
-add_library(LLVMMipsInfo STATIC IMPORTED)
-
-set_target_properties(LLVMMipsInfo PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMSupport"
-)
-
-# Create imported target LLVMMSP430CodeGen
-add_library(LLVMMSP430CodeGen STATIC IMPORTED)
-
-set_target_properties(LLVMMSP430CodeGen PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMAsmPrinter;LLVMCodeGen;LLVMCore;LLVMMC;LLVMMSP430AsmPrinter;LLVMMSP430Desc;LLVMMSP430Info;LLVMSelectionDAG;LLVMSupport;LLVMTarget"
-)
-
-# Create imported target LLVMMSP430AsmPrinter
-add_library(LLVMMSP430AsmPrinter STATIC IMPORTED)
-
-set_target_properties(LLVMMSP430AsmPrinter PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMMC;LLVMSupport"
-)
-
-# Create imported target LLVMMSP430Desc
-add_library(LLVMMSP430Desc STATIC IMPORTED)
-
-set_target_properties(LLVMMSP430Desc PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMMC;LLVMMSP430AsmPrinter;LLVMMSP430Info;LLVMSupport"
-)
-
-# Create imported target LLVMMSP430Info
-add_library(LLVMMSP430Info STATIC IMPORTED)
-
-set_target_properties(LLVMMSP430Info PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMSupport"
-)
-
-# Create imported target LLVMMSP430AsmParser
-add_library(LLVMMSP430AsmParser STATIC IMPORTED)
-
-set_target_properties(LLVMMSP430AsmParser PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMMC;LLVMMCParser;LLVMMSP430Desc;LLVMMSP430Info;LLVMSupport"
-)
-
-# Create imported target LLVMMSP430Disassembler
-add_library(LLVMMSP430Disassembler STATIC IMPORTED)
-
-set_target_properties(LLVMMSP430Disassembler PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMMCDisassembler;LLVMMSP430Info;LLVMSupport"
-)
-
-# Create imported target LLVMNVPTXCodeGen
-add_library(LLVMNVPTXCodeGen STATIC IMPORTED)
-
-set_target_properties(LLVMNVPTXCodeGen PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMAnalysis;LLVMAsmPrinter;LLVMCodeGen;LLVMCore;LLVMMC;LLVMNVPTXAsmPrinter;LLVMNVPTXDesc;LLVMNVPTXInfo;LLVMScalarOpts;LLVMSelectionDAG;LLVMSupport;LLVMTarget;LLVMTransformUtils;LLVMVectorize;LLVMipo"
-)
-
-# Create imported target LLVMNVPTXAsmPrinter
-add_library(LLVMNVPTXAsmPrinter STATIC IMPORTED)
-
-set_target_properties(LLVMNVPTXAsmPrinter PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMMC;LLVMSupport"
-)
-
-# Create imported target LLVMNVPTXDesc
-add_library(LLVMNVPTXDesc STATIC IMPORTED)
-
-set_target_properties(LLVMNVPTXDesc PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMMC;LLVMNVPTXAsmPrinter;LLVMNVPTXInfo;LLVMSupport"
-)
-
-# Create imported target LLVMNVPTXInfo
-add_library(LLVMNVPTXInfo STATIC IMPORTED)
-
-set_target_properties(LLVMNVPTXInfo PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMSupport"
-)
-
-# Create imported target LLVMPowerPCCodeGen
-add_library(LLVMPowerPCCodeGen STATIC IMPORTED)
-
-set_target_properties(LLVMPowerPCCodeGen PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMAnalysis;LLVMAsmPrinter;LLVMCodeGen;LLVMCore;LLVMMC;LLVMPowerPCAsmPrinter;LLVMPowerPCDesc;LLVMPowerPCInfo;LLVMScalarOpts;LLVMSelectionDAG;LLVMSupport;LLVMTarget;LLVMTransformUtils"
-)
-
-# Create imported target LLVMPowerPCAsmParser
-add_library(LLVMPowerPCAsmParser STATIC IMPORTED)
-
-set_target_properties(LLVMPowerPCAsmParser PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMMC;LLVMMCParser;LLVMPowerPCDesc;LLVMPowerPCInfo;LLVMSupport"
-)
-
-# Create imported target LLVMPowerPCDisassembler
-add_library(LLVMPowerPCDisassembler STATIC IMPORTED)
-
-set_target_properties(LLVMPowerPCDisassembler PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMMCDisassembler;LLVMPowerPCInfo;LLVMSupport"
-)
-
-# Create imported target LLVMPowerPCAsmPrinter
-add_library(LLVMPowerPCAsmPrinter STATIC IMPORTED)
-
-set_target_properties(LLVMPowerPCAsmPrinter PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMMC;LLVMSupport"
-)
-
-# Create imported target LLVMPowerPCDesc
-add_library(LLVMPowerPCDesc STATIC IMPORTED)
-
-set_target_properties(LLVMPowerPCDesc PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMMC;LLVMPowerPCAsmPrinter;LLVMPowerPCInfo;LLVMSupport"
-)
-
-# Create imported target LLVMPowerPCInfo
-add_library(LLVMPowerPCInfo STATIC IMPORTED)
-
-set_target_properties(LLVMPowerPCInfo PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMSupport"
-)
-
-# Create imported target LLVMSparcCodeGen
-add_library(LLVMSparcCodeGen STATIC IMPORTED)
-
-set_target_properties(LLVMSparcCodeGen PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMAsmPrinter;LLVMCodeGen;LLVMCore;LLVMMC;LLVMSelectionDAG;LLVMSparcAsmPrinter;LLVMSparcDesc;LLVMSparcInfo;LLVMSupport;LLVMTarget"
-)
-
-# Create imported target LLVMSparcAsmParser
-add_library(LLVMSparcAsmParser STATIC IMPORTED)
-
-set_target_properties(LLVMSparcAsmParser PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMMC;LLVMMCParser;LLVMSparcDesc;LLVMSparcInfo;LLVMSupport"
-)
-
-# Create imported target LLVMSparcDisassembler
-add_library(LLVMSparcDisassembler STATIC IMPORTED)
-
-set_target_properties(LLVMSparcDisassembler PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMMCDisassembler;LLVMSparcInfo;LLVMSupport"
-)
-
-# Create imported target LLVMSparcAsmPrinter
-add_library(LLVMSparcAsmPrinter STATIC IMPORTED)
-
-set_target_properties(LLVMSparcAsmPrinter PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMMC;LLVMSupport"
-)
-
-# Create imported target LLVMSparcDesc
-add_library(LLVMSparcDesc STATIC IMPORTED)
-
-set_target_properties(LLVMSparcDesc PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMMC;LLVMSparcAsmPrinter;LLVMSparcInfo;LLVMSupport"
-)
-
-# Create imported target LLVMSparcInfo
-add_library(LLVMSparcInfo STATIC IMPORTED)
-
-set_target_properties(LLVMSparcInfo PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMSupport"
-)
-
-# Create imported target LLVMSystemZCodeGen
-add_library(LLVMSystemZCodeGen STATIC IMPORTED)
-
-set_target_properties(LLVMSystemZCodeGen PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMAnalysis;LLVMAsmPrinter;LLVMCodeGen;LLVMCore;LLVMMC;LLVMScalarOpts;LLVMSelectionDAG;LLVMSupport;LLVMSystemZAsmPrinter;LLVMSystemZDesc;LLVMSystemZInfo;LLVMTarget"
-)
-
-# Create imported target LLVMSystemZAsmParser
-add_library(LLVMSystemZAsmParser STATIC IMPORTED)
-
-set_target_properties(LLVMSystemZAsmParser PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMMC;LLVMMCParser;LLVMSupport;LLVMSystemZAsmPrinter;LLVMSystemZDesc;LLVMSystemZInfo"
-)
-
-# Create imported target LLVMSystemZDisassembler
-add_library(LLVMSystemZDisassembler STATIC IMPORTED)
-
-set_target_properties(LLVMSystemZDisassembler PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMMC;LLVMMCDisassembler;LLVMSupport;LLVMSystemZDesc;LLVMSystemZInfo"
-)
-
-# Create imported target LLVMSystemZAsmPrinter
-add_library(LLVMSystemZAsmPrinter STATIC IMPORTED)
-
-set_target_properties(LLVMSystemZAsmPrinter PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMMC;LLVMSupport"
-)
-
-# Create imported target LLVMSystemZDesc
-add_library(LLVMSystemZDesc STATIC IMPORTED)
-
-set_target_properties(LLVMSystemZDesc PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMMC;LLVMSupport;LLVMSystemZAsmPrinter;LLVMSystemZInfo"
-)
-
-# Create imported target LLVMSystemZInfo
-add_library(LLVMSystemZInfo STATIC IMPORTED)
-
-set_target_properties(LLVMSystemZInfo PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMSupport"
-)
-
-# Create imported target LLVMWebAssemblyCodeGen
-add_library(LLVMWebAssemblyCodeGen STATIC IMPORTED)
-
-set_target_properties(LLVMWebAssemblyCodeGen PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMAnalysis;LLVMAsmPrinter;LLVMCodeGen;LLVMCore;LLVMMC;LLVMScalarOpts;LLVMSelectionDAG;LLVMSupport;LLVMTarget;LLVMTransformUtils;LLVMWebAssemblyAsmPrinter;LLVMWebAssemblyDesc;LLVMWebAssemblyInfo"
-)
-
-# Create imported target LLVMWebAssemblyAsmParser
-add_library(LLVMWebAssemblyAsmParser STATIC IMPORTED)
-
-set_target_properties(LLVMWebAssemblyAsmParser PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMMC;LLVMMCParser;LLVMSupport;LLVMWebAssemblyInfo"
-)
-
-# Create imported target LLVMWebAssemblyDisassembler
-add_library(LLVMWebAssemblyDisassembler STATIC IMPORTED)
-
-set_target_properties(LLVMWebAssemblyDisassembler PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMMCDisassembler;LLVMSupport;LLVMWebAssemblyInfo"
-)
-
-# Create imported target LLVMWebAssemblyAsmPrinter
-add_library(LLVMWebAssemblyAsmPrinter STATIC IMPORTED)
-
-set_target_properties(LLVMWebAssemblyAsmPrinter PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMMC;LLVMSupport"
-)
-
-# Create imported target LLVMWebAssemblyDesc
-add_library(LLVMWebAssemblyDesc STATIC IMPORTED)
-
-set_target_properties(LLVMWebAssemblyDesc PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMMC;LLVMSupport;LLVMWebAssemblyAsmPrinter;LLVMWebAssemblyInfo"
-)
-
-# Create imported target LLVMWebAssemblyInfo
-add_library(LLVMWebAssemblyInfo STATIC IMPORTED)
-
-set_target_properties(LLVMWebAssemblyInfo PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMSupport"
-)
-
-# Create imported target LLVMX86CodeGen
-add_library(LLVMX86CodeGen STATIC IMPORTED)
-
-set_target_properties(LLVMX86CodeGen PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMAnalysis;LLVMAsmPrinter;LLVMCodeGen;LLVMCore;LLVMGlobalISel;LLVMMC;LLVMProfileData;LLVMSelectionDAG;LLVMSupport;LLVMTarget;LLVMX86AsmPrinter;LLVMX86Desc;LLVMX86Info;LLVMX86Utils"
-)
-
-# Create imported target LLVMX86AsmParser
-add_library(LLVMX86AsmParser STATIC IMPORTED)
-
-set_target_properties(LLVMX86AsmParser PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMMC;LLVMMCParser;LLVMSupport;LLVMX86AsmPrinter;LLVMX86Desc;LLVMX86Info"
-)
-
-# Create imported target LLVMX86Disassembler
-add_library(LLVMX86Disassembler STATIC IMPORTED)
-
-set_target_properties(LLVMX86Disassembler PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMMCDisassembler;LLVMSupport;LLVMX86Info"
-)
-
-# Create imported target LLVMX86AsmPrinter
-add_library(LLVMX86AsmPrinter STATIC IMPORTED)
-
-set_target_properties(LLVMX86AsmPrinter PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMMC;LLVMSupport;LLVMX86Utils"
-)
-
-# Create imported target LLVMX86Desc
-add_library(LLVMX86Desc STATIC IMPORTED)
-
-set_target_properties(LLVMX86Desc PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMMC;LLVMMCDisassembler;LLVMObject;LLVMSupport;LLVMX86AsmPrinter;LLVMX86Info"
-)
-
-# Create imported target LLVMX86Info
-add_library(LLVMX86Info STATIC IMPORTED)
-
-set_target_properties(LLVMX86Info PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMSupport"
-)
-
-# Create imported target LLVMX86Utils
-add_library(LLVMX86Utils STATIC IMPORTED)
-
-set_target_properties(LLVMX86Utils PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMSupport"
-)
-
-# Create imported target LLVMXCoreCodeGen
-add_library(LLVMXCoreCodeGen STATIC IMPORTED)
-
-set_target_properties(LLVMXCoreCodeGen PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMAnalysis;LLVMAsmPrinter;LLVMCodeGen;LLVMCore;LLVMMC;LLVMSelectionDAG;LLVMSupport;LLVMTarget;LLVMTransformUtils;LLVMXCoreAsmPrinter;LLVMXCoreDesc;LLVMXCoreInfo"
-)
-
-# Create imported target LLVMXCoreDisassembler
-add_library(LLVMXCoreDisassembler STATIC IMPORTED)
-
-set_target_properties(LLVMXCoreDisassembler PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMMCDisassembler;LLVMSupport;LLVMXCoreInfo"
-)
-
-# Create imported target LLVMXCoreAsmPrinter
-add_library(LLVMXCoreAsmPrinter STATIC IMPORTED)
-
-set_target_properties(LLVMXCoreAsmPrinter PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMMC;LLVMSupport"
-)
-
-# Create imported target LLVMXCoreDesc
-add_library(LLVMXCoreDesc STATIC IMPORTED)
-
-set_target_properties(LLVMXCoreDesc PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMMC;LLVMSupport;LLVMXCoreAsmPrinter;LLVMXCoreInfo"
-)
-
-# Create imported target LLVMXCoreInfo
-add_library(LLVMXCoreInfo STATIC IMPORTED)
-
-set_target_properties(LLVMXCoreInfo PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMSupport"
-)
-
 # Create imported target LLVMNMXCodeGen
 add_library(LLVMNMXCodeGen STATIC IMPORTED)
 
@@ -1275,1407 +645,777 @@ add_executable(verify-uselistorder IMPORTED)
 # Create imported target yaml2obj
 add_executable(yaml2obj IMPORTED)
 
-# Import target "LLVMDemangle" for configuration "Release"
-set_property(TARGET LLVMDemangle APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "LLVMDemangle" for configuration "Debug"
+set_property(TARGET LLVMDemangle APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMDemangle PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMDemangle.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libLLVMDemangle.a"
   )
 
-# Import target "LLVMSupport" for configuration "Release"
-set_property(TARGET LLVMSupport APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "LLVMSupport" for configuration "Debug"
+set_property(TARGET LLVMSupport APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMSupport PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "C;CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMSupport.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "C;CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libLLVMSupport.a"
   )
 
-# Import target "LLVMTableGen" for configuration "Release"
-set_property(TARGET LLVMTableGen APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "LLVMTableGen" for configuration "Debug"
+set_property(TARGET LLVMTableGen APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMTableGen PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMTableGen.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libLLVMTableGen.a"
   )
 
-# Import target "llvm-tblgen" for configuration "Release"
-set_property(TARGET llvm-tblgen APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "llvm-tblgen" for configuration "Debug"
+set_property(TARGET llvm-tblgen APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(llvm-tblgen PROPERTIES
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/bin/llvm-tblgen"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/bin/llvm-tblgen"
   )
 
-# Import target "LLVMCore" for configuration "Release"
-set_property(TARGET LLVMCore APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "LLVMCore" for configuration "Debug"
+set_property(TARGET LLVMCore APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMCore PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMCore.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libLLVMCore.a"
   )
 
-# Import target "LLVMFuzzMutate" for configuration "Release"
-set_property(TARGET LLVMFuzzMutate APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "LLVMFuzzMutate" for configuration "Debug"
+set_property(TARGET LLVMFuzzMutate APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMFuzzMutate PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMFuzzMutate.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libLLVMFuzzMutate.a"
   )
 
-# Import target "LLVMIRReader" for configuration "Release"
-set_property(TARGET LLVMIRReader APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "LLVMIRReader" for configuration "Debug"
+set_property(TARGET LLVMIRReader APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMIRReader PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMIRReader.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libLLVMIRReader.a"
   )
 
-# Import target "LLVMCodeGen" for configuration "Release"
-set_property(TARGET LLVMCodeGen APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "LLVMCodeGen" for configuration "Debug"
+set_property(TARGET LLVMCodeGen APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMCodeGen PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMCodeGen.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libLLVMCodeGen.a"
   )
 
-# Import target "LLVMSelectionDAG" for configuration "Release"
-set_property(TARGET LLVMSelectionDAG APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "LLVMSelectionDAG" for configuration "Debug"
+set_property(TARGET LLVMSelectionDAG APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMSelectionDAG PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMSelectionDAG.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libLLVMSelectionDAG.a"
   )
 
-# Import target "LLVMAsmPrinter" for configuration "Release"
-set_property(TARGET LLVMAsmPrinter APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "LLVMAsmPrinter" for configuration "Debug"
+set_property(TARGET LLVMAsmPrinter APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMAsmPrinter PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMAsmPrinter.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libLLVMAsmPrinter.a"
   )
 
-# Import target "LLVMMIRParser" for configuration "Release"
-set_property(TARGET LLVMMIRParser APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "LLVMMIRParser" for configuration "Debug"
+set_property(TARGET LLVMMIRParser APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMMIRParser PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMMIRParser.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libLLVMMIRParser.a"
   )
 
-# Import target "LLVMGlobalISel" for configuration "Release"
-set_property(TARGET LLVMGlobalISel APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "LLVMGlobalISel" for configuration "Debug"
+set_property(TARGET LLVMGlobalISel APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMGlobalISel PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMGlobalISel.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libLLVMGlobalISel.a"
   )
 
-# Import target "LLVMBinaryFormat" for configuration "Release"
-set_property(TARGET LLVMBinaryFormat APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "LLVMBinaryFormat" for configuration "Debug"
+set_property(TARGET LLVMBinaryFormat APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMBinaryFormat PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMBinaryFormat.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libLLVMBinaryFormat.a"
   )
 
-# Import target "LLVMBitReader" for configuration "Release"
-set_property(TARGET LLVMBitReader APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "LLVMBitReader" for configuration "Debug"
+set_property(TARGET LLVMBitReader APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMBitReader PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMBitReader.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libLLVMBitReader.a"
   )
 
-# Import target "LLVMBitWriter" for configuration "Release"
-set_property(TARGET LLVMBitWriter APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "LLVMBitWriter" for configuration "Debug"
+set_property(TARGET LLVMBitWriter APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMBitWriter PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMBitWriter.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libLLVMBitWriter.a"
   )
 
-# Import target "LLVMTransformUtils" for configuration "Release"
-set_property(TARGET LLVMTransformUtils APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "LLVMTransformUtils" for configuration "Debug"
+set_property(TARGET LLVMTransformUtils APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMTransformUtils PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMTransformUtils.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libLLVMTransformUtils.a"
   )
 
-# Import target "LLVMInstrumentation" for configuration "Release"
-set_property(TARGET LLVMInstrumentation APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "LLVMInstrumentation" for configuration "Debug"
+set_property(TARGET LLVMInstrumentation APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMInstrumentation PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMInstrumentation.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libLLVMInstrumentation.a"
   )
 
-# Import target "LLVMAggressiveInstCombine" for configuration "Release"
-set_property(TARGET LLVMAggressiveInstCombine APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "LLVMAggressiveInstCombine" for configuration "Debug"
+set_property(TARGET LLVMAggressiveInstCombine APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMAggressiveInstCombine PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMAggressiveInstCombine.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libLLVMAggressiveInstCombine.a"
   )
 
-# Import target "LLVMInstCombine" for configuration "Release"
-set_property(TARGET LLVMInstCombine APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "LLVMInstCombine" for configuration "Debug"
+set_property(TARGET LLVMInstCombine APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMInstCombine PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMInstCombine.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libLLVMInstCombine.a"
   )
 
-# Import target "LLVMScalarOpts" for configuration "Release"
-set_property(TARGET LLVMScalarOpts APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "LLVMScalarOpts" for configuration "Debug"
+set_property(TARGET LLVMScalarOpts APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMScalarOpts PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMScalarOpts.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libLLVMScalarOpts.a"
   )
 
-# Import target "LLVMipo" for configuration "Release"
-set_property(TARGET LLVMipo APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "LLVMipo" for configuration "Debug"
+set_property(TARGET LLVMipo APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMipo PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMipo.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libLLVMipo.a"
   )
 
-# Import target "LLVMVectorize" for configuration "Release"
-set_property(TARGET LLVMVectorize APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "LLVMVectorize" for configuration "Debug"
+set_property(TARGET LLVMVectorize APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMVectorize PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMVectorize.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libLLVMVectorize.a"
   )
 
-# Import target "LLVMObjCARCOpts" for configuration "Release"
-set_property(TARGET LLVMObjCARCOpts APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "LLVMObjCARCOpts" for configuration "Debug"
+set_property(TARGET LLVMObjCARCOpts APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMObjCARCOpts PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMObjCARCOpts.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libLLVMObjCARCOpts.a"
   )
 
-# Import target "LLVMCoroutines" for configuration "Release"
-set_property(TARGET LLVMCoroutines APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "LLVMCoroutines" for configuration "Debug"
+set_property(TARGET LLVMCoroutines APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMCoroutines PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMCoroutines.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libLLVMCoroutines.a"
   )
 
-# Import target "CountIR" for configuration "Release"
-set_property(TARGET CountIR APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "CountIR" for configuration "Debug"
+set_property(TARGET CountIR APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(CountIR PROPERTIES
-  IMPORTED_COMMON_LANGUAGE_RUNTIME_RELEASE ""
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/CountIR.dylib"
-  IMPORTED_NO_SONAME_RELEASE "TRUE"
+  IMPORTED_COMMON_LANGUAGE_RUNTIME_DEBUG ""
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/CountIR.dylib"
+  IMPORTED_NO_SONAME_DEBUG "TRUE"
   )
 
-# Import target "LLVMLinker" for configuration "Release"
-set_property(TARGET LLVMLinker APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "LLVMLinker" for configuration "Debug"
+set_property(TARGET LLVMLinker APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMLinker PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMLinker.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libLLVMLinker.a"
   )
 
-# Import target "LLVMAnalysis" for configuration "Release"
-set_property(TARGET LLVMAnalysis APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "LLVMAnalysis" for configuration "Debug"
+set_property(TARGET LLVMAnalysis APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMAnalysis PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMAnalysis.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libLLVMAnalysis.a"
   )
 
-# Import target "LLVMLTO" for configuration "Release"
-set_property(TARGET LLVMLTO APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "LLVMLTO" for configuration "Debug"
+set_property(TARGET LLVMLTO APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMLTO PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMLTO.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libLLVMLTO.a"
   )
 
-# Import target "LLVMMC" for configuration "Release"
-set_property(TARGET LLVMMC APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "LLVMMC" for configuration "Debug"
+set_property(TARGET LLVMMC APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMMC PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMMC.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libLLVMMC.a"
   )
 
-# Import target "LLVMMCParser" for configuration "Release"
-set_property(TARGET LLVMMCParser APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "LLVMMCParser" for configuration "Debug"
+set_property(TARGET LLVMMCParser APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMMCParser PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMMCParser.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libLLVMMCParser.a"
   )
 
-# Import target "LLVMMCDisassembler" for configuration "Release"
-set_property(TARGET LLVMMCDisassembler APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "LLVMMCDisassembler" for configuration "Debug"
+set_property(TARGET LLVMMCDisassembler APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMMCDisassembler PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMMCDisassembler.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libLLVMMCDisassembler.a"
   )
 
-# Import target "LLVMMCA" for configuration "Release"
-set_property(TARGET LLVMMCA APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "LLVMMCA" for configuration "Debug"
+set_property(TARGET LLVMMCA APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMMCA PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMMCA.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libLLVMMCA.a"
   )
 
-# Import target "LLVMObject" for configuration "Release"
-set_property(TARGET LLVMObject APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "LLVMObject" for configuration "Debug"
+set_property(TARGET LLVMObject APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMObject PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMObject.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libLLVMObject.a"
   )
 
-# Import target "LLVMObjectYAML" for configuration "Release"
-set_property(TARGET LLVMObjectYAML APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "LLVMObjectYAML" for configuration "Debug"
+set_property(TARGET LLVMObjectYAML APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMObjectYAML PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMObjectYAML.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libLLVMObjectYAML.a"
   )
 
-# Import target "LLVMOption" for configuration "Release"
-set_property(TARGET LLVMOption APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "LLVMOption" for configuration "Debug"
+set_property(TARGET LLVMOption APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMOption PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMOption.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libLLVMOption.a"
   )
 
-# Import target "LLVMOptRemarks" for configuration "Release"
-set_property(TARGET LLVMOptRemarks APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "LLVMOptRemarks" for configuration "Debug"
+set_property(TARGET LLVMOptRemarks APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMOptRemarks PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMOptRemarks.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libLLVMOptRemarks.a"
   )
 
-# Import target "LLVMDebugInfoDWARF" for configuration "Release"
-set_property(TARGET LLVMDebugInfoDWARF APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "LLVMDebugInfoDWARF" for configuration "Debug"
+set_property(TARGET LLVMDebugInfoDWARF APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMDebugInfoDWARF PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMDebugInfoDWARF.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libLLVMDebugInfoDWARF.a"
   )
 
-# Import target "LLVMDebugInfoMSF" for configuration "Release"
-set_property(TARGET LLVMDebugInfoMSF APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "LLVMDebugInfoMSF" for configuration "Debug"
+set_property(TARGET LLVMDebugInfoMSF APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMDebugInfoMSF PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMDebugInfoMSF.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libLLVMDebugInfoMSF.a"
   )
 
-# Import target "LLVMDebugInfoCodeView" for configuration "Release"
-set_property(TARGET LLVMDebugInfoCodeView APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "LLVMDebugInfoCodeView" for configuration "Debug"
+set_property(TARGET LLVMDebugInfoCodeView APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMDebugInfoCodeView PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMDebugInfoCodeView.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libLLVMDebugInfoCodeView.a"
   )
 
-# Import target "LLVMDebugInfoPDB" for configuration "Release"
-set_property(TARGET LLVMDebugInfoPDB APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "LLVMDebugInfoPDB" for configuration "Debug"
+set_property(TARGET LLVMDebugInfoPDB APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMDebugInfoPDB PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMDebugInfoPDB.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libLLVMDebugInfoPDB.a"
   )
 
-# Import target "LLVMSymbolize" for configuration "Release"
-set_property(TARGET LLVMSymbolize APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "LLVMSymbolize" for configuration "Debug"
+set_property(TARGET LLVMSymbolize APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMSymbolize PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMSymbolize.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libLLVMSymbolize.a"
   )
 
-# Import target "LLVMExecutionEngine" for configuration "Release"
-set_property(TARGET LLVMExecutionEngine APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "LLVMExecutionEngine" for configuration "Debug"
+set_property(TARGET LLVMExecutionEngine APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMExecutionEngine PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMExecutionEngine.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libLLVMExecutionEngine.a"
   )
 
-# Import target "LLVMInterpreter" for configuration "Release"
-set_property(TARGET LLVMInterpreter APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "LLVMInterpreter" for configuration "Debug"
+set_property(TARGET LLVMInterpreter APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMInterpreter PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMInterpreter.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libLLVMInterpreter.a"
   )
 
-# Import target "LLVMMCJIT" for configuration "Release"
-set_property(TARGET LLVMMCJIT APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "LLVMMCJIT" for configuration "Debug"
+set_property(TARGET LLVMMCJIT APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMMCJIT PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMMCJIT.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libLLVMMCJIT.a"
   )
 
-# Import target "LLVMOrcJIT" for configuration "Release"
-set_property(TARGET LLVMOrcJIT APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "LLVMOrcJIT" for configuration "Debug"
+set_property(TARGET LLVMOrcJIT APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMOrcJIT PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMOrcJIT.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libLLVMOrcJIT.a"
   )
 
-# Import target "LLVMRuntimeDyld" for configuration "Release"
-set_property(TARGET LLVMRuntimeDyld APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "LLVMRuntimeDyld" for configuration "Debug"
+set_property(TARGET LLVMRuntimeDyld APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMRuntimeDyld PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMRuntimeDyld.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libLLVMRuntimeDyld.a"
   )
 
-# Import target "LLVMTarget" for configuration "Release"
-set_property(TARGET LLVMTarget APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "LLVMTarget" for configuration "Debug"
+set_property(TARGET LLVMTarget APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMTarget PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMTarget.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libLLVMTarget.a"
   )
 
-# Import target "LLVMAArch64CodeGen" for configuration "Release"
-set_property(TARGET LLVMAArch64CodeGen APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMAArch64CodeGen PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMAArch64CodeGen.a"
-  )
-
-# Import target "LLVMAArch64AsmParser" for configuration "Release"
-set_property(TARGET LLVMAArch64AsmParser APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMAArch64AsmParser PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMAArch64AsmParser.a"
-  )
-
-# Import target "LLVMAArch64Disassembler" for configuration "Release"
-set_property(TARGET LLVMAArch64Disassembler APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMAArch64Disassembler PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMAArch64Disassembler.a"
-  )
-
-# Import target "LLVMAArch64AsmPrinter" for configuration "Release"
-set_property(TARGET LLVMAArch64AsmPrinter APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMAArch64AsmPrinter PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMAArch64AsmPrinter.a"
-  )
-
-# Import target "LLVMAArch64Desc" for configuration "Release"
-set_property(TARGET LLVMAArch64Desc APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMAArch64Desc PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMAArch64Desc.a"
-  )
-
-# Import target "LLVMAArch64Info" for configuration "Release"
-set_property(TARGET LLVMAArch64Info APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMAArch64Info PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMAArch64Info.a"
-  )
-
-# Import target "LLVMAArch64Utils" for configuration "Release"
-set_property(TARGET LLVMAArch64Utils APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMAArch64Utils PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMAArch64Utils.a"
-  )
-
-# Import target "LLVMAMDGPUCodeGen" for configuration "Release"
-set_property(TARGET LLVMAMDGPUCodeGen APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMAMDGPUCodeGen PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMAMDGPUCodeGen.a"
-  )
-
-# Import target "LLVMAMDGPUAsmParser" for configuration "Release"
-set_property(TARGET LLVMAMDGPUAsmParser APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMAMDGPUAsmParser PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMAMDGPUAsmParser.a"
-  )
-
-# Import target "LLVMAMDGPUDisassembler" for configuration "Release"
-set_property(TARGET LLVMAMDGPUDisassembler APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMAMDGPUDisassembler PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMAMDGPUDisassembler.a"
-  )
-
-# Import target "LLVMAMDGPUAsmPrinter" for configuration "Release"
-set_property(TARGET LLVMAMDGPUAsmPrinter APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMAMDGPUAsmPrinter PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMAMDGPUAsmPrinter.a"
-  )
-
-# Import target "LLVMAMDGPUDesc" for configuration "Release"
-set_property(TARGET LLVMAMDGPUDesc APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMAMDGPUDesc PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMAMDGPUDesc.a"
-  )
-
-# Import target "LLVMAMDGPUInfo" for configuration "Release"
-set_property(TARGET LLVMAMDGPUInfo APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMAMDGPUInfo PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMAMDGPUInfo.a"
-  )
-
-# Import target "LLVMAMDGPUUtils" for configuration "Release"
-set_property(TARGET LLVMAMDGPUUtils APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMAMDGPUUtils PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMAMDGPUUtils.a"
-  )
-
-# Import target "LLVMARMCodeGen" for configuration "Release"
-set_property(TARGET LLVMARMCodeGen APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMARMCodeGen PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMARMCodeGen.a"
-  )
-
-# Import target "LLVMARMAsmParser" for configuration "Release"
-set_property(TARGET LLVMARMAsmParser APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMARMAsmParser PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMARMAsmParser.a"
-  )
-
-# Import target "LLVMARMDisassembler" for configuration "Release"
-set_property(TARGET LLVMARMDisassembler APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMARMDisassembler PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMARMDisassembler.a"
-  )
-
-# Import target "LLVMARMAsmPrinter" for configuration "Release"
-set_property(TARGET LLVMARMAsmPrinter APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMARMAsmPrinter PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMARMAsmPrinter.a"
-  )
-
-# Import target "LLVMARMDesc" for configuration "Release"
-set_property(TARGET LLVMARMDesc APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMARMDesc PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMARMDesc.a"
-  )
-
-# Import target "LLVMARMInfo" for configuration "Release"
-set_property(TARGET LLVMARMInfo APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMARMInfo PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMARMInfo.a"
-  )
-
-# Import target "LLVMARMUtils" for configuration "Release"
-set_property(TARGET LLVMARMUtils APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMARMUtils PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMARMUtils.a"
-  )
-
-# Import target "LLVMBPFCodeGen" for configuration "Release"
-set_property(TARGET LLVMBPFCodeGen APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMBPFCodeGen PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMBPFCodeGen.a"
-  )
-
-# Import target "LLVMBPFAsmParser" for configuration "Release"
-set_property(TARGET LLVMBPFAsmParser APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMBPFAsmParser PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMBPFAsmParser.a"
-  )
-
-# Import target "LLVMBPFDisassembler" for configuration "Release"
-set_property(TARGET LLVMBPFDisassembler APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMBPFDisassembler PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMBPFDisassembler.a"
-  )
-
-# Import target "LLVMBPFAsmPrinter" for configuration "Release"
-set_property(TARGET LLVMBPFAsmPrinter APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMBPFAsmPrinter PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMBPFAsmPrinter.a"
-  )
-
-# Import target "LLVMBPFDesc" for configuration "Release"
-set_property(TARGET LLVMBPFDesc APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMBPFDesc PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMBPFDesc.a"
-  )
-
-# Import target "LLVMBPFInfo" for configuration "Release"
-set_property(TARGET LLVMBPFInfo APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMBPFInfo PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMBPFInfo.a"
-  )
-
-# Import target "LLVMHexagonCodeGen" for configuration "Release"
-set_property(TARGET LLVMHexagonCodeGen APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMHexagonCodeGen PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMHexagonCodeGen.a"
-  )
-
-# Import target "LLVMHexagonAsmParser" for configuration "Release"
-set_property(TARGET LLVMHexagonAsmParser APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMHexagonAsmParser PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMHexagonAsmParser.a"
-  )
-
-# Import target "LLVMHexagonDisassembler" for configuration "Release"
-set_property(TARGET LLVMHexagonDisassembler APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMHexagonDisassembler PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMHexagonDisassembler.a"
-  )
-
-# Import target "LLVMHexagonDesc" for configuration "Release"
-set_property(TARGET LLVMHexagonDesc APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMHexagonDesc PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMHexagonDesc.a"
-  )
-
-# Import target "LLVMHexagonInfo" for configuration "Release"
-set_property(TARGET LLVMHexagonInfo APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMHexagonInfo PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMHexagonInfo.a"
-  )
-
-# Import target "LLVMLanaiCodeGen" for configuration "Release"
-set_property(TARGET LLVMLanaiCodeGen APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMLanaiCodeGen PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMLanaiCodeGen.a"
-  )
-
-# Import target "LLVMLanaiAsmParser" for configuration "Release"
-set_property(TARGET LLVMLanaiAsmParser APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMLanaiAsmParser PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMLanaiAsmParser.a"
-  )
-
-# Import target "LLVMLanaiDisassembler" for configuration "Release"
-set_property(TARGET LLVMLanaiDisassembler APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMLanaiDisassembler PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMLanaiDisassembler.a"
-  )
-
-# Import target "LLVMLanaiAsmPrinter" for configuration "Release"
-set_property(TARGET LLVMLanaiAsmPrinter APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMLanaiAsmPrinter PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMLanaiAsmPrinter.a"
-  )
-
-# Import target "LLVMLanaiDesc" for configuration "Release"
-set_property(TARGET LLVMLanaiDesc APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMLanaiDesc PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMLanaiDesc.a"
-  )
-
-# Import target "LLVMLanaiInfo" for configuration "Release"
-set_property(TARGET LLVMLanaiInfo APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMLanaiInfo PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMLanaiInfo.a"
-  )
-
-# Import target "LLVMMipsCodeGen" for configuration "Release"
-set_property(TARGET LLVMMipsCodeGen APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMMipsCodeGen PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMMipsCodeGen.a"
-  )
-
-# Import target "LLVMMipsAsmParser" for configuration "Release"
-set_property(TARGET LLVMMipsAsmParser APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMMipsAsmParser PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMMipsAsmParser.a"
-  )
-
-# Import target "LLVMMipsDisassembler" for configuration "Release"
-set_property(TARGET LLVMMipsDisassembler APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMMipsDisassembler PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMMipsDisassembler.a"
-  )
-
-# Import target "LLVMMipsAsmPrinter" for configuration "Release"
-set_property(TARGET LLVMMipsAsmPrinter APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMMipsAsmPrinter PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMMipsAsmPrinter.a"
-  )
-
-# Import target "LLVMMipsDesc" for configuration "Release"
-set_property(TARGET LLVMMipsDesc APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMMipsDesc PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMMipsDesc.a"
-  )
-
-# Import target "LLVMMipsInfo" for configuration "Release"
-set_property(TARGET LLVMMipsInfo APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMMipsInfo PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMMipsInfo.a"
-  )
-
-# Import target "LLVMMSP430CodeGen" for configuration "Release"
-set_property(TARGET LLVMMSP430CodeGen APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMMSP430CodeGen PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMMSP430CodeGen.a"
-  )
-
-# Import target "LLVMMSP430AsmPrinter" for configuration "Release"
-set_property(TARGET LLVMMSP430AsmPrinter APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMMSP430AsmPrinter PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMMSP430AsmPrinter.a"
-  )
-
-# Import target "LLVMMSP430Desc" for configuration "Release"
-set_property(TARGET LLVMMSP430Desc APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMMSP430Desc PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMMSP430Desc.a"
-  )
-
-# Import target "LLVMMSP430Info" for configuration "Release"
-set_property(TARGET LLVMMSP430Info APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMMSP430Info PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMMSP430Info.a"
-  )
-
-# Import target "LLVMMSP430AsmParser" for configuration "Release"
-set_property(TARGET LLVMMSP430AsmParser APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMMSP430AsmParser PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMMSP430AsmParser.a"
-  )
-
-# Import target "LLVMMSP430Disassembler" for configuration "Release"
-set_property(TARGET LLVMMSP430Disassembler APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMMSP430Disassembler PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMMSP430Disassembler.a"
-  )
-
-# Import target "LLVMNVPTXCodeGen" for configuration "Release"
-set_property(TARGET LLVMNVPTXCodeGen APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMNVPTXCodeGen PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMNVPTXCodeGen.a"
-  )
-
-# Import target "LLVMNVPTXAsmPrinter" for configuration "Release"
-set_property(TARGET LLVMNVPTXAsmPrinter APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMNVPTXAsmPrinter PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMNVPTXAsmPrinter.a"
-  )
-
-# Import target "LLVMNVPTXDesc" for configuration "Release"
-set_property(TARGET LLVMNVPTXDesc APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMNVPTXDesc PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMNVPTXDesc.a"
-  )
-
-# Import target "LLVMNVPTXInfo" for configuration "Release"
-set_property(TARGET LLVMNVPTXInfo APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMNVPTXInfo PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMNVPTXInfo.a"
-  )
-
-# Import target "LLVMPowerPCCodeGen" for configuration "Release"
-set_property(TARGET LLVMPowerPCCodeGen APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMPowerPCCodeGen PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMPowerPCCodeGen.a"
-  )
-
-# Import target "LLVMPowerPCAsmParser" for configuration "Release"
-set_property(TARGET LLVMPowerPCAsmParser APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMPowerPCAsmParser PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMPowerPCAsmParser.a"
-  )
-
-# Import target "LLVMPowerPCDisassembler" for configuration "Release"
-set_property(TARGET LLVMPowerPCDisassembler APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMPowerPCDisassembler PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMPowerPCDisassembler.a"
-  )
-
-# Import target "LLVMPowerPCAsmPrinter" for configuration "Release"
-set_property(TARGET LLVMPowerPCAsmPrinter APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMPowerPCAsmPrinter PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMPowerPCAsmPrinter.a"
-  )
-
-# Import target "LLVMPowerPCDesc" for configuration "Release"
-set_property(TARGET LLVMPowerPCDesc APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMPowerPCDesc PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMPowerPCDesc.a"
-  )
-
-# Import target "LLVMPowerPCInfo" for configuration "Release"
-set_property(TARGET LLVMPowerPCInfo APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMPowerPCInfo PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMPowerPCInfo.a"
-  )
-
-# Import target "LLVMSparcCodeGen" for configuration "Release"
-set_property(TARGET LLVMSparcCodeGen APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMSparcCodeGen PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMSparcCodeGen.a"
-  )
-
-# Import target "LLVMSparcAsmParser" for configuration "Release"
-set_property(TARGET LLVMSparcAsmParser APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMSparcAsmParser PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMSparcAsmParser.a"
-  )
-
-# Import target "LLVMSparcDisassembler" for configuration "Release"
-set_property(TARGET LLVMSparcDisassembler APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMSparcDisassembler PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMSparcDisassembler.a"
-  )
-
-# Import target "LLVMSparcAsmPrinter" for configuration "Release"
-set_property(TARGET LLVMSparcAsmPrinter APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMSparcAsmPrinter PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMSparcAsmPrinter.a"
-  )
-
-# Import target "LLVMSparcDesc" for configuration "Release"
-set_property(TARGET LLVMSparcDesc APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMSparcDesc PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMSparcDesc.a"
-  )
-
-# Import target "LLVMSparcInfo" for configuration "Release"
-set_property(TARGET LLVMSparcInfo APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMSparcInfo PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMSparcInfo.a"
-  )
-
-# Import target "LLVMSystemZCodeGen" for configuration "Release"
-set_property(TARGET LLVMSystemZCodeGen APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMSystemZCodeGen PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMSystemZCodeGen.a"
-  )
-
-# Import target "LLVMSystemZAsmParser" for configuration "Release"
-set_property(TARGET LLVMSystemZAsmParser APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMSystemZAsmParser PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMSystemZAsmParser.a"
-  )
-
-# Import target "LLVMSystemZDisassembler" for configuration "Release"
-set_property(TARGET LLVMSystemZDisassembler APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMSystemZDisassembler PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMSystemZDisassembler.a"
-  )
-
-# Import target "LLVMSystemZAsmPrinter" for configuration "Release"
-set_property(TARGET LLVMSystemZAsmPrinter APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMSystemZAsmPrinter PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMSystemZAsmPrinter.a"
-  )
-
-# Import target "LLVMSystemZDesc" for configuration "Release"
-set_property(TARGET LLVMSystemZDesc APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMSystemZDesc PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMSystemZDesc.a"
-  )
-
-# Import target "LLVMSystemZInfo" for configuration "Release"
-set_property(TARGET LLVMSystemZInfo APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMSystemZInfo PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMSystemZInfo.a"
-  )
-
-# Import target "LLVMWebAssemblyCodeGen" for configuration "Release"
-set_property(TARGET LLVMWebAssemblyCodeGen APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMWebAssemblyCodeGen PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMWebAssemblyCodeGen.a"
-  )
-
-# Import target "LLVMWebAssemblyAsmParser" for configuration "Release"
-set_property(TARGET LLVMWebAssemblyAsmParser APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMWebAssemblyAsmParser PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMWebAssemblyAsmParser.a"
-  )
-
-# Import target "LLVMWebAssemblyDisassembler" for configuration "Release"
-set_property(TARGET LLVMWebAssemblyDisassembler APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMWebAssemblyDisassembler PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMWebAssemblyDisassembler.a"
-  )
-
-# Import target "LLVMWebAssemblyAsmPrinter" for configuration "Release"
-set_property(TARGET LLVMWebAssemblyAsmPrinter APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMWebAssemblyAsmPrinter PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMWebAssemblyAsmPrinter.a"
-  )
-
-# Import target "LLVMWebAssemblyDesc" for configuration "Release"
-set_property(TARGET LLVMWebAssemblyDesc APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMWebAssemblyDesc PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMWebAssemblyDesc.a"
-  )
-
-# Import target "LLVMWebAssemblyInfo" for configuration "Release"
-set_property(TARGET LLVMWebAssemblyInfo APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMWebAssemblyInfo PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMWebAssemblyInfo.a"
-  )
-
-# Import target "LLVMX86CodeGen" for configuration "Release"
-set_property(TARGET LLVMX86CodeGen APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMX86CodeGen PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMX86CodeGen.a"
-  )
-
-# Import target "LLVMX86AsmParser" for configuration "Release"
-set_property(TARGET LLVMX86AsmParser APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMX86AsmParser PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMX86AsmParser.a"
-  )
-
-# Import target "LLVMX86Disassembler" for configuration "Release"
-set_property(TARGET LLVMX86Disassembler APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMX86Disassembler PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMX86Disassembler.a"
-  )
-
-# Import target "LLVMX86AsmPrinter" for configuration "Release"
-set_property(TARGET LLVMX86AsmPrinter APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMX86AsmPrinter PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMX86AsmPrinter.a"
-  )
-
-# Import target "LLVMX86Desc" for configuration "Release"
-set_property(TARGET LLVMX86Desc APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMX86Desc PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMX86Desc.a"
-  )
-
-# Import target "LLVMX86Info" for configuration "Release"
-set_property(TARGET LLVMX86Info APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMX86Info PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMX86Info.a"
-  )
-
-# Import target "LLVMX86Utils" for configuration "Release"
-set_property(TARGET LLVMX86Utils APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMX86Utils PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMX86Utils.a"
-  )
-
-# Import target "LLVMXCoreCodeGen" for configuration "Release"
-set_property(TARGET LLVMXCoreCodeGen APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMXCoreCodeGen PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMXCoreCodeGen.a"
-  )
-
-# Import target "LLVMXCoreDisassembler" for configuration "Release"
-set_property(TARGET LLVMXCoreDisassembler APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMXCoreDisassembler PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMXCoreDisassembler.a"
-  )
-
-# Import target "LLVMXCoreAsmPrinter" for configuration "Release"
-set_property(TARGET LLVMXCoreAsmPrinter APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMXCoreAsmPrinter PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMXCoreAsmPrinter.a"
-  )
-
-# Import target "LLVMXCoreDesc" for configuration "Release"
-set_property(TARGET LLVMXCoreDesc APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMXCoreDesc PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMXCoreDesc.a"
-  )
-
-# Import target "LLVMXCoreInfo" for configuration "Release"
-set_property(TARGET LLVMXCoreInfo APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMXCoreInfo PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMXCoreInfo.a"
-  )
-
-# Import target "LLVMNMXCodeGen" for configuration "Release"
-set_property(TARGET LLVMNMXCodeGen APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "LLVMNMXCodeGen" for configuration "Debug"
+set_property(TARGET LLVMNMXCodeGen APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMNMXCodeGen PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMNMXCodeGen.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libLLVMNMXCodeGen.a"
   )
 
-# Import target "LLVMNMXInfo" for configuration "Release"
-set_property(TARGET LLVMNMXInfo APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "LLVMNMXInfo" for configuration "Debug"
+set_property(TARGET LLVMNMXInfo APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMNMXInfo PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMNMXInfo.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libLLVMNMXInfo.a"
   )
 
-# Import target "LLVMNMXDesc" for configuration "Release"
-set_property(TARGET LLVMNMXDesc APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "LLVMNMXDesc" for configuration "Debug"
+set_property(TARGET LLVMNMXDesc APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMNMXDesc PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMNMXDesc.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libLLVMNMXDesc.a"
   )
 
-# Import target "LLVMNMXAsmPrinter" for configuration "Release"
-set_property(TARGET LLVMNMXAsmPrinter APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "LLVMNMXAsmPrinter" for configuration "Debug"
+set_property(TARGET LLVMNMXAsmPrinter APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMNMXAsmPrinter PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMNMXAsmPrinter.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libLLVMNMXAsmPrinter.a"
   )
 
-# Import target "LLVMNMXDisassembler" for configuration "Release"
-set_property(TARGET LLVMNMXDisassembler APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "LLVMNMXDisassembler" for configuration "Debug"
+set_property(TARGET LLVMNMXDisassembler APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMNMXDisassembler PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMNMXDisassembler.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libLLVMNMXDisassembler.a"
   )
 
-# Import target "LLVMNMXAsmParser" for configuration "Release"
-set_property(TARGET LLVMNMXAsmParser APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "LLVMNMXAsmParser" for configuration "Debug"
+set_property(TARGET LLVMNMXAsmParser APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMNMXAsmParser PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMNMXAsmParser.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libLLVMNMXAsmParser.a"
   )
 
-# Import target "LLVMAsmParser" for configuration "Release"
-set_property(TARGET LLVMAsmParser APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "LLVMAsmParser" for configuration "Debug"
+set_property(TARGET LLVMAsmParser APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMAsmParser PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMAsmParser.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libLLVMAsmParser.a"
   )
 
-# Import target "LLVMLineEditor" for configuration "Release"
-set_property(TARGET LLVMLineEditor APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "LLVMLineEditor" for configuration "Debug"
+set_property(TARGET LLVMLineEditor APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMLineEditor PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMLineEditor.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libLLVMLineEditor.a"
   )
 
-# Import target "LLVMProfileData" for configuration "Release"
-set_property(TARGET LLVMProfileData APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "LLVMProfileData" for configuration "Debug"
+set_property(TARGET LLVMProfileData APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMProfileData PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMProfileData.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libLLVMProfileData.a"
   )
 
-# Import target "LLVMCoverage" for configuration "Release"
-set_property(TARGET LLVMCoverage APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "LLVMCoverage" for configuration "Debug"
+set_property(TARGET LLVMCoverage APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMCoverage PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMCoverage.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libLLVMCoverage.a"
   )
 
-# Import target "LLVMPasses" for configuration "Release"
-set_property(TARGET LLVMPasses APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "LLVMPasses" for configuration "Debug"
+set_property(TARGET LLVMPasses APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMPasses PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMPasses.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libLLVMPasses.a"
   )
 
-# Import target "LLVMTextAPI" for configuration "Release"
-set_property(TARGET LLVMTextAPI APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "LLVMTextAPI" for configuration "Debug"
+set_property(TARGET LLVMTextAPI APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMTextAPI PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMTextAPI.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libLLVMTextAPI.a"
   )
 
-# Import target "LLVMDlltoolDriver" for configuration "Release"
-set_property(TARGET LLVMDlltoolDriver APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "LLVMDlltoolDriver" for configuration "Debug"
+set_property(TARGET LLVMDlltoolDriver APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMDlltoolDriver PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMDlltoolDriver.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libLLVMDlltoolDriver.a"
   )
 
-# Import target "LLVMLibDriver" for configuration "Release"
-set_property(TARGET LLVMLibDriver APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "LLVMLibDriver" for configuration "Debug"
+set_property(TARGET LLVMLibDriver APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMLibDriver PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMLibDriver.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libLLVMLibDriver.a"
   )
 
-# Import target "LLVMXRay" for configuration "Release"
-set_property(TARGET LLVMXRay APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "LLVMXRay" for configuration "Debug"
+set_property(TARGET LLVMXRay APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMXRay PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMXRay.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libLLVMXRay.a"
   )
 
-# Import target "LLVMWindowsManifest" for configuration "Release"
-set_property(TARGET LLVMWindowsManifest APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "LLVMWindowsManifest" for configuration "Debug"
+set_property(TARGET LLVMWindowsManifest APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMWindowsManifest PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMWindowsManifest.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libLLVMWindowsManifest.a"
   )
 
-# Import target "LTO" for configuration "Release"
-set_property(TARGET LTO APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "LTO" for configuration "Debug"
+set_property(TARGET LTO APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LTO PROPERTIES
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLTO.dylib"
-  IMPORTED_SONAME_RELEASE "@rpath/libLTO.dylib"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libLTO.dylib"
+  IMPORTED_SONAME_DEBUG "@rpath/libLTO.dylib"
   )
 
-# Import target "llvm-ar" for configuration "Release"
-set_property(TARGET llvm-ar APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "llvm-ar" for configuration "Debug"
+set_property(TARGET llvm-ar APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(llvm-ar PROPERTIES
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/bin/llvm-ar"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/bin/llvm-ar"
   )
 
-# Import target "llvm-config" for configuration "Release"
-set_property(TARGET llvm-config APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "llvm-config" for configuration "Debug"
+set_property(TARGET llvm-config APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(llvm-config PROPERTIES
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/bin/llvm-config"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/bin/llvm-config"
   )
 
-# Import target "llvm-lto" for configuration "Release"
-set_property(TARGET llvm-lto APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "llvm-lto" for configuration "Debug"
+set_property(TARGET llvm-lto APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(llvm-lto PROPERTIES
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/bin/llvm-lto"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/bin/llvm-lto"
   )
 
-# Import target "llvm-profdata" for configuration "Release"
-set_property(TARGET llvm-profdata APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "llvm-profdata" for configuration "Debug"
+set_property(TARGET llvm-profdata APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(llvm-profdata PROPERTIES
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/bin/llvm-profdata"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/bin/llvm-profdata"
   )
 
-# Import target "clang-tblgen" for configuration "Release"
-set_property(TARGET clang-tblgen APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "clang-tblgen" for configuration "Debug"
+set_property(TARGET clang-tblgen APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(clang-tblgen PROPERTIES
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/bin/clang-tblgen"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/bin/clang-tblgen"
   )
 
-# Import target "bugpoint" for configuration "Release"
-set_property(TARGET bugpoint APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "bugpoint" for configuration "Debug"
+set_property(TARGET bugpoint APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(bugpoint PROPERTIES
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/bin/bugpoint"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/bin/bugpoint"
   )
 
-# Import target "dsymutil" for configuration "Release"
-set_property(TARGET dsymutil APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "dsymutil" for configuration "Debug"
+set_property(TARGET dsymutil APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(dsymutil PROPERTIES
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/bin/dsymutil"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/bin/dsymutil"
   )
 
-# Import target "llc" for configuration "Release"
-set_property(TARGET llc APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "llc" for configuration "Debug"
+set_property(TARGET llc APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(llc PROPERTIES
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/bin/llc"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/bin/llc"
   )
 
-# Import target "lli" for configuration "Release"
-set_property(TARGET lli APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "lli" for configuration "Debug"
+set_property(TARGET lli APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(lli PROPERTIES
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/bin/lli"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/bin/lli"
   )
 
-# Import target "llvm-as" for configuration "Release"
-set_property(TARGET llvm-as APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "llvm-as" for configuration "Debug"
+set_property(TARGET llvm-as APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(llvm-as PROPERTIES
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/bin/llvm-as"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/bin/llvm-as"
   )
 
-# Import target "llvm-bcanalyzer" for configuration "Release"
-set_property(TARGET llvm-bcanalyzer APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "llvm-bcanalyzer" for configuration "Debug"
+set_property(TARGET llvm-bcanalyzer APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(llvm-bcanalyzer PROPERTIES
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/bin/llvm-bcanalyzer"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/bin/llvm-bcanalyzer"
   )
 
-# Import target "llvm-c-test" for configuration "Release"
-set_property(TARGET llvm-c-test APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "llvm-c-test" for configuration "Debug"
+set_property(TARGET llvm-c-test APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(llvm-c-test PROPERTIES
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/bin/llvm-c-test"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/bin/llvm-c-test"
   )
 
-# Import target "llvm-cat" for configuration "Release"
-set_property(TARGET llvm-cat APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "llvm-cat" for configuration "Debug"
+set_property(TARGET llvm-cat APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(llvm-cat PROPERTIES
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/bin/llvm-cat"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/bin/llvm-cat"
   )
 
-# Import target "llvm-cfi-verify" for configuration "Release"
-set_property(TARGET llvm-cfi-verify APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "llvm-cfi-verify" for configuration "Debug"
+set_property(TARGET llvm-cfi-verify APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(llvm-cfi-verify PROPERTIES
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/bin/llvm-cfi-verify"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/bin/llvm-cfi-verify"
   )
 
-# Import target "llvm-cov" for configuration "Release"
-set_property(TARGET llvm-cov APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "llvm-cov" for configuration "Debug"
+set_property(TARGET llvm-cov APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(llvm-cov PROPERTIES
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/bin/llvm-cov"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/bin/llvm-cov"
   )
 
-# Import target "llvm-cvtres" for configuration "Release"
-set_property(TARGET llvm-cvtres APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "llvm-cvtres" for configuration "Debug"
+set_property(TARGET llvm-cvtres APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(llvm-cvtres PROPERTIES
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/bin/llvm-cvtres"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/bin/llvm-cvtres"
   )
 
-# Import target "llvm-cxxdump" for configuration "Release"
-set_property(TARGET llvm-cxxdump APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "llvm-cxxdump" for configuration "Debug"
+set_property(TARGET llvm-cxxdump APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(llvm-cxxdump PROPERTIES
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/bin/llvm-cxxdump"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/bin/llvm-cxxdump"
   )
 
-# Import target "llvm-cxxfilt" for configuration "Release"
-set_property(TARGET llvm-cxxfilt APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "llvm-cxxfilt" for configuration "Debug"
+set_property(TARGET llvm-cxxfilt APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(llvm-cxxfilt PROPERTIES
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/bin/llvm-cxxfilt"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/bin/llvm-cxxfilt"
   )
 
-# Import target "llvm-cxxmap" for configuration "Release"
-set_property(TARGET llvm-cxxmap APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "llvm-cxxmap" for configuration "Debug"
+set_property(TARGET llvm-cxxmap APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(llvm-cxxmap PROPERTIES
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/bin/llvm-cxxmap"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/bin/llvm-cxxmap"
   )
 
-# Import target "llvm-diff" for configuration "Release"
-set_property(TARGET llvm-diff APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "llvm-diff" for configuration "Debug"
+set_property(TARGET llvm-diff APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(llvm-diff PROPERTIES
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/bin/llvm-diff"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/bin/llvm-diff"
   )
 
-# Import target "llvm-dis" for configuration "Release"
-set_property(TARGET llvm-dis APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "llvm-dis" for configuration "Debug"
+set_property(TARGET llvm-dis APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(llvm-dis PROPERTIES
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/bin/llvm-dis"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/bin/llvm-dis"
   )
 
-# Import target "llvm-dwarfdump" for configuration "Release"
-set_property(TARGET llvm-dwarfdump APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "llvm-dwarfdump" for configuration "Debug"
+set_property(TARGET llvm-dwarfdump APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(llvm-dwarfdump PROPERTIES
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/bin/llvm-dwarfdump"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/bin/llvm-dwarfdump"
   )
 
-# Import target "llvm-dwp" for configuration "Release"
-set_property(TARGET llvm-dwp APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "llvm-dwp" for configuration "Debug"
+set_property(TARGET llvm-dwp APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(llvm-dwp PROPERTIES
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/bin/llvm-dwp"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/bin/llvm-dwp"
   )
 
-# Import target "llvm-elfabi" for configuration "Release"
-set_property(TARGET llvm-elfabi APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "llvm-elfabi" for configuration "Debug"
+set_property(TARGET llvm-elfabi APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(llvm-elfabi PROPERTIES
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/bin/llvm-elfabi"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/bin/llvm-elfabi"
   )
 
-# Import target "llvm-exegesis" for configuration "Release"
-set_property(TARGET llvm-exegesis APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "llvm-exegesis" for configuration "Debug"
+set_property(TARGET llvm-exegesis APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(llvm-exegesis PROPERTIES
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/bin/llvm-exegesis"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/bin/llvm-exegesis"
   )
 
-# Import target "llvm-extract" for configuration "Release"
-set_property(TARGET llvm-extract APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "llvm-extract" for configuration "Debug"
+set_property(TARGET llvm-extract APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(llvm-extract PROPERTIES
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/bin/llvm-extract"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/bin/llvm-extract"
   )
 
-# Import target "llvm-link" for configuration "Release"
-set_property(TARGET llvm-link APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "llvm-link" for configuration "Debug"
+set_property(TARGET llvm-link APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(llvm-link PROPERTIES
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/bin/llvm-link"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/bin/llvm-link"
   )
 
-# Import target "llvm-lto2" for configuration "Release"
-set_property(TARGET llvm-lto2 APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "llvm-lto2" for configuration "Debug"
+set_property(TARGET llvm-lto2 APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(llvm-lto2 PROPERTIES
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/bin/llvm-lto2"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/bin/llvm-lto2"
   )
 
-# Import target "llvm-mc" for configuration "Release"
-set_property(TARGET llvm-mc APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "llvm-mc" for configuration "Debug"
+set_property(TARGET llvm-mc APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(llvm-mc PROPERTIES
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/bin/llvm-mc"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/bin/llvm-mc"
   )
 
-# Import target "llvm-mca" for configuration "Release"
-set_property(TARGET llvm-mca APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "llvm-mca" for configuration "Debug"
+set_property(TARGET llvm-mca APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(llvm-mca PROPERTIES
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/bin/llvm-mca"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/bin/llvm-mca"
   )
 
-# Import target "llvm-modextract" for configuration "Release"
-set_property(TARGET llvm-modextract APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "llvm-modextract" for configuration "Debug"
+set_property(TARGET llvm-modextract APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(llvm-modextract PROPERTIES
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/bin/llvm-modextract"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/bin/llvm-modextract"
   )
 
-# Import target "llvm-mt" for configuration "Release"
-set_property(TARGET llvm-mt APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "llvm-mt" for configuration "Debug"
+set_property(TARGET llvm-mt APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(llvm-mt PROPERTIES
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/bin/llvm-mt"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/bin/llvm-mt"
   )
 
-# Import target "llvm-nm" for configuration "Release"
-set_property(TARGET llvm-nm APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "llvm-nm" for configuration "Debug"
+set_property(TARGET llvm-nm APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(llvm-nm PROPERTIES
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/bin/llvm-nm"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/bin/llvm-nm"
   )
 
-# Import target "llvm-objcopy" for configuration "Release"
-set_property(TARGET llvm-objcopy APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "llvm-objcopy" for configuration "Debug"
+set_property(TARGET llvm-objcopy APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(llvm-objcopy PROPERTIES
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/bin/llvm-objcopy"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/bin/llvm-objcopy"
   )
 
-# Import target "llvm-objdump" for configuration "Release"
-set_property(TARGET llvm-objdump APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "llvm-objdump" for configuration "Debug"
+set_property(TARGET llvm-objdump APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(llvm-objdump PROPERTIES
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/bin/llvm-objdump"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/bin/llvm-objdump"
   )
 
-# Import target "llvm-opt-report" for configuration "Release"
-set_property(TARGET llvm-opt-report APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "llvm-opt-report" for configuration "Debug"
+set_property(TARGET llvm-opt-report APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(llvm-opt-report PROPERTIES
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/bin/llvm-opt-report"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/bin/llvm-opt-report"
   )
 
-# Import target "llvm-pdbutil" for configuration "Release"
-set_property(TARGET llvm-pdbutil APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "llvm-pdbutil" for configuration "Debug"
+set_property(TARGET llvm-pdbutil APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(llvm-pdbutil PROPERTIES
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/bin/llvm-pdbutil"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/bin/llvm-pdbutil"
   )
 
-# Import target "llvm-rc" for configuration "Release"
-set_property(TARGET llvm-rc APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "llvm-rc" for configuration "Debug"
+set_property(TARGET llvm-rc APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(llvm-rc PROPERTIES
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/bin/llvm-rc"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/bin/llvm-rc"
   )
 
-# Import target "llvm-readobj" for configuration "Release"
-set_property(TARGET llvm-readobj APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "llvm-readobj" for configuration "Debug"
+set_property(TARGET llvm-readobj APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(llvm-readobj PROPERTIES
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/bin/llvm-readobj"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/bin/llvm-readobj"
   )
 
-# Import target "llvm-rtdyld" for configuration "Release"
-set_property(TARGET llvm-rtdyld APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "llvm-rtdyld" for configuration "Debug"
+set_property(TARGET llvm-rtdyld APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(llvm-rtdyld PROPERTIES
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/bin/llvm-rtdyld"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/bin/llvm-rtdyld"
   )
 
-# Import target "llvm-size" for configuration "Release"
-set_property(TARGET llvm-size APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "llvm-size" for configuration "Debug"
+set_property(TARGET llvm-size APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(llvm-size PROPERTIES
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/bin/llvm-size"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/bin/llvm-size"
   )
 
-# Import target "llvm-split" for configuration "Release"
-set_property(TARGET llvm-split APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "llvm-split" for configuration "Debug"
+set_property(TARGET llvm-split APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(llvm-split PROPERTIES
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/bin/llvm-split"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/bin/llvm-split"
   )
 
-# Import target "llvm-stress" for configuration "Release"
-set_property(TARGET llvm-stress APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "llvm-stress" for configuration "Debug"
+set_property(TARGET llvm-stress APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(llvm-stress PROPERTIES
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/bin/llvm-stress"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/bin/llvm-stress"
   )
 
-# Import target "llvm-strings" for configuration "Release"
-set_property(TARGET llvm-strings APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "llvm-strings" for configuration "Debug"
+set_property(TARGET llvm-strings APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(llvm-strings PROPERTIES
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/bin/llvm-strings"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/bin/llvm-strings"
   )
 
-# Import target "llvm-symbolizer" for configuration "Release"
-set_property(TARGET llvm-symbolizer APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "llvm-symbolizer" for configuration "Debug"
+set_property(TARGET llvm-symbolizer APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(llvm-symbolizer PROPERTIES
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/bin/llvm-symbolizer"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/bin/llvm-symbolizer"
   )
 
-# Import target "llvm-undname" for configuration "Release"
-set_property(TARGET llvm-undname APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "llvm-undname" for configuration "Debug"
+set_property(TARGET llvm-undname APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(llvm-undname PROPERTIES
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/bin/llvm-undname"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/bin/llvm-undname"
   )
 
-# Import target "llvm-xray" for configuration "Release"
-set_property(TARGET llvm-xray APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "llvm-xray" for configuration "Debug"
+set_property(TARGET llvm-xray APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(llvm-xray PROPERTIES
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/bin/llvm-xray"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/bin/llvm-xray"
   )
 
-# Import target "obj2yaml" for configuration "Release"
-set_property(TARGET obj2yaml APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "obj2yaml" for configuration "Debug"
+set_property(TARGET obj2yaml APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(obj2yaml PROPERTIES
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/bin/obj2yaml"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/bin/obj2yaml"
   )
 
-# Import target "opt" for configuration "Release"
-set_property(TARGET opt APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "opt" for configuration "Debug"
+set_property(TARGET opt APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(opt PROPERTIES
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/bin/opt"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/bin/opt"
   )
 
-# Import target "OptRemarks" for configuration "Release"
-set_property(TARGET OptRemarks APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "OptRemarks" for configuration "Debug"
+set_property(TARGET OptRemarks APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(OptRemarks PROPERTIES
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libOptRemarks.dylib"
-  IMPORTED_SONAME_RELEASE "@rpath/libOptRemarks.dylib"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libOptRemarks.dylib"
+  IMPORTED_SONAME_DEBUG "@rpath/libOptRemarks.dylib"
   )
 
-# Import target "sancov" for configuration "Release"
-set_property(TARGET sancov APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "sancov" for configuration "Debug"
+set_property(TARGET sancov APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(sancov PROPERTIES
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/bin/sancov"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/bin/sancov"
   )
 
-# Import target "sanstats" for configuration "Release"
-set_property(TARGET sanstats APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "sanstats" for configuration "Debug"
+set_property(TARGET sanstats APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(sanstats PROPERTIES
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/bin/sanstats"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/bin/sanstats"
   )
 
-# Import target "verify-uselistorder" for configuration "Release"
-set_property(TARGET verify-uselistorder APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "verify-uselistorder" for configuration "Debug"
+set_property(TARGET verify-uselistorder APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(verify-uselistorder PROPERTIES
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/bin/verify-uselistorder"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/bin/verify-uselistorder"
   )
 
-# Import target "yaml2obj" for configuration "Release"
-set_property(TARGET yaml2obj APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "yaml2obj" for configuration "Debug"
+set_property(TARGET yaml2obj APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(yaml2obj PROPERTIES
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/bin/yaml2obj"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/bin/yaml2obj"
   )
 
 # This file does not depend on other imported targets which have

@@ -12,7 +12,8 @@
 
 #include "NMX.h"
 #include "llvm/CodeGen/TargetFrameLowering.h"
-
+/// @brief 
+/// 栈的管理，栈指针的原理和方法
 namespace llvm {
 class NMXSubtarget;
 
@@ -26,7 +27,7 @@ public:
       STI(sti) { }
 
   static const NMXFrameLowering *create(const NMXSubtarget &ST);
-
+  /// 
   bool hasFP(const MachineFunction &MF) const override;
 
   MachineBasicBlock::iterator

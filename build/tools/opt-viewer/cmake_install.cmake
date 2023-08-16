@@ -1,4 +1,4 @@
-# Install script for directory: /volumes/hello2/nmx/llvm/tools/opt-viewer
+# Install script for directory: /volumes/hello2/LLVM-NMX/llvm/tools/opt-viewer
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -12,7 +12,7 @@ if(NOT DEFINED CMAKE_INSTALL_CONFIG_NAME)
     string(REGEX REPLACE "^[^A-Za-z0-9_]+" ""
            CMAKE_INSTALL_CONFIG_NAME "${BUILD_TYPE}")
   else()
-    set(CMAKE_INSTALL_CONFIG_NAME "Release")
+    set(CMAKE_INSTALL_CONFIG_NAME "Debug")
   endif()
   message(STATUS "Install configuration: \"${CMAKE_INSTALL_CONFIG_NAME}\"")
 endif()
@@ -34,30 +34,30 @@ endif()
 
 # Set default install directory permissions.
 if(NOT DEFINED CMAKE_OBJDUMP)
-  set(CMAKE_OBJDUMP "/Library/Developer/CommandLineTools/usr/bin/objdump")
+  set(CMAKE_OBJDUMP "/usr/local/opt/llvm/bin/llvm-objdump")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "opt-viewer" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/opt-viewer" TYPE PROGRAM FILES "/volumes/hello2/nmx/llvm/tools/opt-viewer/opt-diff.py")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/opt-viewer" TYPE PROGRAM FILES "/volumes/hello2/LLVM-NMX/llvm/tools/opt-viewer/opt-diff.py")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "opt-viewer" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/opt-viewer" TYPE PROGRAM FILES "/volumes/hello2/nmx/llvm/tools/opt-viewer/opt-stats.py")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/opt-viewer" TYPE PROGRAM FILES "/volumes/hello2/LLVM-NMX/llvm/tools/opt-viewer/opt-stats.py")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "opt-viewer" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/opt-viewer" TYPE PROGRAM FILES "/volumes/hello2/nmx/llvm/tools/opt-viewer/opt-viewer.py")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/opt-viewer" TYPE PROGRAM FILES "/volumes/hello2/LLVM-NMX/llvm/tools/opt-viewer/opt-viewer.py")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "opt-viewer" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/opt-viewer" TYPE PROGRAM FILES "/volumes/hello2/nmx/llvm/tools/opt-viewer/optpmap.py")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/opt-viewer" TYPE PROGRAM FILES "/volumes/hello2/LLVM-NMX/llvm/tools/opt-viewer/optpmap.py")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "opt-viewer" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/opt-viewer" TYPE PROGRAM FILES "/volumes/hello2/nmx/llvm/tools/opt-viewer/optrecord.py")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/opt-viewer" TYPE PROGRAM FILES "/volumes/hello2/LLVM-NMX/llvm/tools/opt-viewer/optrecord.py")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "opt-viewer" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/opt-viewer" TYPE PROGRAM FILES "/volumes/hello2/nmx/llvm/tools/opt-viewer/style.css")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/opt-viewer" TYPE PROGRAM FILES "/volumes/hello2/LLVM-NMX/llvm/tools/opt-viewer/style.css")
 endif()
 

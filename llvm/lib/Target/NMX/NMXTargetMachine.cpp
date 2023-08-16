@@ -25,6 +25,8 @@ using namespace llvm;
 
 #define DEBUG_TYPE "NMX"
 
+
+/// @brief  实现头文件的各种功能
 extern "C" void LLVMInitializeNMXTarget() {
   // Register the target.
   // Big endian Target Machine
@@ -107,6 +109,9 @@ NMXelTargetMachine::NMXelTargetMachine(const Target &T, const Triple &TT,
                                          CodeGenOpt::Level OL, bool JIT)
     : NMXTargetMachine(T, TT, CPU, FS, Options, RM, CM, OL, JIT, true) { }
 
+/// @brief  构造对象引用到该对象的属性和方法
+/// @param F 
+/// @return 
 const NMXSubtarget *
 NMXTargetMachine::getSubtargetImpl(const Function &F) const {
   Attribute CPUAttr = F.getFnAttribute("target-cpu");

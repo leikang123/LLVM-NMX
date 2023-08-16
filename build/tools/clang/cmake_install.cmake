@@ -1,4 +1,4 @@
-# Install script for directory: /volumes/hello2/nmx/llvm/tools/clang
+# Install script for directory: /volumes/hello2/LLVM-NMX/llvm/tools/clang
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -12,7 +12,7 @@ if(NOT DEFINED CMAKE_INSTALL_CONFIG_NAME)
     string(REGEX REPLACE "^[^A-Za-z0-9_]+" ""
            CMAKE_INSTALL_CONFIG_NAME "${BUILD_TYPE}")
   else()
-    set(CMAKE_INSTALL_CONFIG_NAME "Release")
+    set(CMAKE_INSTALL_CONFIG_NAME "Debug")
   endif()
   message(STATUS "Install configuration: \"${CMAKE_INSTALL_CONFIG_NAME}\"")
 endif()
@@ -34,38 +34,38 @@ endif()
 
 # Set default install directory permissions.
 if(NOT DEFINED CMAKE_OBJDUMP)
-  set(CMAKE_OBJDUMP "/Library/Developer/CommandLineTools/usr/bin/objdump")
+  set(CMAKE_OBJDUMP "/usr/local/opt/llvm/bin/llvm-objdump")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE DIRECTORY FILES
-    "/volumes/hello2/nmx/llvm/tools/clang/include/clang"
-    "/volumes/hello2/nmx/llvm/tools/clang/include/clang-c"
+    "/volumes/hello2/LLVM-NMX/llvm/tools/clang/include/clang"
+    "/volumes/hello2/LLVM-NMX/llvm/tools/clang/include/clang-c"
     FILES_MATCHING REGEX "/[^/]*\\.def$" REGEX "/[^/]*\\.h$" REGEX "/config\\.h$" EXCLUDE REGEX "/\\.svn$" EXCLUDE)
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE DIRECTORY FILES "/volumes/hello2/nmx/build/tools/clang/include/clang" FILES_MATCHING REGEX "/cmakefiles$" EXCLUDE REGEX "/[^/]*\\.inc$" REGEX "/[^/]*\\.h$")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE DIRECTORY FILES "/volumes/hello2/LLVM-NMX/build/tools/clang/include/clang" FILES_MATCHING REGEX "/cmakefiles$" EXCLUDE REGEX "/[^/]*\\.inc$" REGEX "/[^/]*\\.h$")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/clang" TYPE PROGRAM FILES "/volumes/hello2/nmx/llvm/tools/clang/utils/bash-autocomplete.sh")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/clang" TYPE PROGRAM FILES "/volumes/hello2/LLVM-NMX/llvm/tools/clang/utils/bash-autocomplete.sh")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/volumes/hello2/nmx/build/tools/clang/utils/TableGen/cmake_install.cmake")
-  include("/volumes/hello2/nmx/build/tools/clang/include/cmake_install.cmake")
-  include("/volumes/hello2/nmx/build/tools/clang/lib/cmake_install.cmake")
-  include("/volumes/hello2/nmx/build/tools/clang/tools/cmake_install.cmake")
-  include("/volumes/hello2/nmx/build/tools/clang/runtime/cmake_install.cmake")
-  include("/volumes/hello2/nmx/build/tools/clang/unittests/cmake_install.cmake")
-  include("/volumes/hello2/nmx/build/tools/clang/test/cmake_install.cmake")
-  include("/volumes/hello2/nmx/build/tools/clang/bindings/python/tests/cmake_install.cmake")
-  include("/volumes/hello2/nmx/build/tools/clang/utils/perf-training/cmake_install.cmake")
-  include("/volumes/hello2/nmx/build/tools/clang/docs/cmake_install.cmake")
-  include("/volumes/hello2/nmx/build/tools/clang/cmake/modules/cmake_install.cmake")
-  include("/volumes/hello2/nmx/build/tools/clang/utils/hmaptool/cmake_install.cmake")
+  include("/volumes/hello2/LLVM-NMX/build/tools/clang/utils/TableGen/cmake_install.cmake")
+  include("/volumes/hello2/LLVM-NMX/build/tools/clang/include/cmake_install.cmake")
+  include("/volumes/hello2/LLVM-NMX/build/tools/clang/lib/cmake_install.cmake")
+  include("/volumes/hello2/LLVM-NMX/build/tools/clang/tools/cmake_install.cmake")
+  include("/volumes/hello2/LLVM-NMX/build/tools/clang/runtime/cmake_install.cmake")
+  include("/volumes/hello2/LLVM-NMX/build/tools/clang/unittests/cmake_install.cmake")
+  include("/volumes/hello2/LLVM-NMX/build/tools/clang/test/cmake_install.cmake")
+  include("/volumes/hello2/LLVM-NMX/build/tools/clang/bindings/python/tests/cmake_install.cmake")
+  include("/volumes/hello2/LLVM-NMX/build/tools/clang/utils/perf-training/cmake_install.cmake")
+  include("/volumes/hello2/LLVM-NMX/build/tools/clang/docs/cmake_install.cmake")
+  include("/volumes/hello2/LLVM-NMX/build/tools/clang/cmake/modules/cmake_install.cmake")
+  include("/volumes/hello2/LLVM-NMX/build/tools/clang/utils/hmaptool/cmake_install.cmake")
 
 endif()
 

@@ -70,6 +70,7 @@ enum NodeType {
 //===----------------------------------------------------------------------===//
 // TargetLowering Implementation
 //===----------------------------------------------------------------------===//
+/// 栈指针的具体实现方法
 class NMXMachineFunctionInfo;
 class NMXSubtarget;
 

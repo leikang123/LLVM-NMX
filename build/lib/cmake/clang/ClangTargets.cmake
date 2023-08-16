@@ -253,14 +253,14 @@ add_executable(clang-format IMPORTED)
 add_library(clangHandleCXX STATIC IMPORTED)
 
 set_target_properties(clangHandleCXX PROPERTIES
-  INTERFACE_LINK_LIBRARIES "clangBasic;clangCodeGen;clangFrontend;clangLex;clangSerialization;clangTooling;LLVMAArch64CodeGen;LLVMAArch64AsmParser;LLVMAArch64AsmPrinter;LLVMAArch64Desc;LLVMAArch64Disassembler;LLVMAArch64Info;LLVMAArch64Utils;LLVMAMDGPUCodeGen;LLVMAMDGPUAsmParser;LLVMAMDGPUAsmPrinter;LLVMAMDGPUDesc;LLVMAMDGPUDisassembler;LLVMAMDGPUInfo;LLVMAMDGPUUtils;LLVMARMCodeGen;LLVMARMAsmParser;LLVMARMAsmPrinter;LLVMARMDesc;LLVMARMDisassembler;LLVMARMInfo;LLVMARMUtils;LLVMBPFCodeGen;LLVMBPFAsmParser;LLVMBPFAsmPrinter;LLVMBPFDesc;LLVMBPFDisassembler;LLVMBPFInfo;LLVMHexagonCodeGen;LLVMHexagonAsmParser;LLVMHexagonDesc;LLVMHexagonDisassembler;LLVMHexagonInfo;LLVMLanaiCodeGen;LLVMLanaiAsmParser;LLVMLanaiAsmPrinter;LLVMLanaiDesc;LLVMLanaiDisassembler;LLVMLanaiInfo;LLVMMipsCodeGen;LLVMMipsAsmParser;LLVMMipsAsmPrinter;LLVMMipsDesc;LLVMMipsDisassembler;LLVMMipsInfo;LLVMMSP430CodeGen;LLVMMSP430AsmParser;LLVMMSP430AsmPrinter;LLVMMSP430Desc;LLVMMSP430Disassembler;LLVMMSP430Info;LLVMNVPTXCodeGen;LLVMNVPTXAsmPrinter;LLVMNVPTXDesc;LLVMNVPTXInfo;LLVMPowerPCCodeGen;LLVMPowerPCAsmParser;LLVMPowerPCAsmPrinter;LLVMPowerPCDesc;LLVMPowerPCDisassembler;LLVMPowerPCInfo;LLVMSparcCodeGen;LLVMSparcAsmParser;LLVMSparcAsmPrinter;LLVMSparcDesc;LLVMSparcDisassembler;LLVMSparcInfo;LLVMSystemZCodeGen;LLVMSystemZAsmParser;LLVMSystemZAsmPrinter;LLVMSystemZDesc;LLVMSystemZDisassembler;LLVMSystemZInfo;LLVMWebAssemblyCodeGen;LLVMWebAssemblyAsmParser;LLVMWebAssemblyAsmPrinter;LLVMWebAssemblyDesc;LLVMWebAssemblyDisassembler;LLVMWebAssemblyInfo;LLVMX86CodeGen;LLVMX86AsmParser;LLVMX86AsmPrinter;LLVMX86Desc;LLVMX86Disassembler;LLVMX86Info;LLVMX86Utils;LLVMXCoreCodeGen;LLVMXCoreAsmPrinter;LLVMXCoreDesc;LLVMXCoreDisassembler;LLVMXCoreInfo;LLVMNMXCodeGen;LLVMNMXAsmParser;LLVMNMXAsmPrinter;LLVMNMXDesc;LLVMNMXDisassembler;LLVMNMXInfo;LLVMSupport"
+  INTERFACE_LINK_LIBRARIES "clangBasic;clangCodeGen;clangFrontend;clangLex;clangSerialization;clangTooling;LLVMNMXCodeGen;LLVMNMXAsmParser;LLVMNMXAsmPrinter;LLVMNMXDesc;LLVMNMXDisassembler;LLVMNMXInfo;LLVMSupport"
 )
 
 # Create imported target clangHandleLLVM
 add_library(clangHandleLLVM STATIC IMPORTED)
 
 set_target_properties(clangHandleLLVM PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMAnalysis;LLVMCodeGen;LLVMCore;LLVMExecutionEngine;LLVMipo;LLVMIRReader;LLVMMC;LLVMMCJIT;LLVMObject;LLVMRuntimeDyld;LLVMSelectionDAG;LLVMSupport;LLVMTarget;LLVMTransformUtils;LLVMX86CodeGen;LLVMX86AsmParser;LLVMX86AsmPrinter;LLVMX86Desc;LLVMX86Disassembler;LLVMX86Info;LLVMX86Utils"
+  INTERFACE_LINK_LIBRARIES "LLVMAnalysis;LLVMCodeGen;LLVMCore;LLVMExecutionEngine;LLVMipo;LLVMIRReader;LLVMMC;LLVMMCJIT;LLVMObject;LLVMRuntimeDyld;LLVMSelectionDAG;LLVMSupport;LLVMTarget;LLVMTransformUtils"
 )
 
 # Create imported target clang-import-test
@@ -275,257 +275,257 @@ add_executable(clang-refactor IMPORTED)
 # Create imported target libclang
 add_library(libclang SHARED IMPORTED)
 
-# Import target "clangBasic" for configuration "Release"
-set_property(TARGET clangBasic APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "clangBasic" for configuration "Debug"
+set_property(TARGET clangBasic APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(clangBasic PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libclangBasic.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libclangBasic.a"
   )
 
-# Import target "clangLex" for configuration "Release"
-set_property(TARGET clangLex APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "clangLex" for configuration "Debug"
+set_property(TARGET clangLex APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(clangLex PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libclangLex.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libclangLex.a"
   )
 
-# Import target "clangParse" for configuration "Release"
-set_property(TARGET clangParse APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "clangParse" for configuration "Debug"
+set_property(TARGET clangParse APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(clangParse PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libclangParse.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libclangParse.a"
   )
 
-# Import target "clangAST" for configuration "Release"
-set_property(TARGET clangAST APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "clangAST" for configuration "Debug"
+set_property(TARGET clangAST APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(clangAST PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libclangAST.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libclangAST.a"
   )
 
-# Import target "clangDynamicASTMatchers" for configuration "Release"
-set_property(TARGET clangDynamicASTMatchers APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "clangDynamicASTMatchers" for configuration "Debug"
+set_property(TARGET clangDynamicASTMatchers APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(clangDynamicASTMatchers PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libclangDynamicASTMatchers.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libclangDynamicASTMatchers.a"
   )
 
-# Import target "clangASTMatchers" for configuration "Release"
-set_property(TARGET clangASTMatchers APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "clangASTMatchers" for configuration "Debug"
+set_property(TARGET clangASTMatchers APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(clangASTMatchers PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libclangASTMatchers.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libclangASTMatchers.a"
   )
 
-# Import target "clangCrossTU" for configuration "Release"
-set_property(TARGET clangCrossTU APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "clangCrossTU" for configuration "Debug"
+set_property(TARGET clangCrossTU APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(clangCrossTU PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libclangCrossTU.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libclangCrossTU.a"
   )
 
-# Import target "clangSema" for configuration "Release"
-set_property(TARGET clangSema APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "clangSema" for configuration "Debug"
+set_property(TARGET clangSema APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(clangSema PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libclangSema.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libclangSema.a"
   )
 
-# Import target "clangCodeGen" for configuration "Release"
-set_property(TARGET clangCodeGen APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "clangCodeGen" for configuration "Debug"
+set_property(TARGET clangCodeGen APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(clangCodeGen PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libclangCodeGen.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libclangCodeGen.a"
   )
 
-# Import target "clangAnalysis" for configuration "Release"
-set_property(TARGET clangAnalysis APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "clangAnalysis" for configuration "Debug"
+set_property(TARGET clangAnalysis APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(clangAnalysis PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libclangAnalysis.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libclangAnalysis.a"
   )
 
-# Import target "clangEdit" for configuration "Release"
-set_property(TARGET clangEdit APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "clangEdit" for configuration "Debug"
+set_property(TARGET clangEdit APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(clangEdit PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libclangEdit.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libclangEdit.a"
   )
 
-# Import target "clangRewrite" for configuration "Release"
-set_property(TARGET clangRewrite APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "clangRewrite" for configuration "Debug"
+set_property(TARGET clangRewrite APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(clangRewrite PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libclangRewrite.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libclangRewrite.a"
   )
 
-# Import target "clangARCMigrate" for configuration "Release"
-set_property(TARGET clangARCMigrate APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "clangARCMigrate" for configuration "Debug"
+set_property(TARGET clangARCMigrate APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(clangARCMigrate PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libclangARCMigrate.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libclangARCMigrate.a"
   )
 
-# Import target "clangDriver" for configuration "Release"
-set_property(TARGET clangDriver APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "clangDriver" for configuration "Debug"
+set_property(TARGET clangDriver APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(clangDriver PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libclangDriver.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libclangDriver.a"
   )
 
-# Import target "clangSerialization" for configuration "Release"
-set_property(TARGET clangSerialization APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "clangSerialization" for configuration "Debug"
+set_property(TARGET clangSerialization APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(clangSerialization PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libclangSerialization.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libclangSerialization.a"
   )
 
-# Import target "clangRewriteFrontend" for configuration "Release"
-set_property(TARGET clangRewriteFrontend APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "clangRewriteFrontend" for configuration "Debug"
+set_property(TARGET clangRewriteFrontend APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(clangRewriteFrontend PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libclangRewriteFrontend.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libclangRewriteFrontend.a"
   )
 
-# Import target "clangFrontend" for configuration "Release"
-set_property(TARGET clangFrontend APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "clangFrontend" for configuration "Debug"
+set_property(TARGET clangFrontend APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(clangFrontend PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libclangFrontend.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libclangFrontend.a"
   )
 
-# Import target "clangFrontendTool" for configuration "Release"
-set_property(TARGET clangFrontendTool APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "clangFrontendTool" for configuration "Debug"
+set_property(TARGET clangFrontendTool APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(clangFrontendTool PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libclangFrontendTool.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libclangFrontendTool.a"
   )
 
-# Import target "clangToolingCore" for configuration "Release"
-set_property(TARGET clangToolingCore APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "clangToolingCore" for configuration "Debug"
+set_property(TARGET clangToolingCore APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(clangToolingCore PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libclangToolingCore.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libclangToolingCore.a"
   )
 
-# Import target "clangToolingInclusions" for configuration "Release"
-set_property(TARGET clangToolingInclusions APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "clangToolingInclusions" for configuration "Debug"
+set_property(TARGET clangToolingInclusions APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(clangToolingInclusions PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libclangToolingInclusions.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libclangToolingInclusions.a"
   )
 
-# Import target "clangToolingRefactor" for configuration "Release"
-set_property(TARGET clangToolingRefactor APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "clangToolingRefactor" for configuration "Debug"
+set_property(TARGET clangToolingRefactor APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(clangToolingRefactor PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libclangToolingRefactor.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libclangToolingRefactor.a"
   )
 
-# Import target "clangToolingASTDiff" for configuration "Release"
-set_property(TARGET clangToolingASTDiff APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "clangToolingASTDiff" for configuration "Debug"
+set_property(TARGET clangToolingASTDiff APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(clangToolingASTDiff PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libclangToolingASTDiff.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libclangToolingASTDiff.a"
   )
 
-# Import target "clangTooling" for configuration "Release"
-set_property(TARGET clangTooling APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "clangTooling" for configuration "Debug"
+set_property(TARGET clangTooling APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(clangTooling PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libclangTooling.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libclangTooling.a"
   )
 
-# Import target "clangIndex" for configuration "Release"
-set_property(TARGET clangIndex APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "clangIndex" for configuration "Debug"
+set_property(TARGET clangIndex APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(clangIndex PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libclangIndex.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libclangIndex.a"
   )
 
-# Import target "clangStaticAnalyzerCore" for configuration "Release"
-set_property(TARGET clangStaticAnalyzerCore APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "clangStaticAnalyzerCore" for configuration "Debug"
+set_property(TARGET clangStaticAnalyzerCore APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(clangStaticAnalyzerCore PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libclangStaticAnalyzerCore.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libclangStaticAnalyzerCore.a"
   )
 
-# Import target "clangStaticAnalyzerCheckers" for configuration "Release"
-set_property(TARGET clangStaticAnalyzerCheckers APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "clangStaticAnalyzerCheckers" for configuration "Debug"
+set_property(TARGET clangStaticAnalyzerCheckers APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(clangStaticAnalyzerCheckers PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libclangStaticAnalyzerCheckers.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libclangStaticAnalyzerCheckers.a"
   )
 
-# Import target "clangStaticAnalyzerFrontend" for configuration "Release"
-set_property(TARGET clangStaticAnalyzerFrontend APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "clangStaticAnalyzerFrontend" for configuration "Debug"
+set_property(TARGET clangStaticAnalyzerFrontend APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(clangStaticAnalyzerFrontend PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libclangStaticAnalyzerFrontend.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libclangStaticAnalyzerFrontend.a"
   )
 
-# Import target "clangFormat" for configuration "Release"
-set_property(TARGET clangFormat APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "clangFormat" for configuration "Debug"
+set_property(TARGET clangFormat APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(clangFormat PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libclangFormat.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libclangFormat.a"
   )
 
-# Import target "clang" for configuration "Release"
-set_property(TARGET clang APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "clang" for configuration "Debug"
+set_property(TARGET clang APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(clang PROPERTIES
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/bin/clang-8"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/bin/clang-8"
   )
 
-# Import target "clang-format" for configuration "Release"
-set_property(TARGET clang-format APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "clang-format" for configuration "Debug"
+set_property(TARGET clang-format APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(clang-format PROPERTIES
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/bin/clang-format"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/bin/clang-format"
   )
 
-# Import target "clangHandleCXX" for configuration "Release"
-set_property(TARGET clangHandleCXX APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "clangHandleCXX" for configuration "Debug"
+set_property(TARGET clangHandleCXX APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(clangHandleCXX PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libclangHandleCXX.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libclangHandleCXX.a"
   )
 
-# Import target "clangHandleLLVM" for configuration "Release"
-set_property(TARGET clangHandleLLVM APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "clangHandleLLVM" for configuration "Debug"
+set_property(TARGET clangHandleLLVM APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(clangHandleLLVM PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libclangHandleLLVM.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libclangHandleLLVM.a"
   )
 
-# Import target "clang-import-test" for configuration "Release"
-set_property(TARGET clang-import-test APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "clang-import-test" for configuration "Debug"
+set_property(TARGET clang-import-test APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(clang-import-test PROPERTIES
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/bin/clang-import-test"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/bin/clang-import-test"
   )
 
-# Import target "clang-rename" for configuration "Release"
-set_property(TARGET clang-rename APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "clang-rename" for configuration "Debug"
+set_property(TARGET clang-rename APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(clang-rename PROPERTIES
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/bin/clang-rename"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/bin/clang-rename"
   )
 
-# Import target "clang-refactor" for configuration "Release"
-set_property(TARGET clang-refactor APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "clang-refactor" for configuration "Debug"
+set_property(TARGET clang-refactor APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(clang-refactor PROPERTIES
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/bin/clang-refactor"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/bin/clang-refactor"
   )
 
-# Import target "libclang" for configuration "Release"
-set_property(TARGET libclang APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "libclang" for configuration "Debug"
+set_property(TARGET libclang APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(libclang PROPERTIES
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libclang.dylib"
-  IMPORTED_SONAME_RELEASE "@rpath/libclang.dylib"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libclang.dylib"
+  IMPORTED_SONAME_DEBUG "@rpath/libclang.dylib"
   )
 
 # Make sure the targets which have been exported in some other
 # export set exist.
 unset(${CMAKE_FIND_PACKAGE_NAME}_NOT_FOUND_MESSAGE_targets)
-foreach(_target "LLVMCore" "LLVMMC" "LLVMSupport" "LLVMMCParser" "LLVMBinaryFormat" "LLVMAnalysis" "LLVMBitReader" "LLVMBitWriter" "LLVMCoroutines" "LLVMCoverage" "LLVMipo" "LLVMIRReader" "LLVMAggressiveInstCombine" "LLVMInstCombine" "LLVMInstrumentation" "LLVMLTO" "LLVMLinker" "LLVMObjCARCOpts" "LLVMObject" "LLVMPasses" "LLVMProfileData" "LLVMScalarOpts" "LLVMTarget" "LLVMTransformUtils" "LLVMOption" "LLVMAArch64CodeGen" "LLVMAArch64AsmParser" "LLVMAArch64AsmPrinter" "LLVMAArch64Desc" "LLVMAArch64Disassembler" "LLVMAArch64Info" "LLVMAArch64Utils" "LLVMAMDGPUCodeGen" "LLVMAMDGPUAsmParser" "LLVMAMDGPUAsmPrinter" "LLVMAMDGPUDesc" "LLVMAMDGPUDisassembler" "LLVMAMDGPUInfo" "LLVMAMDGPUUtils" "LLVMARMCodeGen" "LLVMARMAsmParser" "LLVMARMAsmPrinter" "LLVMARMDesc" "LLVMARMDisassembler" "LLVMARMInfo" "LLVMARMUtils" "LLVMBPFCodeGen" "LLVMBPFAsmParser" "LLVMBPFAsmPrinter" "LLVMBPFDesc" "LLVMBPFDisassembler" "LLVMBPFInfo" "LLVMHexagonCodeGen" "LLVMHexagonAsmParser" "LLVMHexagonDesc" "LLVMHexagonDisassembler" "LLVMHexagonInfo" "LLVMLanaiCodeGen" "LLVMLanaiAsmParser" "LLVMLanaiAsmPrinter" "LLVMLanaiDesc" "LLVMLanaiDisassembler" "LLVMLanaiInfo" "LLVMMipsCodeGen" "LLVMMipsAsmParser" "LLVMMipsAsmPrinter" "LLVMMipsDesc" "LLVMMipsDisassembler" "LLVMMipsInfo" "LLVMMSP430CodeGen" "LLVMMSP430AsmParser" "LLVMMSP430AsmPrinter" "LLVMMSP430Desc" "LLVMMSP430Disassembler" "LLVMMSP430Info" "LLVMNVPTXCodeGen" "LLVMNVPTXAsmPrinter" "LLVMNVPTXDesc" "LLVMNVPTXInfo" "LLVMPowerPCCodeGen" "LLVMPowerPCAsmParser" "LLVMPowerPCAsmPrinter" "LLVMPowerPCDesc" "LLVMPowerPCDisassembler" "LLVMPowerPCInfo" "LLVMSparcCodeGen" "LLVMSparcAsmParser" "LLVMSparcAsmPrinter" "LLVMSparcDesc" "LLVMSparcDisassembler" "LLVMSparcInfo" "LLVMSystemZCodeGen" "LLVMSystemZAsmParser" "LLVMSystemZAsmPrinter" "LLVMSystemZDesc" "LLVMSystemZDisassembler" "LLVMSystemZInfo" "LLVMWebAssemblyCodeGen" "LLVMWebAssemblyAsmParser" "LLVMWebAssemblyAsmPrinter" "LLVMWebAssemblyDesc" "LLVMWebAssemblyDisassembler" "LLVMWebAssemblyInfo" "LLVMX86CodeGen" "LLVMX86AsmParser" "LLVMX86AsmPrinter" "LLVMX86Desc" "LLVMX86Disassembler" "LLVMX86Info" "LLVMX86Utils" "LLVMXCoreCodeGen" "LLVMXCoreAsmPrinter" "LLVMXCoreDesc" "LLVMXCoreDisassembler" "LLVMXCoreInfo" "LLVMNMXCodeGen" "LLVMNMXAsmParser" "LLVMNMXAsmPrinter" "LLVMNMXDesc" "LLVMNMXDisassembler" "LLVMNMXInfo" "LLVMCodeGen" "LLVMExecutionEngine" "LLVMMCJIT" "LLVMRuntimeDyld" "LLVMSelectionDAG" )
+foreach(_target "LLVMCore" "LLVMMC" "LLVMSupport" "LLVMMCParser" "LLVMBinaryFormat" "LLVMAnalysis" "LLVMBitReader" "LLVMBitWriter" "LLVMCoroutines" "LLVMCoverage" "LLVMipo" "LLVMIRReader" "LLVMAggressiveInstCombine" "LLVMInstCombine" "LLVMInstrumentation" "LLVMLTO" "LLVMLinker" "LLVMObjCARCOpts" "LLVMObject" "LLVMPasses" "LLVMProfileData" "LLVMScalarOpts" "LLVMTarget" "LLVMTransformUtils" "LLVMOption" "LLVMNMXCodeGen" "LLVMNMXAsmParser" "LLVMNMXAsmPrinter" "LLVMNMXDesc" "LLVMNMXDisassembler" "LLVMNMXInfo" "LLVMCodeGen" "LLVMExecutionEngine" "LLVMMCJIT" "LLVMRuntimeDyld" "LLVMSelectionDAG" )
   if(NOT TARGET "${_target}" )
     set(${CMAKE_FIND_PACKAGE_NAME}_NOT_FOUND_MESSAGE_targets "${${CMAKE_FIND_PACKAGE_NAME}_NOT_FOUND_MESSAGE_targets} ${_target}")
   endif()

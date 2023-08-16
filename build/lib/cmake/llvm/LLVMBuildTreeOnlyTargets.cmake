@@ -94,85 +94,85 @@ set_target_properties(gtest_main PROPERTIES
   INTERFACE_LINK_LIBRARIES "gtest;LLVMSupport"
 )
 
-# Import target "LLVMHello" for configuration "Release"
-set_property(TARGET LLVMHello APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "LLVMHello" for configuration "Debug"
+set_property(TARGET LLVMHello APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMHello PROPERTIES
-  IMPORTED_COMMON_LANGUAGE_RUNTIME_RELEASE ""
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/LLVMHello.dylib"
-  IMPORTED_NO_SONAME_RELEASE "TRUE"
+  IMPORTED_COMMON_LANGUAGE_RUNTIME_DEBUG ""
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/LLVMHello.dylib"
+  IMPORTED_NO_SONAME_DEBUG "TRUE"
   )
 
-# Import target "LLVMTestingSupport" for configuration "Release"
-set_property(TARGET LLVMTestingSupport APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "LLVMTestingSupport" for configuration "Debug"
+set_property(TARGET LLVMTestingSupport APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMTestingSupport PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libLLVMTestingSupport.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libLLVMTestingSupport.a"
   )
 
-# Import target "FileCheck" for configuration "Release"
-set_property(TARGET FileCheck APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "FileCheck" for configuration "Debug"
+set_property(TARGET FileCheck APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(FileCheck PROPERTIES
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/bin/FileCheck"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/bin/FileCheck"
   )
 
-# Import target "llvm-PerfectShuffle" for configuration "Release"
-set_property(TARGET llvm-PerfectShuffle APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "llvm-PerfectShuffle" for configuration "Debug"
+set_property(TARGET llvm-PerfectShuffle APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(llvm-PerfectShuffle PROPERTIES
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/bin/llvm-PerfectShuffle"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/bin/llvm-PerfectShuffle"
   )
 
-# Import target "count" for configuration "Release"
-set_property(TARGET count APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "count" for configuration "Debug"
+set_property(TARGET count APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(count PROPERTIES
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/bin/count"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/bin/count"
   )
 
-# Import target "not" for configuration "Release"
-set_property(TARGET not APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "not" for configuration "Debug"
+set_property(TARGET not APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(not PROPERTIES
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/bin/not"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/bin/not"
   )
 
-# Import target "yaml-bench" for configuration "Release"
-set_property(TARGET yaml-bench APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "yaml-bench" for configuration "Debug"
+set_property(TARGET yaml-bench APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(yaml-bench PROPERTIES
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/bin/yaml-bench"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/bin/yaml-bench"
   )
 
-# Import target "BugpointPasses" for configuration "Release"
-set_property(TARGET BugpointPasses APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "BugpointPasses" for configuration "Debug"
+set_property(TARGET BugpointPasses APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(BugpointPasses PROPERTIES
-  IMPORTED_COMMON_LANGUAGE_RUNTIME_RELEASE ""
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/BugpointPasses.dylib"
-  IMPORTED_NO_SONAME_RELEASE "TRUE"
+  IMPORTED_COMMON_LANGUAGE_RUNTIME_DEBUG ""
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/BugpointPasses.dylib"
+  IMPORTED_NO_SONAME_DEBUG "TRUE"
   )
 
-# Import target "lli-child-target" for configuration "Release"
-set_property(TARGET lli-child-target APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "lli-child-target" for configuration "Debug"
+set_property(TARGET lli-child-target APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(lli-child-target PROPERTIES
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/bin/lli-child-target"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/bin/lli-child-target"
   )
 
-# Import target "TestPlugin" for configuration "Release"
-set_property(TARGET TestPlugin APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "TestPlugin" for configuration "Debug"
+set_property(TARGET TestPlugin APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(TestPlugin PROPERTIES
-  IMPORTED_COMMON_LANGUAGE_RUNTIME_RELEASE ""
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/unittests/Passes/TestPlugin.dylib"
-  IMPORTED_NO_SONAME_RELEASE "TRUE"
+  IMPORTED_COMMON_LANGUAGE_RUNTIME_DEBUG ""
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/unittests/Passes/TestPlugin.dylib"
+  IMPORTED_NO_SONAME_DEBUG "TRUE"
   )
 
-# Import target "gtest" for configuration "Release"
-set_property(TARGET gtest APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "gtest" for configuration "Debug"
+set_property(TARGET gtest APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(gtest PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libgtest.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libgtest.a"
   )
 
-# Import target "gtest_main" for configuration "Release"
-set_property(TARGET gtest_main APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "gtest_main" for configuration "Debug"
+set_property(TARGET gtest_main APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(gtest_main PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/volumes/hello2/nmx/build/lib/libgtest_main.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/volumes/hello2/LLVM-NMX/build/lib/libgtest_main.a"
   )
 
 # Make sure the targets which have been exported in some other

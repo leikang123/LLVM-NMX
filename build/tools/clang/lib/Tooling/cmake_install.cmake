@@ -1,4 +1,4 @@
-# Install script for directory: /volumes/hello2/nmx/llvm/tools/clang/lib/Tooling
+# Install script for directory: /volumes/hello2/LLVM-NMX/llvm/tools/clang/lib/Tooling
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -12,7 +12,7 @@ if(NOT DEFINED CMAKE_INSTALL_CONFIG_NAME)
     string(REGEX REPLACE "^[^A-Za-z0-9_]+" ""
            CMAKE_INSTALL_CONFIG_NAME "${BUILD_TYPE}")
   else()
-    set(CMAKE_INSTALL_CONFIG_NAME "Release")
+    set(CMAKE_INSTALL_CONFIG_NAME "Debug")
   endif()
   message(STATUS "Install configuration: \"${CMAKE_INSTALL_CONFIG_NAME}\"")
 endif()
@@ -34,23 +34,23 @@ endif()
 
 # Set default install directory permissions.
 if(NOT DEFINED CMAKE_OBJDUMP)
-  set(CMAKE_OBJDUMP "/Library/Developer/CommandLineTools/usr/bin/objdump")
+  set(CMAKE_OBJDUMP "/usr/local/opt/llvm/bin/llvm-objdump")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "clangTooling" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "/volumes/hello2/nmx/build/lib/libclangTooling.a")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "/volumes/hello2/LLVM-NMX/build/lib/libclangTooling.a")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libclangTooling.a" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libclangTooling.a")
-    execute_process(COMMAND "/Library/Developer/CommandLineTools/usr/bin/ranlib" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libclangTooling.a")
+    execute_process(COMMAND "/usr/local/opt/llvm/bin/llvm-ranlib" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libclangTooling.a")
   endif()
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/volumes/hello2/nmx/build/tools/clang/lib/Tooling/Core/cmake_install.cmake")
-  include("/volumes/hello2/nmx/build/tools/clang/lib/Tooling/Inclusions/cmake_install.cmake")
-  include("/volumes/hello2/nmx/build/tools/clang/lib/Tooling/Refactoring/cmake_install.cmake")
-  include("/volumes/hello2/nmx/build/tools/clang/lib/Tooling/ASTDiff/cmake_install.cmake")
+  include("/volumes/hello2/LLVM-NMX/build/tools/clang/lib/Tooling/Core/cmake_install.cmake")
+  include("/volumes/hello2/LLVM-NMX/build/tools/clang/lib/Tooling/Inclusions/cmake_install.cmake")
+  include("/volumes/hello2/LLVM-NMX/build/tools/clang/lib/Tooling/Refactoring/cmake_install.cmake")
+  include("/volumes/hello2/LLVM-NMX/build/tools/clang/lib/Tooling/ASTDiff/cmake_install.cmake")
 
 endif()
 

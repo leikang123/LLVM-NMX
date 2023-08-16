@@ -129,7 +129,7 @@ public:
 static MCInstrAnalysis *createnmxMCInstrAnalysis(const MCInstrInfo *Info) {
   return new nmxMCInstrAnalysis(Info);
 }
-
+// 实现目标结构的功能函数生成库.a
 extern "C" void LLVMInitializenmxTargetMC() {
   Target &ThenmxTarget = getThenmxTarget();
   Target &ThenmxelTarget = getThenmxelTarget();

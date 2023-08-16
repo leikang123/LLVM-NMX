@@ -25,6 +25,9 @@ namespace llvm {
 class formatted_raw_ostream;
 class NMXRegisterInfo;
 
+
+/// @brief  关于目标机器的定义，实现了targetMachine,ebtargetMachine，eltargetmachine三个类
+/// 拼装datalayout，重定位模式，大小端，核心目的是生成target machine的对象
 class NMXTargetMachine : public LLVMTargetMachine {
   bool isLittle;
   std::unique_ptr<TargetLoweringObjectFile> TLOF;

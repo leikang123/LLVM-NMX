@@ -14,8 +14,8 @@ def map_config(source_dir, site_config):
     config_map[source_dir] = site_config
 
 # Variables configured at build time.
-llvm_source_root = "/volumes/hello2/nmx/llvm"
-llvm_obj_root = "/volumes/hello2/nmx/build"
+llvm_source_root = "/volumes/hello2/LLVM-NMX/llvm"
+llvm_obj_root = "/volumes/hello2/LLVM-NMX/build"
 
 # Make sure we can find the lit package.
 sys.path.insert(0, os.path.join(llvm_source_root, 'utils', 'lit'))
@@ -25,14 +25,14 @@ sys.path.insert(0, os.path.join(llvm_source_root, 'utils', 'lit'))
 builtin_parameters = { 'build_mode' : "." }
 
 
-map_config('/volumes/hello2/nmx/llvm/tools/clang/test/lit.cfg.py', '/volumes/hello2/nmx/build/tools/clang/test/lit.site.cfg.py')
-map_config('/volumes/hello2/nmx/llvm/tools/clang/test/Unit/lit.cfg.py', '/volumes/hello2/nmx/build/tools/clang/test/Unit/lit.site.cfg.py')
-map_config('/volumes/hello2/nmx/llvm/tools/clang/utils/perf-training/lit.cfg', '/volumes/hello2/nmx/build/tools/clang/utils/perf-training/order-files/lit.site.cfg')
-map_config('/volumes/hello2/nmx/llvm/tools/lld/test/lit.cfg.py', '/volumes/hello2/nmx/build/tools/lld/test/lit.site.cfg.py')
-map_config('/volumes/hello2/nmx/llvm/tools/lld/test/Unit/lit.cfg.py', '/volumes/hello2/nmx/build/tools/lld/test/Unit/lit.site.cfg.py')
-map_config('/volumes/hello2/nmx/llvm/utils/lit/tests/lit.cfg', '/volumes/hello2/nmx/build/utils/lit/lit.site.cfg')
-map_config('/volumes/hello2/nmx/llvm/test/lit.cfg.py', '/volumes/hello2/nmx/build/test/lit.site.cfg.py')
-map_config('/volumes/hello2/nmx/llvm/test/Unit/lit.cfg.py', '/volumes/hello2/nmx/build/test/Unit/lit.site.cfg.py')
+map_config('/volumes/hello2/LLVM-NMX/llvm/tools/clang/test/lit.cfg.py', '/volumes/hello2/LLVM-NMX/build/tools/clang/test/lit.site.cfg.py')
+map_config('/volumes/hello2/LLVM-NMX/llvm/tools/clang/test/Unit/lit.cfg.py', '/volumes/hello2/LLVM-NMX/build/tools/clang/test/Unit/lit.site.cfg.py')
+map_config('/volumes/hello2/LLVM-NMX/llvm/tools/clang/utils/perf-training/lit.cfg', '/volumes/hello2/LLVM-NMX/build/tools/clang/utils/perf-training/order-files/lit.site.cfg')
+map_config('/volumes/hello2/LLVM-NMX/llvm/tools/lld/test/lit.cfg.py', '/volumes/hello2/LLVM-NMX/build/tools/lld/test/lit.site.cfg.py')
+map_config('/volumes/hello2/LLVM-NMX/llvm/tools/lld/test/Unit/lit.cfg.py', '/volumes/hello2/LLVM-NMX/build/tools/lld/test/Unit/lit.site.cfg.py')
+map_config('/volumes/hello2/LLVM-NMX/llvm/utils/lit/tests/lit.cfg', '/volumes/hello2/LLVM-NMX/build/utils/lit/lit.site.cfg')
+map_config('/volumes/hello2/LLVM-NMX/llvm/test/lit.cfg.py', '/volumes/hello2/LLVM-NMX/build/test/lit.site.cfg.py')
+map_config('/volumes/hello2/LLVM-NMX/llvm/test/Unit/lit.cfg.py', '/volumes/hello2/LLVM-NMX/build/test/Unit/lit.site.cfg.py')
 
 builtin_parameters['config_map'] = config_map
 
