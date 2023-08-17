@@ -25,6 +25,7 @@ namespace llvm {
 
 // nmxII - This namespace holds all of the target specific flags that
 // instruction info tracks
+/// 定义了一些宏。操作数标签的TOF和指令编码类型
 namespace nmxII {
   // Target Operand Flag enum.
   enum TOF {
