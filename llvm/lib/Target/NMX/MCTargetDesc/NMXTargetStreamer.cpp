@@ -26,7 +26,11 @@
 #include "llvm/Support/FormattedStream.h"
 
 using namespace llvm;
+// 定义了一个叫 Cpu0TargetStreamer 的类，继承自 MCTargetStreamer 类。
 
+// 定义了一个叫 Cpu0TargetAsmStreamer 的类，继承自 Cpu0TargetStreamer 类，
+// 这个类用来完成汇编器 Streamer 的功能。AsmStreamer 对象会注册到后端模块中。
+//
 nmxTargetStreamer::nmxTargetStreamer(MCStreamer &S)
     : MCTargetStreamer(S) {}
 
