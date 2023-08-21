@@ -158,6 +158,7 @@ extern "C" void LLVMInitializenmxTargetMC() {
     // Register the asm target streamer.
     TargetRegistry::RegisterAsmTargetStreamer(*T, createnmxAsmTargetStreamer);
   }
+   ///// 将具体对象传入并完成注册。
 
   // Register the MC Code Emitter
   TargetRegistry::RegisterMCCodeEmitter(ThenmxTarget,
