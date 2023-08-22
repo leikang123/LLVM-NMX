@@ -13,7 +13,7 @@
 // NMX.td, NMXRegisterInfo.td are included in NMXAsm.td 
 
 //===----------------------------------------------------------------------===//
-// Target-dependent interfaces
+//nmx Target-dependent interfaces
 //===----------------------------------------------------------------------===//
 
 // Calling Conversion
@@ -68,3 +68,4 @@ def NMX: Target {
   let AssemblyParsers = [NMXAsmParser];
   let AssemblyParserVariants = [NMXAsmParserVariant];
 }
+ 
